@@ -30,11 +30,6 @@
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="M_funcionario">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Funcion&#xe1;rios"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="M_localizacao">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Localiza&#xe7;&#xf5;es"/>
@@ -89,6 +84,11 @@
             <Property name="text" type="java.lang.String" value="Movimenta&#xe7;&#xf5;es"/>
           </Properties>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ordem de Servi&#xe7;o"/>
+          </Properties>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
@@ -112,9 +112,9 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1_maquinasActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2_os">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ordem de Servi&#xe7;o"/>
+                <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -170,7 +170,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="517" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="518" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

@@ -31,7 +31,6 @@ public class tela_menu extends javax.swing.JFrame {
         menu_configuracao = new javax.swing.JMenu();
         M_perfil = new javax.swing.JMenuItem();
         M_usuario = new javax.swing.JMenuItem();
-        M_funcionario = new javax.swing.JMenuItem();
         M_localizacao = new javax.swing.JMenuItem();
         M_grupos = new javax.swing.JMenuItem();
         m_manutencao = new javax.swing.JMenuItem();
@@ -42,11 +41,12 @@ public class tela_menu extends javax.swing.JFrame {
         M_agendar = new javax.swing.JMenuItem();
         M_historico = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         menu_cadastro = new javax.swing.JMenu();
         mni_equipamento = new javax.swing.JMenuItem();
         jMenuItem1_maquinas = new javax.swing.JMenuItem();
-        jMenuItem2_os = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +60,7 @@ public class tela_menu extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, 518, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(32, 107, 165));
@@ -73,9 +73,6 @@ public class tela_menu extends javax.swing.JFrame {
 
         M_usuario.setText("Usuário");
         menu_configuracao.add(M_usuario);
-
-        M_funcionario.setText("Funcionários");
-        menu_configuracao.add(M_funcionario);
 
         M_localizacao.setText("Localizações");
         menu_configuracao.add(M_localizacao);
@@ -110,6 +107,9 @@ public class tela_menu extends javax.swing.JFrame {
         jMenu3.setText("Movimentações");
         jMenuBar1.add(jMenu3);
 
+        jMenu1.setText("Ordem de Serviço");
+        jMenuBar1.add(jMenu1);
+
         jMenu4.setText("Relatórios");
         jMenuBar1.add(jMenu4);
 
@@ -126,8 +126,8 @@ public class tela_menu extends javax.swing.JFrame {
         });
         menu_cadastro.add(jMenuItem1_maquinas);
 
-        jMenuItem2_os.setText("Ordem de Serviço");
-        menu_cadastro.add(jMenuItem2_os);
+        jMenuItem1.setText("Funcionário");
+        menu_cadastro.add(jMenuItem1);
 
         jMenuBar1.add(menu_cadastro);
 
@@ -192,7 +192,6 @@ public class tela_menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem M_agendar;
-    private javax.swing.JMenuItem M_funcionario;
     private javax.swing.JMenuItem M_grupos;
     private javax.swing.JMenuItem M_historico;
     private javax.swing.JMenuItem M_localizacao;
@@ -201,12 +200,13 @@ public class tela_menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem M_solicitar;
     private javax.swing.JMenuItem M_status;
     private javax.swing.JMenuItem M_usuario;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1_maquinas;
-    private javax.swing.JMenuItem jMenuItem2_os;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem m_manutencao;
     private javax.swing.JMenu menu_cadastro;
