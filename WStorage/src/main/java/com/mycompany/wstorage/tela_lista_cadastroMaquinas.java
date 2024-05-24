@@ -8,12 +8,12 @@ package com.mycompany.wstorage;
  *
  * @author Podol
  */
-public class tela_lista_cadastraMaquinas extends javax.swing.JFrame {
+public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
 
     /**
      * Creates new form tela_lista_cadastraMaquinas
      */
-    public tela_lista_cadastraMaquinas() {
+    public tela_lista_cadastroMaquinas() {
         initComponents();
     }
 
@@ -109,7 +109,7 @@ public class tela_lista_cadastraMaquinas extends javax.swing.JFrame {
 
     private void btn_novaMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaMaquinaActionPerformed
         // TODO add your handling code here:
-        tela_lista_cadastraMaquinas.this.dispose();
+        tela_lista_cadastroMaquinas.this.dispose();
         tela_cadastroMaquinas btn_novaMaquina = new tela_cadastroMaquinas();
         btn_novaMaquina.setVisible(true);
     }//GEN-LAST:event_btn_novaMaquinaActionPerformed
@@ -131,20 +131,21 @@ public class tela_lista_cadastraMaquinas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tela_lista_cadastraMaquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_lista_cadastroMaquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tela_lista_cadastraMaquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_lista_cadastroMaquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tela_lista_cadastraMaquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_lista_cadastroMaquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tela_lista_cadastraMaquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_lista_cadastroMaquinas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_lista_cadastraMaquinas().setVisible(true);
+                new tela_lista_cadastroMaquinas().setVisible(true);
             }
         });
     }

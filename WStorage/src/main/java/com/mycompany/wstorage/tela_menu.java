@@ -36,13 +36,13 @@ public class tela_menu extends javax.swing.JFrame {
         m_manutencao = new javax.swing.JMenuItem();
         M_status = new javax.swing.JMenuItem();
         M_serviço = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menu_manutencao = new javax.swing.JMenu();
         M_solicitar = new javax.swing.JMenuItem();
         M_agendar = new javax.swing.JMenuItem();
         M_historico = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        menu_movimentação = new javax.swing.JMenu();
+        menu_relatorio = new javax.swing.JMenu();
+        menu_os = new javax.swing.JMenu();
         menu_cadastro = new javax.swing.JMenu();
         mni_equipamento = new javax.swing.JMenuItem();
         jMenuItem1_maquinas = new javax.swing.JMenuItem();
@@ -60,13 +60,15 @@ public class tela_menu extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addGap(0, 517, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(32, 107, 165));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         menu_configuracao.setText("Configuração");
+        menu_configuracao.setAutoscrolls(true);
+        menu_configuracao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         M_perfil.setText("Perfil");
         menu_configuracao.add(M_perfil);
@@ -91,33 +93,50 @@ public class tela_menu extends javax.swing.JFrame {
 
         jMenuBar1.add(menu_configuracao);
 
-        jMenu2.setText("Manutenções");
+        menu_manutencao.setText("Manutenções");
+        menu_manutencao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         M_solicitar.setText("Solicitar");
-        jMenu2.add(M_solicitar);
+        menu_manutencao.add(M_solicitar);
 
         M_agendar.setText("Agendar");
-        jMenu2.add(M_agendar);
+        menu_manutencao.add(M_agendar);
 
         M_historico.setText("Histórico");
-        jMenu2.add(M_historico);
+        menu_manutencao.add(M_historico);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menu_manutencao);
 
-        jMenu3.setText("Movimentações");
-        jMenuBar1.add(jMenu3);
+        menu_movimentação.setText("Movimentações");
+        menu_movimentação.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuBar1.add(menu_movimentação);
 
-        jMenu1.setText("Ordem de Serviço");
-        jMenuBar1.add(jMenu1);
+        menu_relatorio.setText("Relatórios");
+        menu_relatorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuBar1.add(menu_relatorio);
 
-        jMenu4.setText("Relatórios");
-        jMenuBar1.add(jMenu4);
+        menu_os.setText("Ordem de Serviço");
+        menu_os.setToolTipText("");
+        menu_os.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_os.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                menu_osMenuSelected(evt);
+            }
+        });
+        jMenuBar1.add(menu_os);
 
         menu_cadastro.setText("Cadastro");
+        menu_cadastro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
+        mni_equipamento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         mni_equipamento.setText("Equipamentos");
         menu_cadastro.add(mni_equipamento);
 
+        jMenuItem1_maquinas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMenuItem1_maquinas.setText("Maquinas");
         jMenuItem1_maquinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +145,7 @@ public class tela_menu extends javax.swing.JFrame {
         });
         menu_cadastro.add(jMenuItem1_maquinas);
 
+        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMenuItem1.setText("Funcionário");
         menu_cadastro.add(jMenuItem1);
 
@@ -151,9 +171,16 @@ public class tela_menu extends javax.swing.JFrame {
     private void jMenuItem1_maquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_maquinasActionPerformed
         // TODO add your handling code here:
         tela_menu.this.dispose();
-        tela_lista_cadastraMaquinas jMenuItem1_maquinas = new tela_lista_cadastraMaquinas();
+        tela_lista_cadastroMaquinas jMenuItem1_maquinas = new tela_lista_cadastroMaquinas();
         jMenuItem1_maquinas.setVisible(true);
     }//GEN-LAST:event_jMenuItem1_maquinasActionPerformed
+
+    private void menu_osMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menu_osMenuSelected
+        // TODO add your handling code here:
+        tela_menu.this.dispose();
+        tela_lista_cadastroOS mn_os = new tela_lista_cadastroOS();
+        mn_os.setVisible(true);
+    }//GEN-LAST:event_menu_osMenuSelected
 
     /**
      * @param args the command line arguments
@@ -200,10 +227,6 @@ public class tela_menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem M_solicitar;
     private javax.swing.JMenuItem M_status;
     private javax.swing.JMenuItem M_usuario;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1_maquinas;
@@ -211,6 +234,10 @@ public class tela_menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem m_manutencao;
     private javax.swing.JMenu menu_cadastro;
     private javax.swing.JMenu menu_configuracao;
+    private javax.swing.JMenu menu_manutencao;
+    private javax.swing.JMenu menu_movimentação;
+    private javax.swing.JMenu menu_os;
+    private javax.swing.JMenu menu_relatorio;
     private javax.swing.JMenuItem mni_equipamento;
     // End of variables declaration//GEN-END:variables
 }
