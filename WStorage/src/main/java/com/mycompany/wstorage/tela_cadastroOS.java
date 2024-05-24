@@ -170,7 +170,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                                         .addComponent(lbl_exigencias))))
                             .addComponent(jScrollPane2)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(705, 705, 705)
+                        .addGap(709, 709, 709)
                         .addComponent(btn_avancar)))
                 .addContainerGap(424, Short.MAX_VALUE))
         );
@@ -211,9 +211,9 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_descricao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_avancar)
                 .addContainerGap(279, Short.MAX_VALUE))
         );
