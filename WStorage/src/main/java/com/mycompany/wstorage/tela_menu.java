@@ -118,7 +118,7 @@ public class tela_menu extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
 
         lbl_usuario.setText("Logado com: Igor Stein - Administrador");
@@ -149,9 +149,9 @@ public class tela_menu extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_usuario)
-                    .addComponent(lbl_data, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_data, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_usuario))
                 .addContainerGap())
         );
 
@@ -169,9 +169,9 @@ public class tela_menu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
                 .addComponent(lbl_logo)
-                .addGap(146, 146, 146))
+                .addGap(210, 210, 210))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +181,7 @@ public class tela_menu extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addGap(192, 192, 192)
                         .addComponent(lbl_logo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel3)
@@ -195,14 +195,34 @@ public class tela_menu extends javax.swing.JFrame {
         menu_configuracao.setText("Configuração");
         menu_configuracao.setAutoscrolls(true);
         menu_configuracao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menu_configuracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_configuracaoActionPerformed(evt);
+            }
+        });
 
         M_perfil.setText("Perfil");
+        M_perfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                M_perfilActionPerformed(evt);
+            }
+        });
         menu_configuracao.add(M_perfil);
 
         M_usuario.setText("Usuários");
+        M_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                M_usuarioActionPerformed(evt);
+            }
+        });
         menu_configuracao.add(M_usuario);
 
         M_localizacao.setText("Localizações");
+        M_localizacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                M_localizacaoActionPerformed(evt);
+            }
+        });
         menu_configuracao.add(M_localizacao);
 
         M_grupos.setText("Grupos");
@@ -307,6 +327,31 @@ public class tela_menu extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
+
+    private void M_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_perfilActionPerformed
+        // TODO add your handling code here:
+        tela_menu.this.dispose();
+        tela_perfil M_perfil = new tela_perfil();
+        M_perfil.setVisible(true);
+    }//GEN-LAST:event_M_perfilActionPerformed
+
+    private void M_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_usuarioActionPerformed
+        // TODO add your handling code here:
+        tela_menu.this.dispose();
+        tela_lista_usuarios M_usuario = new tela_lista_usuarios();
+        M_usuario.setVisible(true);
+    }//GEN-LAST:event_M_usuarioActionPerformed
+
+    private void menu_configuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_configuracaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_configuracaoActionPerformed
+
+    private void M_localizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_localizacaoActionPerformed
+        // TODO add your handling code here:
+        //tela_menu.this.dispose();
+        tela_lista_localizacao menu_configuracao = new tela_lista_localizacao();
+        menu_configuracao.setVisible(true);
+    }//GEN-LAST:event_M_localizacaoActionPerformed
 
     /**
      * @param args the command line arguments

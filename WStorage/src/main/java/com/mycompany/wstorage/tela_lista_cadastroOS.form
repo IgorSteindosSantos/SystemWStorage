@@ -56,7 +56,7 @@
                                   <Component id="lbl_os" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Component id="btn_novo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btn_devolucao" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" min="-2" pref="1434" max="-2" attributes="0"/>
@@ -84,8 +84,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btn_novo" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btn_devolucao" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="btn_novo" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btn_devolucao" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       </Group>
@@ -98,7 +98,7 @@
                   <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txt_pesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_pesquisar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="btn_pesquisar" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -150,6 +150,9 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Devolu&#xe7;&#xe3;o"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[89, 30]"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_devolucaoActionPerformed"/>
@@ -187,12 +190,12 @@
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="0">
-                    <Column editable="true" title="C&#xf3;digo" type="java.lang.Integer"/>
-                    <Column editable="true" title="Funcion&#xe1;rio" type="java.lang.String"/>
-                    <Column editable="true" title="Servi&#xe7;o" type="java.lang.String"/>
+                    <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
+                    <Column editable="true" title="Funcion&#xe1;rio" type="java.lang.Object"/>
+                    <Column editable="true" title="Servi&#xe7;o" type="java.lang.Object"/>
                     <Column editable="true" title="Data de Emiss&#xe3;o" type="java.lang.Object"/>
-                    <Column editable="true" title="Localiza&#xe7;&#xe3;o" type="java.lang.String"/>
-                    <Column editable="true" title="Status" type="java.lang.String"/>
+                    <Column editable="true" title="Localiza&#xe7;&#xe3;o" type="java.lang.Object"/>
+                    <Column editable="true" title="Status" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
