@@ -4,6 +4,9 @@
  */
 package com.mycompany.wstorage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Podol
@@ -34,8 +37,8 @@ public class tela_menu extends javax.swing.JFrame {
         btn_estoque = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
+        lbl_data = new javax.swing.JLabel();
         lbl_logo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_configuracao = new javax.swing.JMenu();
@@ -55,6 +58,11 @@ public class tela_menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
         setBackground(new java.awt.Color(255, 255, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -113,9 +121,18 @@ public class tela_menu extends javax.swing.JFrame {
                 .addContainerGap(174, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("Logado com: Igor Stein - Administrador");
+        lbl_usuario.setText("Logado com: Igor Stein - Administrador");
 
-        jLabel4.setText("Data/Horário: 00/00/00 - 00:00:00");
+        lbl_data.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_data.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lbl_dataAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -123,9 +140,9 @@ public class tela_menu extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 637, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addComponent(lbl_usuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_data, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -133,8 +150,8 @@ public class tela_menu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(10, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                    .addComponent(lbl_usuario)
+                    .addComponent(lbl_data, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -152,7 +169,7 @@ public class tela_menu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(lbl_logo)
                 .addGap(146, 146, 146))
         );
@@ -278,6 +295,19 @@ public class tela_menu extends javax.swing.JFrame {
         mni_funcionario.setVisible(true);
     }//GEN-LAST:event_mni_funcionarioActionPerformed
 
+    private void lbl_dataAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lbl_dataAncestorAdded
+        // TODO add your handling code here:
+        //Date data = new Date();
+        //DateFormat formatador = DateFormat.getDateInstance(DateFormat.FULL);
+        Date dataHoraAtual = new Date();
+        String data = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(dataHoraAtual);
+        lbl_data.setText(data);
+    }//GEN-LAST:event_lbl_dataAncestorAdded
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -324,15 +354,15 @@ public class tela_menu extends javax.swing.JFrame {
     private javax.swing.JButton btn_os;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1_maquinas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lbl_data;
     private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JMenuItem m_manutencao;
     private javax.swing.JMenu menu_cadastro;
     private javax.swing.JMenu menu_configuracao;

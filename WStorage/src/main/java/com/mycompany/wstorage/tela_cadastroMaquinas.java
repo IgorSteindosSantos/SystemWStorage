@@ -80,7 +80,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         txt_numeroSerie.setPreferredSize(new java.awt.Dimension(64, 26));
 
         jCheckBox_status.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox_status.setText("Ativo");
+        jCheckBox_status.setText("Status Ativo");
 
         lbl_nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lbl_nome.setText("Nome");
@@ -207,11 +207,12 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addGap(44, 44, 44)
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lbl_dataemissao)
-                                                        .addComponent(jCheckBox_status, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(txt_dataemissao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(lbl_linkmanual)
-                                                        .addComponent(txt_linkmanual, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(txt_linkmanual, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                            .addComponent(jCheckBox_status, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(lbl_dataemissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addGap(357, 357, 357)
                                                     .addComponent(lbl_imgmaquina))
