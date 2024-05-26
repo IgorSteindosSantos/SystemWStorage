@@ -48,6 +48,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txta_descricao = new javax.swing.JTextArea();
         btn_avancar = new javax.swing.JButton();
+        btn_voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,15 +60,15 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         lbl_id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_id.setText("Código O.S");
 
-        txt_data.setBackground(new java.awt.Color(204, 204, 204));
         txt_data.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txt_data.setEnabled(false);
         txt_data.setPreferredSize(new java.awt.Dimension(64, 25));
 
         lbl_data.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_data.setText("Data de Emissão");
 
-        txt_id.setBackground(new java.awt.Color(204, 204, 204));
         txt_id.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txt_id.setEnabled(false);
         txt_id.setPreferredSize(new java.awt.Dimension(64, 25));
 
         lbl_exigencias.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -114,12 +115,22 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txta_descricao);
 
         btn_avancar.setBackground(new java.awt.Color(32, 107, 165));
-        btn_avancar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btn_avancar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_avancar.setForeground(new java.awt.Color(255, 255, 255));
         btn_avancar.setText("Avançar");
         btn_avancar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_avancarActionPerformed(evt);
+            }
+        });
+
+        btn_voltar.setBackground(new java.awt.Color(32, 107, 165));
+        btn_voltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_voltar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_voltar.setText("Voltar");
+        btn_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_voltarActionPerformed(evt);
             }
         });
 
@@ -132,8 +143,8 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_os)))
+                            .addComponent(lbl_os)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1355, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -147,8 +158,8 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                                             .addComponent(lbl_id))
                                         .addGap(97, 97, 97)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbl_data)
-                                            .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbl_data)))
                                     .addComponent(txt_nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,11 +178,14 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(670, 670, 670)
                                         .addComponent(lbl_exigencias))))
-                            .addComponent(jScrollPane2)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(709, 709, 709)
-                        .addComponent(btn_avancar)))
-                .addContainerGap(424, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2))))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_avancar)
+                .addGap(48, 48, 48)
+                .addComponent(btn_voltar)
+                .addGap(545, 545, 545))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,20 +196,21 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_id)
+                    .addComponent(lbl_exigencias)
                     .addComponent(lbl_data)
-                    .addComponent(lbl_exigencias))
-                .addGap(18, 18, 18)
+                    .addComponent(lbl_id))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
+                        .addGap(44, 44, 44)
                         .addComponent(lbl_nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_localizacao)
                             .addComponent(lbl_servico, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -212,9 +227,11 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addComponent(lbl_descricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_avancar)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_avancar)
+                    .addComponent(btn_voltar))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,6 +255,13 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         tela_cadastroEqpOS btn_avancar = new tela_cadastroEqpOS();
         btn_avancar.setVisible(true);
     }//GEN-LAST:event_btn_avancarActionPerformed
+
+    private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
+        // TODO add your handling code here:
+        tela_cadastroOS.this.dispose();
+        tela_lista_cadastroOS btn_voltar = new tela_lista_cadastroOS();
+        btn_voltar.setVisible(true);
+    }//GEN-LAST:event_btn_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,6 +300,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_avancar;
+    private javax.swing.JButton btn_voltar;
     private javax.swing.JComboBox<String> cbx_localizacao;
     private javax.swing.JComboBox<String> cbx_servico;
     private javax.swing.JComboBox<String> cbx_stt;

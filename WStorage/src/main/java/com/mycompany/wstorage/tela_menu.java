@@ -29,13 +29,14 @@ public class tela_menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_os = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_estoque = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lbl_logo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_configuracao = new javax.swing.JMenu();
         M_perfil = new javax.swing.JMenuItem();
@@ -49,9 +50,11 @@ public class tela_menu extends javax.swing.JFrame {
         menu_cadastro = new javax.swing.JMenu();
         mni_equipamento = new javax.swing.JMenuItem();
         jMenuItem1_maquinas = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mni_funcionario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("WStorage");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -61,14 +64,24 @@ public class tela_menu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu Rápido");
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setText("Ordem de Serviço");
+        btn_os.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_os.setText("Ordem de Serviço");
+        btn_os.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_osActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setText("Manutenções");
 
-        jButton4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton4.setText("Movimentação");
+        btn_estoque.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_estoque.setText("Estoque");
+        btn_estoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_estoqueActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -81,9 +94,9 @@ public class tela_menu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_os, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                    .addComponent(btn_estoque, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -91,13 +104,13 @@ public class tela_menu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(112, 112, 112)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(btn_os, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jLabel2.setText("Logado com: Igor Stein - Administrador");
@@ -111,7 +124,7 @@ public class tela_menu extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 558, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 637, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -125,25 +138,35 @@ public class tela_menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Downloads\\logo_grande.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(332, 332, 332))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_logo)
+                .addGap(146, 146, 146))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(lbl_logo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -154,7 +177,7 @@ public class tela_menu extends javax.swing.JFrame {
 
         menu_configuracao.setText("Configuração");
         menu_configuracao.setAutoscrolls(true);
-        menu_configuracao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_configuracao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         M_perfil.setText("Perfil");
         menu_configuracao.add(M_perfil);
@@ -180,11 +203,11 @@ public class tela_menu extends javax.swing.JFrame {
         jMenuBar1.add(menu_configuracao);
 
         menu_relatorio.setText("Relatórios");
-        menu_relatorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_relatorio.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMenuBar1.add(menu_relatorio);
 
         menu_cadastro.setText("Cadastro");
-        menu_cadastro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu_cadastro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         mni_equipamento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         mni_equipamento.setText("Equipamentos");
@@ -199,9 +222,14 @@ public class tela_menu extends javax.swing.JFrame {
         });
         menu_cadastro.add(jMenuItem1_maquinas);
 
-        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jMenuItem1.setText("Funcionário");
-        menu_cadastro.add(jMenuItem1);
+        mni_funcionario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        mni_funcionario.setText("Funcionário");
+        mni_funcionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mni_funcionarioActionPerformed(evt);
+            }
+        });
+        menu_cadastro.add(mni_funcionario);
 
         jMenuBar1.add(menu_cadastro);
 
@@ -228,6 +256,27 @@ public class tela_menu extends javax.swing.JFrame {
         tela_lista_cadastroMaquinas jMenuItem1_maquinas = new tela_lista_cadastroMaquinas();
         jMenuItem1_maquinas.setVisible(true);
     }//GEN-LAST:event_jMenuItem1_maquinasActionPerformed
+
+    private void btn_estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_estoqueActionPerformed
+        // TODO add your handling code here:
+        tela_menu.this.dispose();
+        tela_estoqueEqp btn_estoque = new tela_estoqueEqp();
+        btn_estoque.setVisible(true);
+    }//GEN-LAST:event_btn_estoqueActionPerformed
+
+    private void btn_osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_osActionPerformed
+        // TODO add your handling code here:
+        tela_menu.this.dispose();
+        tela_lista_cadastroOS btn_os = new tela_lista_cadastroOS();
+        btn_os.setVisible(true);
+    }//GEN-LAST:event_btn_osActionPerformed
+
+    private void mni_funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_funcionarioActionPerformed
+        // TODO add your handling code here:
+        tela_menu.this.dispose();
+        tela_lista_funcionarios mni_funcionario = new tela_lista_funcionarios();
+        mni_funcionario.setVisible(true);
+    }//GEN-LAST:event_mni_funcionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,23 +320,24 @@ public class tela_menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem M_serviço;
     private javax.swing.JMenuItem M_status;
     private javax.swing.JMenuItem M_usuario;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_estoque;
+    private javax.swing.JButton btn_os;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1_maquinas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lbl_logo;
     private javax.swing.JMenuItem m_manutencao;
     private javax.swing.JMenu menu_cadastro;
     private javax.swing.JMenu menu_configuracao;
     private javax.swing.JMenu menu_relatorio;
     private javax.swing.JMenuItem mni_equipamento;
+    private javax.swing.JMenuItem mni_funcionario;
     // End of variables declaration//GEN-END:variables
 }
