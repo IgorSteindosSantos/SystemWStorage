@@ -38,6 +38,7 @@ public class tela_lista_localizacao extends javax.swing.JFrame {
         btn_novo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("WStorage");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

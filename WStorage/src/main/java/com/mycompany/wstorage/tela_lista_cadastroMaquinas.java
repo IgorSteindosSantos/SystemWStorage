@@ -153,7 +153,7 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
 
     private void btn_novaMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novaMaquinaActionPerformed
         // TODO add your handling code here:
-        //tela_lista_cadastroMaquinas.this.dispose();
+        tela_lista_cadastroMaquinas.this.dispose();
         tela_cadastroMaquinas btn_novaMaquina = new tela_cadastroMaquinas();
         btn_novaMaquina.setVisible(true);
     }//GEN-LAST:event_btn_novaMaquinaActionPerformed

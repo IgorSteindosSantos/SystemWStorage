@@ -348,7 +348,7 @@ public class tela_menu extends javax.swing.JFrame {
 
     private void M_localizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_localizacaoActionPerformed
         // TODO add your handling code here:
-        //tela_menu.this.dispose();
+        tela_menu.this.dispose();
         tela_lista_localizacao menu_configuracao = new tela_lista_localizacao();
         menu_configuracao.setVisible(true);
     }//GEN-LAST:event_M_localizacaoActionPerformed

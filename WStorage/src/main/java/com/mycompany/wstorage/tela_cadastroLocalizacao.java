@@ -35,6 +35,7 @@ public class tela_cadastroLocalizacao extends javax.swing.JFrame {
         btn_cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("WStorage");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
