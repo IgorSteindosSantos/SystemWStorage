@@ -30,11 +30,11 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
         lbl_estoque = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txt_pesquisar = new javax.swing.JTextField();
-        btn_pesquisar = new javax.swing.JButton();
         btn_equipamentos = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        lbl_home = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
@@ -49,11 +49,6 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
         txt_pesquisar.setText("Pesquisar por...");
         txt_pesquisar.setToolTipText("");
         txt_pesquisar.setPreferredSize(new java.awt.Dimension(64, 30));
-
-        btn_pesquisar.setBackground(new java.awt.Color(32, 107, 165));
-        btn_pesquisar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_pesquisar.setText("P");
 
         btn_equipamentos.setBackground(new java.awt.Color(32, 107, 165));
         btn_equipamentos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -77,6 +72,13 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\icon_home.png")); // NOI18N
+        lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_homeMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -84,15 +86,18 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_estoque)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbl_estoque)
+                        .addGap(17, 17, 17))
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btn_equipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addComponent(btn_equipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_home)
+                        .addGap(18, 18, 18))
                     .addComponent(jSeparator2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE))
                 .addContainerGap(57, Short.MAX_VALUE))
@@ -105,10 +110,11 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_equipamentos, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_equipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_home))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -137,6 +143,13 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
         tela_estoqueEqp btn_equipamentos = new tela_estoqueEqp();
         btn_equipamentos.setVisible(true);
     }//GEN-LAST:event_btn_equipamentosActionPerformed
+
+    private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
+        // TODO add your handling code here:
+        tela_estoqueMqn.this.dispose();
+        tela_menu jLabel1 = new tela_menu();
+        jLabel1.setVisible(true);
+    }//GEN-LAST:event_lbl_homeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -175,13 +188,13 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_equipamentos;
-    private javax.swing.JButton btn_pesquisar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_estoque;
+    private javax.swing.JLabel lbl_home;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,6 +35,7 @@ public class tela_menu extends javax.swing.JFrame {
         btn_os = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btn_estoque = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lbl_usuario = new javax.swing.JLabel();
@@ -68,11 +69,13 @@ public class tela_menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(32, 107, 165));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menu Rápido");
 
-        btn_os.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_os.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_os.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_os.png")); // NOI18N
         btn_os.setText("Ordem de Serviço");
         btn_os.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,45 +83,63 @@ public class tela_menu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_manutencao.png")); // NOI18N
         jButton2.setText("Manutenções");
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
-        btn_estoque.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_estoque.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_estoque.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_estoque.png")); // NOI18N
         btn_estoque.setText("Estoque");
+        btn_estoque.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_estoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_estoqueActionPerformed(evt);
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_sair.png")); // NOI18N
+        jButton1.setText("Sair");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(27, 27, 27))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_os, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                    .addComponent(btn_estoque, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(btn_os)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(37, 37, 37)
                 .addComponent(btn_os, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(75, 75, 75)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(73, 73, 73)
                 .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(17, 17, 17))
         );
 
         lbl_usuario.setText("Logado com: Igor Stein - Administrador");
@@ -155,7 +176,7 @@ public class tela_menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Downloads\\logo_grande.png")); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\logo_menu.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,11 +188,11 @@ public class tela_menu extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(332, 332, 332))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(24, 24, 24)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addComponent(lbl_logo)
-                .addGap(210, 210, 210))
+                .addGap(150, 150, 150))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +202,7 @@ public class tela_menu extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
+                        .addGap(189, 189, 189)
                         .addComponent(lbl_logo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel3)
@@ -397,6 +418,7 @@ public class tela_menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem M_usuario;
     private javax.swing.JButton btn_estoque;
     private javax.swing.JButton btn_os;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

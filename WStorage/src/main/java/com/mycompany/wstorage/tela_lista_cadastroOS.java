@@ -35,8 +35,8 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btn_menu = new javax.swing.JButton();
         btn_pesquisar = new javax.swing.JButton();
+        lbl_home = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
@@ -85,16 +85,6 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        btn_menu.setBackground(new java.awt.Color(32, 107, 165));
-        btn_menu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_menu.setForeground(new java.awt.Color(255, 255, 255));
-        btn_menu.setText("Voltar");
-        btn_menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_menuActionPerformed(evt);
-            }
-        });
-
         btn_pesquisar.setBackground(new java.awt.Color(32, 107, 165));
         btn_pesquisar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btn_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,6 +92,13 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_pesquisarActionPerformed(evt);
+            }
+        });
+
+        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
+        lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_homeMouseClicked(evt);
             }
         });
 
@@ -127,12 +124,11 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_menu)
-                .addGap(703, 703, 703))
+                                .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl_home)
+                                .addGap(17, 17, 17)))))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,18 +144,19 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(lbl_os)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbl_home))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 741, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,7 +167,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -191,16 +188,16 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         btn_avancar.setVisible(true);
     }//GEN-LAST:event_btn_devolucaoActionPerformed
 
-    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
-        // TODO add your handling code here:
-        tela_lista_cadastroOS.this.dispose();
-        tela_menu btn_menu = new tela_menu();
-        btn_menu.setVisible(true);
-    }//GEN-LAST:event_btn_menuActionPerformed
-
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_pesquisarActionPerformed
+
+    private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
+        // TODO add your handling code here:
+        tela_lista_cadastroOS.this.dispose();
+        tela_menu lbl_home = new tela_menu();
+        lbl_home.setVisible(true);
+    }//GEN-LAST:event_lbl_homeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -239,7 +236,6 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_devolucao;
-    private javax.swing.JButton btn_menu;
     private javax.swing.JButton btn_novo;
     private javax.swing.JButton btn_pesquisar;
     private javax.swing.JPanel jPanel1;
@@ -247,6 +243,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_os;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables

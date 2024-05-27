@@ -237,7 +237,7 @@ public class tela_cadastroEqpOS extends javax.swing.JFrame {
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         tela_cadastroEqpOS.this.dispose();
-        tela_lista_cadastroOS btn_voltar = new tela_lista_cadastroOS();
+        tela_cadastroOS btn_voltar = new tela_cadastroOS();
         btn_voltar.setVisible(true);
     }//GEN-LAST:event_btn_editarActionPerformed
 
