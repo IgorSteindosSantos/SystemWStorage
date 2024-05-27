@@ -4,6 +4,7 @@
  */
 package com.mycompany.wstorage;
 
+import static java.lang.System.exit;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -101,6 +102,11 @@ public class tela_menu extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_sair.png")); // NOI18N
         jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -373,6 +379,11 @@ public class tela_menu extends javax.swing.JFrame {
         tela_lista_localizacao menu_configuracao = new tela_lista_localizacao();
         menu_configuracao.setVisible(true);
     }//GEN-LAST:event_M_localizacaoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
