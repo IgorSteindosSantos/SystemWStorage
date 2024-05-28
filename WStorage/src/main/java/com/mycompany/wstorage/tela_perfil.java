@@ -52,6 +52,7 @@ public class tela_perfil extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -125,7 +126,6 @@ public class tela_perfil extends javax.swing.JFrame {
 
         lbl_foto.setBackground(new java.awt.Color(204, 204, 204));
         lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\Downloads\\photo-54-64.png")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         btn_salvaFt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
