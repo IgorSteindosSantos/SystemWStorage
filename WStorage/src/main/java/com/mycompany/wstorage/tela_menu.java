@@ -47,7 +47,6 @@ public class tela_menu extends javax.swing.JFrame {
         M_perfil = new javax.swing.JMenuItem();
         M_usuario = new javax.swing.JMenuItem();
         M_localizacao = new javax.swing.JMenuItem();
-        M_grupos = new javax.swing.JMenuItem();
         m_manutencao = new javax.swing.JMenuItem();
         M_serviço = new javax.swing.JMenuItem();
         menu_relatorio = new javax.swing.JMenu();
@@ -59,7 +58,6 @@ public class tela_menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1250, 750));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -253,10 +251,12 @@ public class tela_menu extends javax.swing.JFrame {
         });
         menu_configuracao.add(M_localizacao);
 
-        M_grupos.setText("Grupos");
-        menu_configuracao.add(M_grupos);
-
         m_manutencao.setText("Manutenções");
+        m_manutencao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m_manutencaoActionPerformed(evt);
+            }
+        });
         menu_configuracao.add(m_manutencao);
 
         M_serviço.setText("Serviços");
@@ -373,15 +373,19 @@ public class tela_menu extends javax.swing.JFrame {
 
     private void M_localizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_localizacaoActionPerformed
         // TODO add your handling code here:
-        tela_menu.this.dispose();
-        tela_localizacao menu_configuracao = new tela_localizacao();
-        menu_configuracao.setVisible(true);
     }//GEN-LAST:event_M_localizacaoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void m_manutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_manutencaoActionPerformed
+        // TODO add your handling code here:
+        tela_menu.this.dispose();
+        tela_manutencao m_manutencao = new tela_manutencao();
+        m_manutencao.setVisible(true);
+    }//GEN-LAST:event_m_manutencaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,7 +423,6 @@ public class tela_menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem M_grupos;
     private javax.swing.JMenuItem M_localizacao;
     private javax.swing.JMenuItem M_perfil;
     private javax.swing.JMenuItem M_serviço;
