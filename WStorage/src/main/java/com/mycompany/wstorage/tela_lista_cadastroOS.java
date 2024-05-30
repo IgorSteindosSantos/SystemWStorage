@@ -169,14 +169,14 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
 
     private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
         // TODO add your handling code here:
-        tela_lista_cadastroOS.this.dispose();
+        //tela_lista_cadastroOS.this.dispose();
         tela_cadastroOS btn_novo = new tela_cadastroOS();
         btn_novo.setVisible(true);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void btn_devolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_devolucaoActionPerformed
         // TODO add your handling code here:
-        tela_lista_cadastroOS.this.dispose();
+        //tela_lista_cadastroOS.this.dispose();
         tela_devolucaoEqpOS btn_avancar = new tela_devolucaoEqpOS();
         btn_avancar.setVisible(true);
     }//GEN-LAST:event_btn_devolucaoActionPerformed

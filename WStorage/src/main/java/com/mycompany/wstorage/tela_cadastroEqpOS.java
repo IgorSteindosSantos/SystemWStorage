@@ -50,7 +50,7 @@ public class tela_cadastroEqpOS extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStoarage");
         setBackground(new java.awt.Color(255, 255, 255));
-        setEnabled(false);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -238,8 +238,8 @@ public class tela_cadastroEqpOS extends javax.swing.JFrame {
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
         tela_cadastroEqpOS.this.dispose();
-        tela_cadastroOS btn_voltar = new tela_cadastroOS();
-        btn_voltar.setVisible(true);
+        /*tela_cadastroOS btn_voltar = new tela_cadastroOS();
+        btn_voltar.setVisible(true);*/
     }//GEN-LAST:event_btn_editarActionPerformed
 
     /**

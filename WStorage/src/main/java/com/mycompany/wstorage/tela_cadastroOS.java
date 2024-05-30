@@ -52,6 +52,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -256,7 +257,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
 
     private void btn_avancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_avancarActionPerformed
         // TODO add your handling code here:
-        tela_cadastroOS.this.dispose();
+        //tela_cadastroOS.this.dispose();
         tela_cadastroEqpOS btn_avancar = new tela_cadastroEqpOS();
         btn_avancar.setVisible(true);
     }//GEN-LAST:event_btn_avancarActionPerformed
@@ -264,8 +265,8 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         // TODO add your handling code here:
         tela_cadastroOS.this.dispose();
-        tela_lista_cadastroOS btn_voltar = new tela_lista_cadastroOS();
-        btn_voltar.setVisible(true);
+        /*tela_lista_cadastroOS btn_voltar = new tela_lista_cadastroOS();
+        btn_voltar.setVisible(true);*/
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     /**
