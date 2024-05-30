@@ -151,7 +151,7 @@
         <Component class="javax.swing.JLabel" name="lbl_home">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\Users\isantos\Desktop\icon_home.png"/>
+              <Image iconType="2" name="C:\Users\Igor Stein\Desktop\SystemWStorage\SystemWStorage\WStorage\src\main\java\imagem\icon_home.png"/>
             </Property>
           </Properties>
           <Events>
@@ -161,7 +161,7 @@
         <Component class="javax.swing.JLabel" name="lbl_pesquisar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\Users\isantos\Desktop\icon_pesquisar.png"/>
+              <Image iconType="2" name="C:\Users\Igor Stein\Desktop\SystemWStorage\SystemWStorage\WStorage\src\main\java\imagem\icon_pesquisar.png"/>
             </Property>
           </Properties>
         </Component>

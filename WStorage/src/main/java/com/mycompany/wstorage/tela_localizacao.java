@@ -27,7 +27,7 @@ public class tela_localizacao extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_localizacoes = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txt_pesquisar = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
@@ -36,7 +36,7 @@ public class tela_localizacao extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         lbl_codigo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_codigo = new javax.swing.JTextField();
         lbl_nome = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
         btn_cadastra = new javax.swing.JButton();
@@ -48,12 +48,12 @@ public class tela_localizacao extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setText("Localizações");
+        lbl_localizacoes.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lbl_localizacoes.setText("Localizações");
 
         txt_pesquisar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        lbl_home.setIcon(new javax.swing.ImageIcon("D:\\Users\\isantos\\Documents\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
+        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
@@ -77,7 +77,7 @@ public class tela_localizacao extends javax.swing.JFrame {
         lbl_codigo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_codigo.setText("Código");
 
-        jTextField1.setEnabled(false);
+        txt_codigo.setEnabled(false);
 
         lbl_nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_nome.setText("Nome");
@@ -115,7 +115,7 @@ public class tela_localizacao extends javax.swing.JFrame {
                         .addComponent(btn_atualizar))
                     .addComponent(lbl_nome)
                     .addComponent(lbl_codigo)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
@@ -125,7 +125,7 @@ public class tela_localizacao extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(lbl_codigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(lbl_nome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -138,7 +138,7 @@ public class tela_localizacao extends javax.swing.JFrame {
                 .addGap(37, 37, 37))
         );
 
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("D:\\Users\\isantos\\Desktop\\icon_pesquisar.png")); // NOI18N
+        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,7 +151,7 @@ public class tela_localizacao extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator1)
                             .addComponent(jSeparator2)
-                            .addComponent(jLabel1)
+                            .addComponent(lbl_localizacoes)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,13 +165,13 @@ public class tela_localizacao extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(jLabel1)
+                .addComponent(lbl_localizacoes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -189,7 +189,6 @@ public class tela_localizacao extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(65, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(231, 231, 231))))
         );
@@ -255,18 +254,18 @@ public class tela_localizacao extends javax.swing.JFrame {
     private javax.swing.JButton btn_atualizar;
     private javax.swing.JButton btn_cadastra;
     private javax.swing.JButton btn_deletar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_home;
+    private javax.swing.JLabel lbl_localizacoes;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables
