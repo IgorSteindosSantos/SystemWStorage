@@ -31,7 +31,6 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         lbl_id = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
-        btn_pesquisar = new javax.swing.JButton();
         lbl_funcionario = new javax.swing.JLabel();
         txt_funcionario = new javax.swing.JTextField();
         lbl_servico = new javax.swing.JLabel();
@@ -48,9 +47,11 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
         btn_salvar = new javax.swing.JButton();
         btn_excluir = new javax.swing.JButton();
         btn_voltar = new javax.swing.JButton();
+        lbl_pesquisar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
+        setEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,11 +63,6 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
 
         txt_id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txt_id.setPreferredSize(new java.awt.Dimension(64, 30));
-
-        btn_pesquisar.setBackground(new java.awt.Color(32, 107, 165));
-        btn_pesquisar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_pesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_pesquisar.setText("P");
 
         lbl_funcionario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_funcionario.setText("Funcionário");
@@ -146,6 +142,8 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
             }
         });
 
+        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("D:\\Users\\isantos\\Desktop\\icon_pesquisar.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -166,8 +164,8 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(36, 36, 36)
+                                        .addComponent(lbl_pesquisar)))
+                                .addGap(39, 39, 39)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_funcionario)
                                     .addComponent(txt_funcionario, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,12 +217,12 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_pesquisar)
                     .addComponent(txt_servico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_funcionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_tempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_conclusao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_pesquisar))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -255,8 +253,8 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         // TODO add your handling code here:
         tela_devolucaoEqpOS.this.dispose();
-        tela_lista_cadastroOS btn_voltar = new tela_lista_cadastroOS();
-        btn_voltar.setVisible(true);
+        //tela_lista_cadastroOS btn_voltar = new tela_lista_cadastroOS();
+        //btn_voltar.setVisible(true);
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void txt_dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dataActionPerformed
@@ -301,7 +299,6 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_excluir;
-    private javax.swing.JButton btn_pesquisar;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JPanel jPanel1;
@@ -314,6 +311,7 @@ public class tela_devolucaoEqpOS extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_devolucao;
     private javax.swing.JLabel lbl_funcionario;
     private javax.swing.JLabel lbl_id;
+    private javax.swing.JLabel lbl_pesquisar;
     private javax.swing.JLabel lbl_servico;
     private javax.swing.JLabel lbl_tempo;
     private javax.swing.JTextField txt_conclusao;

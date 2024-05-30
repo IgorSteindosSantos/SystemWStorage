@@ -50,7 +50,7 @@ public class tela_perfil extends javax.swing.JFrame {
         btn_salvaFt = new javax.swing.JButton();
         btn_ExcluirFt = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
 
@@ -258,8 +258,8 @@ public class tela_perfil extends javax.swing.JFrame {
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         // TODO add your handling code here:
         tela_perfil.this.dispose();
-        tela_menu btn_voltar = new tela_menu();
-        btn_voltar.setVisible(true);
+        //tela_menu btn_voltar = new tela_menu();
+        //btn_voltar.setVisible(true);
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     /**

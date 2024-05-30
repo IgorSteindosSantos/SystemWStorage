@@ -58,14 +58,16 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="txt_pesquisar" min="-2" pref="200" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lbl_pesquisar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="btn_equipamentos" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace pref="633" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="lbl_home" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="1090" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="100" max="32767" attributes="0"/>
               </Group>
@@ -81,8 +83,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_pesquisar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="txt_pesquisar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btn_equipamentos" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="lbl_pesquisar" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lbl_home" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -177,6 +180,13 @@
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_homeMouseClicked"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_pesquisar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\Users\isantos\Desktop\icon_pesquisar.png"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
