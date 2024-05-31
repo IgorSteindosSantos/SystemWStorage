@@ -145,14 +145,11 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
-        // TODO add your handling code here:
-        tela_lista_funcionarios.this.dispose();
         tela_cadastroFuncionario btn_novo = new tela_cadastroFuncionario();
         btn_novo.setVisible(true);
     }//GEN-LAST:event_btn_novoActionPerformed
 
     private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
-        // TODO add your handling code here:
         tela_lista_funcionarios.this.dispose();
         tela_menu lbl_home = new tela_menu();
         lbl_home.setVisible(true);

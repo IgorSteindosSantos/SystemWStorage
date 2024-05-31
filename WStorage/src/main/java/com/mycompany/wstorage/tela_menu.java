@@ -332,8 +332,6 @@ public class tela_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_osActionPerformed
 
     private void mni_funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_funcionarioActionPerformed
-        // TODO add your handling code here:
-        tela_menu.this.dispose();
         tela_lista_funcionarios mni_funcionario = new tela_lista_funcionarios();
         mni_funcionario.setVisible(true);
     }//GEN-LAST:event_mni_funcionarioActionPerformed
@@ -352,15 +350,12 @@ public class tela_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void M_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_perfilActionPerformed
-        // TODO add your handling code here:
-        //tela_menu.this.dispose();
         tela_perfil M_perfil = new tela_perfil();
         M_perfil.setVisible(true);
     }//GEN-LAST:event_M_perfilActionPerformed
 
     private void M_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_usuarioActionPerformed
-        // TODO add your handling code here:
-        tela_menu.this.dispose();
+        //tela_menu.this.dispose();
         tela_lista_usuarios M_usuario = new tela_lista_usuarios();
         M_usuario.setVisible(true);
     }//GEN-LAST:event_M_usuarioActionPerformed
@@ -370,27 +365,20 @@ public class tela_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_configuracaoActionPerformed
 
     private void M_localizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_localizacaoActionPerformed
-        // TODO add your handling code here:
-        tela_menu.this.dispose();
         tela_localizacao M_localizacao = new tela_localizacao();
         M_localizacao.setVisible(true);
     }//GEN-LAST:event_M_localizacaoActionPerformed
 
     private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
-        // TODO add your handling code here:
         exit(0);
     }//GEN-LAST:event_btn_sairActionPerformed
 
     private void m_manutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_manutencaoActionPerformed
-        // TODO add your handling code here:
-        tela_menu.this.dispose();
         tela_manutencao m_manutencao = new tela_manutencao();
         m_manutencao.setVisible(true);
     }//GEN-LAST:event_m_manutencaoActionPerformed
 
     private void M_servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_servicoActionPerformed
-        // TODO add your handling code here:
-        tela_menu.this.dispose();
         tela_servico M_servico = new tela_servico();
         M_servico.setVisible(true);
     }//GEN-LAST:event_M_servicoActionPerformed
