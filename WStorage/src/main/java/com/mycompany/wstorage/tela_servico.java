@@ -4,11 +4,55 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author isantos
  */
 public class tela_servico extends javax.swing.JFrame {
+    Connection conexao = null;
+    PreparedStatement statement = null;
+
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senha = "247022";
+    
+public void  tb_manutencoes (String sql){
+    try {
+        conexao = DriverManager.getConnection(url,usuario,senha);
+                    
+        PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
+        banco.execute(); // criar o vetor
+        ResultSet resultado = banco.executeQuery(sql);
+        DefaultTableModel model = (DefaultTableModel) tb_servicos.getModel();
+        model.setNumRows(0);
+                    
+            while (resultado.next()){
+                model.addRow(new Object[] {
+                //retorna os dados da tabela do BD, cada campo e um coluna.
+                resultado.getString("id_servico"),
+                resultado.getString("nome_servico"),
+                });
+            }
+            banco.close();
+            conexao.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+
+public void limparCampos() {
+    txt_nome.setText("");
+    txt_codigo.setText("");
+}
 
     /**
      * Creates new form tela_servico
@@ -33,7 +77,7 @@ public class tela_servico extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         lbl_home = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_servicos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         lbl_codigo = new javax.swing.JLabel();
         txt_codigo = new javax.swing.JTextField();
@@ -47,6 +91,11 @@ public class tela_servico extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -55,14 +104,14 @@ public class tela_servico extends javax.swing.JFrame {
 
         txt_pesquisar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
+        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_servicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -70,7 +119,12 @@ public class tela_servico extends javax.swing.JFrame {
                 "Código", "Nome"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tb_servicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_servicosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tb_servicos);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -90,16 +144,31 @@ public class tela_servico extends javax.swing.JFrame {
         btn_cadastra.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_cadastra.setForeground(new java.awt.Color(255, 255, 255));
         btn_cadastra.setText("Cadastra");
+        btn_cadastra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastraActionPerformed(evt);
+            }
+        });
 
         btn_deletar.setBackground(new java.awt.Color(32, 107, 165));
         btn_deletar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_deletar.setForeground(new java.awt.Color(255, 255, 255));
         btn_deletar.setText("Deletar");
+        btn_deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deletarActionPerformed(evt);
+            }
+        });
 
         btn_atualizar.setBackground(new java.awt.Color(32, 107, 165));
         btn_atualizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_atualizar.setForeground(new java.awt.Color(255, 255, 255));
         btn_atualizar.setText("Atualizar");
+        btn_atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_atualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,7 +211,7 @@ public class tela_servico extends javax.swing.JFrame {
                 .addGap(40, 40, 40))
         );
 
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
+        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,7 +237,7 @@ public class tela_servico extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 830, Short.MAX_VALUE)
                             .addComponent(lbl_home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(22, 22, 22))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,6 +284,62 @@ public class tela_servico extends javax.swing.JFrame {
         tela_servico.this.dispose();
     }//GEN-LAST:event_lbl_homeMouseClicked
 
+    private void btn_cadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastraActionPerformed
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "INSERT INTO servicos (nome_servico) VALUES (?)";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, txt_nome.getText());
+            statement.execute();
+            statement.close();
+            limparCampos();//Limpar os TXT ao clicar no BTN
+            this.tb_manutencoes("SELECT * FROM servicos");
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_servico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_cadastraActionPerformed
+
+    private void btn_deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletarActionPerformed
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "DELETE FROM servicos WHERE id_servico = ?";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, txt_codigo.getText());
+            statement.execute();
+            statement.close();
+            limparCampos();//Limpar os TXT ao clicar no BTN
+            this.tb_manutencoes("SELECT * FROM servicos");
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_servico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_deletarActionPerformed
+
+    private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atualizarActionPerformed
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "UPDATE servicos SET nome_servico = ? WHERE id_servico = ?";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, txt_nome.getText());
+            statement.setString(2, txt_codigo.getText());
+            statement.execute();
+            statement.close();
+            limparCampos();//Limpar os TXT ao clicar no BTN
+            this.tb_manutencoes("SELECT * FROM servicos");
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_servico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_atualizarActionPerformed
+
+    private void tb_servicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_servicosMouseClicked
+        int linha = tb_servicos.getSelectedRow();
+        txt_codigo.setText(tb_servicos.getValueAt(linha, 0).toString());
+        txt_nome.setText(tb_servicos.getValueAt(linha, 1).toString());
+    }//GEN-LAST:event_tb_servicosMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.tb_manutencoes("SELECT * FROM servicos");
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -259,12 +384,12 @@ public class tela_servico extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_pesquisar;
     private javax.swing.JLabel lbl_servico;
+    private javax.swing.JTable tb_servicos;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextField txt_pesquisar;
