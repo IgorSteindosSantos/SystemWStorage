@@ -62,7 +62,7 @@ public class tela_lista_equipamentos extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "Modelo", "Localização", "Data de Entrada"
+                "Código", "Nome", "Grupo Estoque", "Localização", "Data de Entrada"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
