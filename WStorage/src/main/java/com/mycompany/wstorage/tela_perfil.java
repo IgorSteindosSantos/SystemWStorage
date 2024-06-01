@@ -41,7 +41,6 @@ public class tela_perfil extends javax.swing.JFrame {
         jTextPane1 = new javax.swing.JTextPane();
         btn_salvar = new javax.swing.JButton();
         btn_voltar = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
         lbl_identificador = new javax.swing.JLabel();
         txt_identificador = new javax.swing.JTextField();
         lbl_cpf = new javax.swing.JLabel();
@@ -79,6 +78,7 @@ public class tela_perfil extends javax.swing.JFrame {
         lbl_cargo.setText("Cargo");
 
         txt_cargo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_cargo.setEnabled(false);
         txt_cargo.setPreferredSize(new java.awt.Dimension(64, 30));
 
         lbl_nomeFt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -106,26 +106,23 @@ public class tela_perfil extends javax.swing.JFrame {
             }
         });
 
-        btn_editar.setBackground(new java.awt.Color(32, 107, 165));
-        btn_editar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("Editar");
-        btn_editar.setPreferredSize(new java.awt.Dimension(82, 30));
-
         lbl_identificador.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_identificador.setText("Identificador");
 
         txt_identificador.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_identificador.setEnabled(false);
         txt_identificador.setPreferredSize(new java.awt.Dimension(64, 30));
 
         lbl_cpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_cpf.setText("CPF");
 
         txt_cpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_cpf.setEnabled(false);
         txt_cpf.setPreferredSize(new java.awt.Dimension(64, 30));
 
         lbl_foto.setBackground(new java.awt.Color(204, 204, 204));
         lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Downloads\\camera.png")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         btn_salvaFt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -183,11 +180,9 @@ public class tela_perfil extends javax.swing.JFrame {
                                             .addComponent(lbl_descricao))
                                         .addGap(0, 3, Short.MAX_VALUE)))))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(377, 377, 377)
-                            .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30, 30, 30)
+                            .addGap(386, 386, 386)
                             .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30, 30, 30)
+                            .addGap(120, 120, 120)
                             .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
@@ -234,9 +229,8 @@ public class tela_perfil extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
@@ -256,10 +250,8 @@ public class tela_perfil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        // TODO add your handling code here:
+        /*Fechando tela_perfil e voltando para tel_menu*/
         tela_perfil.this.dispose();
-        //tela_menu btn_voltar = new tela_menu();
-        //btn_voltar.setVisible(true);
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     /**
@@ -299,7 +291,6 @@ public class tela_perfil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_ExcluirFt;
-    private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_salvaFt;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_voltar;

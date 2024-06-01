@@ -4,15 +4,60 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Podol
  */
-public class tela_manutencao extends javax.swing.JFrame {
 
+public class tela_manutencao extends javax.swing.JFrame {
+    Connection conexao = null;
+    PreparedStatement statement = null;
+
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senha = "247022";
     /**
      * Creates new form tela_manutencao
      */
+    
+public void  tb_manutencoes (String sql){
+    try {
+        conexao = DriverManager.getConnection(url,usuario,senha);
+                    
+        PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
+        banco.execute(); // criar o vetor
+        ResultSet resultado = banco.executeQuery(sql);
+        DefaultTableModel model = (DefaultTableModel) tb_manutencoes.getModel();
+        model.setNumRows(0);
+                    
+            while (resultado.next()){
+                model.addRow(new Object[] {
+                //retorna os dados da tabela do BD, cada campo e um coluna.
+                resultado.getString("id_manutencao"),
+                resultado.getString("nome_manutencao"),
+                });
+            }
+            banco.close();
+            conexao.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+
+public void limparCampos() {
+    txt_nome.setText("");
+    txt_codigo.setText("");
+}
+
     public tela_manutencao() {
         initComponents();
     }
@@ -29,10 +74,10 @@ public class tela_manutencao extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbl_manutencao = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        txt_pesquisar = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_manutencoes = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         lbl_nome = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
@@ -44,18 +89,24 @@ public class tela_manutencao extends javax.swing.JFrame {
         lbl_home = new javax.swing.JLabel();
         lbl_pesquisar = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_manutencao.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_manutencao.setText("Manutenções");
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextField1.setPreferredSize(new java.awt.Dimension(64, 35));
+        txt_pesquisar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txt_pesquisar.setPreferredSize(new java.awt.Dimension(64, 35));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_manutencoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -63,7 +114,15 @@ public class tela_manutencao extends javax.swing.JFrame {
                 "Código", "Nome"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tb_manutencoes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_manutencoesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tb_manutencoes);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbl_nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_nome.setText("Nome");
@@ -79,16 +138,31 @@ public class tela_manutencao extends javax.swing.JFrame {
         btn_cadastra.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_cadastra.setForeground(new java.awt.Color(255, 255, 255));
         btn_cadastra.setText("Cadastra");
+        btn_cadastra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastraActionPerformed(evt);
+            }
+        });
 
         btn_deletar.setBackground(new java.awt.Color(32, 107, 165));
         btn_deletar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_deletar.setForeground(new java.awt.Color(255, 255, 255));
         btn_deletar.setText("Deletar");
+        btn_deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deletarActionPerformed(evt);
+            }
+        });
 
         btn_atualizar.setBackground(new java.awt.Color(32, 107, 165));
         btn_atualizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_atualizar.setForeground(new java.awt.Color(255, 255, 255));
         btn_atualizar.setText("Atualizar");
+        btn_atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_atualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -130,63 +204,62 @@ public class tela_manutencao extends javax.swing.JFrame {
         );
 
         lbl_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_home.setIcon(new javax.swing.ImageIcon("D:\\Users\\isantos\\Desktop\\icon_home.png")); // NOI18N
+        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
             }
         });
 
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("D:\\Users\\isantos\\Desktop\\icon_pesquisar.png")); // NOI18N
+        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lbl_manutencao, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_manutencao)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbl_pesquisar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_home)
-                        .addGap(8, 8, 8)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_pesquisar)
+                                .addGap(877, 877, 877)
+                                .addComponent(lbl_home)))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(21, 21, 21)
                 .addComponent(lbl_manutencao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addGap(111, 111, 111)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,11 +278,64 @@ public class tela_manutencao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
-        // TODO add your handling code here:
         tela_manutencao.this.dispose();
-        tela_menu lbl_home = new tela_menu();
-        lbl_home.setVisible(true);
     }//GEN-LAST:event_lbl_homeMouseClicked
+
+    private void btn_cadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastraActionPerformed
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "INSERT INTO manutencoes (nome_manutencao) VALUES (?)";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, txt_nome.getText());
+            statement.execute();
+            statement.close();
+            limparCampos();//Limpar os TXT ao clicar no BTN
+            this.tb_manutencoes("SELECT * FROM manutencoes");
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_manutencao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_cadastraActionPerformed
+
+    private void btn_deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletarActionPerformed
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "DELETE FROM manutencoes WHERE id_manutencao = ?";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, txt_codigo.getText());
+            statement.execute();
+            statement.close();
+            limparCampos();//Limpar os TXT ao clicar no BTN
+            this.tb_manutencoes("SELECT * FROM manutencoes");
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_manutencao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_deletarActionPerformed
+
+    private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atualizarActionPerformed
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "UPDATE manutencoes SET nome_manutencao = ? WHERE id_manutencao = ?";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, txt_nome.getText());
+            statement.setString(2, txt_codigo.getText());
+            statement.execute();
+            statement.close();
+            limparCampos();//Limpar os TXT ao clicar no BTN
+            this.tb_manutencoes("SELECT * FROM manutencoes");
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_manutencao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_atualizarActionPerformed
+
+    private void tb_manutencoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_manutencoesMouseClicked
+        int linha = tb_manutencoes.getSelectedRow();
+        txt_codigo.setText(tb_manutencoes.getValueAt(linha, 0).toString());
+        txt_nome.setText(tb_manutencoes.getValueAt(linha, 1).toString());
+    }//GEN-LAST:event_tb_manutencoesMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.tb_manutencoes("SELECT * FROM manutencoes");
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -255,14 +381,14 @@ public class tela_manutencao extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_manutencao;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JTable tb_manutencoes;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_nome;
+    private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables
 }
