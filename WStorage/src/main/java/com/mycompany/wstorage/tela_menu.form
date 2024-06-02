@@ -92,6 +92,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Equipamentos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mni_equipamentoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1_maquinas">
               <Properties>
@@ -276,9 +279,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Podol\OneDrive\&#xc1;rea de Trabalho\SistemaWStorage\SystemWStorage\WStorage\src\main\java\imagem\icon_os.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Ordem de Servi&#xe7;o"/>
               </Properties>
               <Events>
@@ -290,9 +290,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Podol\OneDrive\&#xc1;rea de Trabalho\SistemaWStorage\SystemWStorage\WStorage\src\main\java\imagem\icon_manutencao.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Manuten&#xe7;&#xf5;es"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
@@ -301,9 +298,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Podol\OneDrive\&#xc1;rea de Trabalho\SistemaWStorage\SystemWStorage\WStorage\src\main\java\imagem\icon_estoque.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Estoque"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -316,9 +310,6 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Podol\OneDrive\&#xc1;rea de Trabalho\SistemaWStorage\SystemWStorage\WStorage\src\main\java\imagem\icon_sair.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
@@ -374,11 +365,6 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="lbl_logo">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Podol\OneDrive\&#xc1;rea de Trabalho\SistemaWStorage\SystemWStorage\WStorage\src\main\java\imagem\logo_menu.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

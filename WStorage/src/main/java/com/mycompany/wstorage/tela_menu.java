@@ -74,7 +74,6 @@ public class tela_menu extends javax.swing.JFrame {
         jLabel1.setText("Menu Rápido");
 
         btn_os.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_os.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_os.png")); // NOI18N
         btn_os.setText("Ordem de Serviço");
         btn_os.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,12 +82,10 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_manutencoes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_manutencoes.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_manutencao.png")); // NOI18N
         btn_manutencoes.setText("Manutenções");
         btn_manutencoes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btn_estoque.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_estoque.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_estoque.png")); // NOI18N
         btn_estoque.setText("Estoque");
         btn_estoque.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_estoque.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +95,6 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_sair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_sair.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_sair.png")); // NOI18N
         btn_sair.setText("Sair");
         btn_sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,8 +175,6 @@ public class tela_menu extends javax.swing.JFrame {
                     .addComponent(lbl_usuario))
                 .addContainerGap())
         );
-
-        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\logo_menu.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -271,6 +265,11 @@ public class tela_menu extends javax.swing.JFrame {
 
         mni_equipamento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         mni_equipamento.setText("Equipamentos");
+        mni_equipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mni_equipamentoActionPerformed(evt);
+            }
+        });
         menu_cadastro.add(mni_equipamento);
 
         jMenuItem1_maquinas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -382,6 +381,11 @@ public class tela_menu extends javax.swing.JFrame {
         tela_servico M_servico = new tela_servico();
         M_servico.setVisible(true);
     }//GEN-LAST:event_M_servicoActionPerformed
+
+    private void mni_equipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_equipamentoActionPerformed
+        tela_lista_cadastroEquipamentos mni_equipamento = new tela_lista_cadastroEquipamentos();
+        mni_equipamento.setVisible(true); 
+    }//GEN-LAST:event_mni_equipamentoActionPerformed
 
     /**
      * @param args the command line arguments
