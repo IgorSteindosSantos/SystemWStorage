@@ -74,6 +74,7 @@ public class tela_menu extends javax.swing.JFrame {
         jLabel1.setText("Menu Rápido");
 
         btn_os.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_os.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_os.png")); // NOI18N
         btn_os.setText("Ordem de Serviço");
         btn_os.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,10 +83,17 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_manutencoes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_manutencoes.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_manutencao.png")); // NOI18N
         btn_manutencoes.setText("Manutenções");
         btn_manutencoes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_manutencoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_manutencoesActionPerformed(evt);
+            }
+        });
 
         btn_estoque.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_estoque.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_estoque.png")); // NOI18N
         btn_estoque.setText("Estoque");
         btn_estoque.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_estoque.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +103,7 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_sair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_sair.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_sair.png")); // NOI18N
         btn_sair.setText("Sair");
         btn_sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +146,7 @@ public class tela_menu extends javax.swing.JFrame {
                 .addComponent(btn_manutencoes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
                 .addComponent(btn_sair)
                 .addGap(17, 17, 17))
         );
@@ -176,6 +185,8 @@ public class tela_menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\logo_menu.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -186,7 +197,7 @@ public class tela_menu extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_logo)
-                .addGap(204, 204, 204))
+                .addGap(207, 207, 207))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +207,7 @@ public class tela_menu extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(12, 12, 12))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
+                        .addGap(244, 244, 244)
                         .addComponent(lbl_logo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,9 +394,16 @@ public class tela_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_M_servicoActionPerformed
 
     private void mni_equipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_equipamentoActionPerformed
+        tela_menu.this.dispose();
         tela_lista_cadastroEquipamentos mni_equipamento = new tela_lista_cadastroEquipamentos();
         mni_equipamento.setVisible(true); 
     }//GEN-LAST:event_mni_equipamentoActionPerformed
+
+    private void btn_manutencoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manutencoesActionPerformed
+        tela_menu.this.dispose();
+        tela_lista_manutencoes btn_manutencoes = new tela_lista_manutencoes();
+        btn_manutencoes.setVisible(true);
+    }//GEN-LAST:event_btn_manutencoesActionPerformed
 
     /**
      * @param args the command line arguments

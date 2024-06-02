@@ -34,7 +34,7 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_equipamento = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btn_novo = new javax.swing.JButton();
         lbl_pesquisar = new javax.swing.JLabel();
         lbl_home = new javax.swing.JLabel();
 
@@ -63,10 +63,15 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tb_equipamento);
 
-        jButton1.setBackground(new java.awt.Color(32, 107, 165));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Novo");
+        btn_novo.setBackground(new java.awt.Color(32, 107, 165));
+        btn_novo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_novo.setForeground(new java.awt.Color(255, 255, 255));
+        btn_novo.setText("Novo");
+        btn_novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_novoActionPerformed(evt);
+            }
+        });
 
         lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
@@ -97,7 +102,7 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lbl_equipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1))
+                                .addComponent(btn_novo))
                             .addComponent(jSeparator3)
                             .addComponent(jSeparator1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -111,7 +116,7 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbl_equipamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -145,7 +150,14 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
 
     private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
         tela_lista_cadastroEquipamentos.this.dispose();
+        tela_menu lbl_home = new tela_menu();
+        lbl_home.setVisible(true);
     }//GEN-LAST:event_lbl_homeMouseClicked
+
+    private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
+        tela_cadastroEquipamentos btn_novo = new tela_cadastroEquipamentos();
+        btn_novo.setVisible(true);
+    }//GEN-LAST:event_btn_novoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,7 +196,7 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_novo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
