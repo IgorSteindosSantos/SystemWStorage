@@ -47,7 +47,7 @@ public class tela_login extends javax.swing.JFrame {
         jPanel2.setToolTipText("");
 
         lbl_logo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\logo_wstorage.png")); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\logo_wstorage.png")); // NOI18N
 
         lbl_usuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbl_usuario.setText("Usuário");
@@ -60,11 +60,21 @@ public class tela_login extends javax.swing.JFrame {
 
         lbl_esqueciSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lbl_esqueciSenha.setText("Esqueci minha senha");
+        lbl_esqueciSenha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_esqueciSenhaMouseClicked(evt);
+            }
+        });
 
         btn_avancar.setBackground(new java.awt.Color(32, 107, 165));
         btn_avancar.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
         btn_avancar.setForeground(new java.awt.Color(255, 255, 255));
         btn_avancar.setText("Entrar");
+        btn_avancar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_avancarActionPerformed(evt);
+            }
+        });
 
         txt_usuario.setForeground(new java.awt.Color(153, 153, 153));
         txt_usuario.setText("Digite seu CPF");
@@ -106,14 +116,14 @@ public class tela_login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lbl_usuario)
                 .addGap(18, 18, 18)
-                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbl_senha)
                 .addGap(18, 18, 18)
-                .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lbl_esqueciSenha)
-                .addGap(43, 43, 43)
+                .addGap(37, 37, 37)
                 .addComponent(btn_avancar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
@@ -149,6 +159,19 @@ public class tela_login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_avancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_avancarActionPerformed
+        // TODO add your handling code here:
+        tela_login.this.dispose();
+        tela_menu btn_avancar = new tela_menu();
+        btn_avancar.setVisible(true);
+    }//GEN-LAST:event_btn_avancarActionPerformed
+
+    private void lbl_esqueciSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_esqueciSenhaMouseClicked
+        // TODO add your handling code here:
+        tela_esqueceuSenha lbl_esqueciSenha = new tela_esqueceuSenha();
+        lbl_esqueciSenha.setVisible(true);
+    }//GEN-LAST:event_lbl_esqueciSenhaMouseClicked
 
     /**
      * @param args the command line arguments

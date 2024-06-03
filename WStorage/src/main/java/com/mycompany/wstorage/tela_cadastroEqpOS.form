@@ -124,15 +124,15 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txt_id" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="txt_data" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txt_id" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="txt_data" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="txt_qtd" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txt_qtd" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="lbl_add" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txt_nome" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="txt_idEquipamento" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txt_nome" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="txt_idEquipamento" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -144,9 +144,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btn_salvar" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btn_excluir" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btn_editar" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="btn_salvar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="btn_excluir" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="btn_editar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>

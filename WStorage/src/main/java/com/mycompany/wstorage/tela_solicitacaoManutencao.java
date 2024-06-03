@@ -105,8 +105,10 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         lbl_imagem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_imagem.setText("Imagem do Produto");
 
+        btn_exluirImagem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_exluirImagem.setText("Excluir");
 
+        btn_salvarImagem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_salvarImagem.setText("Salvar");
 
         btn_salvar.setBackground(new java.awt.Color(32, 107, 165));
@@ -130,7 +132,6 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         });
 
         lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\camera.png")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

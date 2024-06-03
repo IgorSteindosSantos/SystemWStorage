@@ -86,10 +86,10 @@
                           <Component id="lbl_pesquisar" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txt_pesquisar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="btn_equipamentos" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="btn_equipamentos" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="lbl_home" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_home" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>

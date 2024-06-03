@@ -68,14 +68,14 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         lbl_cadastroMaquinas.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         lbl_cadastroMaquinas.setText("Cadastro de Máquinas");
 
-        lbl_idmaquina.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_idmaquina.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_idmaquina.setText("Código Máquina");
 
         txt_idmaquina.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txt_idmaquina.setEnabled(false);
         txt_idmaquina.setMinimumSize(new java.awt.Dimension(64, 26));
 
-        lbl_numeroserie.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_numeroserie.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_numeroserie.setText("Número de série");
 
         txt_numeroSerie.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -84,47 +84,50 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         jCheckBox_status.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jCheckBox_status.setText("Status Ativo");
 
-        lbl_nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_nome.setText("Nome");
 
         txt_nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        lbl_dataemissao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_dataemissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_dataemissao.setText("Data de Emissão");
 
-        lbl_modelo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_modelo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_modelo.setText("Modelo");
 
         txt_modelo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txt_modelo.setMinimumSize(new java.awt.Dimension(64, 26));
 
-        lbl_localizacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_localizacao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_localizacao.setText("Localização");
 
+        cbx_localizacao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cbx_localizacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
         cbx_localizacao.setPreferredSize(new java.awt.Dimension(72, 26));
 
-        lbl_fabricante.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_fabricante.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_fabricante.setText("Fabricante");
 
         txt_fabricante.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txt_fabricante.setMinimumSize(new java.awt.Dimension(64, 26));
 
-        lbl_dimensoes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_dimensoes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_dimensoes.setText("Dimensões");
 
         txt_dimensoes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txt_dimensoes.setMinimumSize(new java.awt.Dimension(64, 26));
 
-        lbl_linkmanual.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_linkmanual.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_linkmanual.setText("Link para o manual");
 
         txt_linkmanual.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txt_linkmanual.setMinimumSize(new java.awt.Dimension(64, 26));
 
-        lbl_descricao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_descricao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_descricao.setText("Descrição");
 
         jScrollPane1.setViewportView(jTextPane1);
+        jTextPane1.getAccessibleContext().setAccessibleDescription("");
 
         btn_salvar.setBackground(new java.awt.Color(32, 107, 165));
         btn_salvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -146,7 +149,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             }
         });
 
-        lbl_imgmaquina.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_imgmaquina.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_imgmaquina.setText("Imagem da Máquina");
 
         btn_salvarimg.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -167,12 +170,16 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_cadastroMaquinas)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_descricao)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lbl_descricao)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -183,73 +190,70 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                                     .addComponent(txt_idmaquina, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lbl_numeroserie)
-                                        .addGap(52, 52, 52))
-                                    .addComponent(txt_numeroSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
+                                    .addComponent(lbl_numeroserie)
+                                    .addComponent(txt_numeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_nome)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_modelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(lbl_fabricante)
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(txt_fabricante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(txt_fabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(lbl_modelo)
+                                            .addGap(143, 143, 143)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lbl_modelo)
-                                        .addGap(143, 143, 143)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txt_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(38, 38, 38)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_localizacao)
                                     .addComponent(lbl_dimensoes)
-                                    .addComponent(cbx_localizacao, 0, 190, Short.MAX_VALUE)
-                                    .addComponent(txt_dimensoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(txt_nome))
+                                    .addComponent(txt_dimensoes, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jCheckBox_status, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lbl_dataemissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(lbl_linkmanual)
-                                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lbl_linkmanual)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btn_salvarimg)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(btn_exluirimg, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(69, 69, 69))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txt_linkmanual, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(jCheckBox_status, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(lbl_dataemissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btn_salvarimg)
-                                                .addGap(50, 50, 50)
-                                                .addComponent(btn_exluirimg, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(111, 111, 111))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(70, 70, 70)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txt_linkmanual, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(54, 54, 54))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lbl_imgmaquina)
-                                .addGap(154, 154, 154))))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(99, 99, 99))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(336, 336, 336)
-                        .addComponent(btn_salvar)
-                        .addGap(53, 53, 53)
-                        .addComponent(btn_excluir)
-                        .addGap(61, 61, 61)
-                        .addComponent(btn_voltar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_cadastroMaquinas)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)
+                        .addGap(54, 54, 54))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_salvar)
+                .addGap(70, 70, 70)
+                .addComponent(btn_excluir)
+                .addGap(72, 72, 72)
+                .addComponent(btn_voltar)
+                .addGap(298, 298, 298))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,24 +274,24 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jCheckBox_status)
                                 .addComponent(txt_numeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_idmaquina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(46, 46, 46)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_dataemissao)
-                            .addComponent(lbl_nome))
+                            .addComponent(txt_idmaquina, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_nome)
+                            .addComponent(lbl_dataemissao))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_modelo)
                             .addComponent(lbl_localizacao))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_fabricante)
                             .addComponent(lbl_dimensoes)
@@ -297,24 +301,34 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                             .addComponent(txt_fabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_dimensoes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_linkmanual, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47)
-                        .addComponent(lbl_descricao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17))
+                        .addGap(32, 32, 32)
+                        .addComponent(lbl_descricao))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_salvarimg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_exluirimg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btn_exluirimg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
+
+        txt_idmaquina.getAccessibleContext().setAccessibleDescription("");
+        txt_numeroSerie.getAccessibleContext().setAccessibleDescription("");
+        txt_nome.getAccessibleContext().setAccessibleDescription("");
+        txt_modelo.getAccessibleContext().setAccessibleDescription("");
+        cbx_localizacao.getAccessibleContext().setAccessibleDescription("");
+        txt_fabricante.getAccessibleContext().setAccessibleDescription("");
+        txt_dimensoes.getAccessibleContext().setAccessibleDescription("");
+        txt_linkmanual.getAccessibleContext().setAccessibleDescription("");
+        jFormattedTextField1.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -324,7 +338,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -97,7 +97,7 @@ public void  tb_localizacao (String sql){
 
         txt_pesquisar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
+        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
@@ -142,7 +142,7 @@ public void  tb_localizacao (String sql){
         txt_nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         btn_cadastra.setBackground(new java.awt.Color(32, 107, 165));
-        btn_cadastra.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_cadastra.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_cadastra.setForeground(new java.awt.Color(255, 255, 255));
         btn_cadastra.setText("Cadastra");
         btn_cadastra.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public void  tb_localizacao (String sql){
         });
 
         btn_deletar.setBackground(new java.awt.Color(32, 107, 165));
-        btn_deletar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_deletar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_deletar.setForeground(new java.awt.Color(255, 255, 255));
         btn_deletar.setText("Deletar");
         btn_deletar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +162,7 @@ public void  tb_localizacao (String sql){
         });
 
         btn_atualizar.setBackground(new java.awt.Color(32, 107, 165));
-        btn_atualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_atualizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_atualizar.setForeground(new java.awt.Color(255, 255, 255));
         btn_atualizar.setText("Atualizar");
         btn_atualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +189,7 @@ public void  tb_localizacao (String sql){
                     .addComponent(lbl_codigo)
                     .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +210,7 @@ public void  tb_localizacao (String sql){
                 .addGap(37, 37, 37))
         );
 
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Podol\\OneDrive\\Área de Trabalho\\SistemaWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
+        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

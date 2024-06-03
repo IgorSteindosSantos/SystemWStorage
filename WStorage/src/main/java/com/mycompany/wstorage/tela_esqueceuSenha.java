@@ -28,13 +28,13 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        lbl_recuperarSenha = new javax.swing.JLabel();
+        txt_identificador = new javax.swing.JTextField();
+        lbl_identificador = new javax.swing.JLabel();
+        lbl_cpf = new javax.swing.JLabel();
+        txt_cpf = new javax.swing.JTextField();
+        btn_gerarSenha = new javax.swing.JButton();
+        lbl_informacao = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -47,76 +47,77 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("WStorage");
+        setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("Recuperar Senha");
+        lbl_recuperarSenha.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lbl_recuperarSenha.setText("Recuperar Senha");
 
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Digite o seu Identificador...");
+        txt_identificador.setForeground(new java.awt.Color(153, 153, 153));
+        txt_identificador.setText("Digite o seu Identificador...");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Identificador");
+        lbl_identificador.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_identificador.setText("Identificador");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("CPF");
+        lbl_cpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_cpf.setText("CPF");
 
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("Digite o seu CPF...");
+        txt_cpf.setForeground(new java.awt.Color(153, 153, 153));
+        txt_cpf.setText("Digite o seu CPF...");
 
-        jButton1.setBackground(new java.awt.Color(32, 107, 165));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Gerar Nova Senha");
+        btn_gerarSenha.setBackground(new java.awt.Color(32, 107, 165));
+        btn_gerarSenha.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_gerarSenha.setForeground(new java.awt.Color(255, 255, 255));
+        btn_gerarSenha.setText("Gerar Nova Senha");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Sera gerado uma senha automaticamente ao preencher os seus dados.");
+        lbl_informacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_informacao.setText("Será gerado uma nova senha automaticamente ao preencher os dados.");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 39, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(34, 34, 34))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addGap(35, 35, 35)
+                        .addComponent(lbl_informacao))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
+                            .addComponent(txt_identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_identificador)
+                            .addComponent(lbl_cpf)
+                            .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jButton1))
+                        .addGap(123, 123, 123)
+                        .addComponent(lbl_recuperarSenha))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(160, 160, 160)
+                        .addComponent(btn_gerarSenha)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
+                .addGap(20, 20, 20)
+                .addComponent(lbl_recuperarSenha)
+                .addGap(26, 26, 26)
+                .addComponent(lbl_informacao)
+                .addGap(27, 27, 27)
+                .addComponent(lbl_identificador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(56, 56, 56)
-                .addComponent(jLabel2)
+                .addComponent(lbl_cpf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btn_gerarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,6 +132,7 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -169,14 +171,14 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btn_gerarSenha;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lbl_cpf;
+    private javax.swing.JLabel lbl_identificador;
+    private javax.swing.JLabel lbl_informacao;
+    private javax.swing.JLabel lbl_recuperarSenha;
+    private javax.swing.JTextField txt_cpf;
+    private javax.swing.JTextField txt_identificador;
     // End of variables declaration//GEN-END:variables
 }

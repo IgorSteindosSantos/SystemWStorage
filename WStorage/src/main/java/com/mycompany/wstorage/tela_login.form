@@ -123,14 +123,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lbl_usuario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txt_usuario" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="txt_usuario" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="lbl_senha" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="txt_senha" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txt_senha" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lbl_esqueciSenha" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="btn_avancar" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
@@ -144,7 +144,7 @@
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Podol\OneDrive\&#xc1;rea de Trabalho\SistemaWStorage\SystemWStorage\WStorage\src\main\java\imagem\logo_wstorage.png"/>
+                  <Image iconType="2" name="C:\Users\Igor Stein\Desktop\SystemWStorage\SystemWStorage\WStorage\src\main\java\imagem\logo_wstorage.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -179,6 +179,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Esqueci minha senha"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_esqueciSenhaMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_avancar">
               <Properties>
@@ -193,6 +196,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Entrar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_avancarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_usuario">
               <Properties>
