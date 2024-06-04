@@ -4,15 +4,46 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Podol
  */
 public class tela_cadastroMaquinas extends javax.swing.JFrame {
+    Connection conexao = null;
+    PreparedStatement statement = null;
 
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senha = "247022";
     /**
      * Creates new form tela_cadastroMaquinas
      */
+    public void popularCamboBox (String sql) {
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            
+            PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
+            banco.execute(); // criar o vetor
+            ResultSet resultado = banco.executeQuery(sql);
+            
+            while(resultado.next()){
+                cbx_localizacao.addItem(resultado.getString("nome_local"));
+            }
+            banco.close();
+            conexao.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_cadastroMaquinas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public tela_cadastroMaquinas() {
         initComponents();
     }
@@ -62,6 +93,11 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -263,10 +299,11 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_idmaquina)
-                    .addComponent(lbl_numeroserie)
-                    .addComponent(lbl_imgmaquina))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_imgmaquina, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_idmaquina)
+                        .addComponent(lbl_numeroserie)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -351,6 +388,11 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         /*tela_lista_cadastroMaquinas btn_voltar = new tela_lista_cadastroMaquinas();
         btn_voltar.setVisible(true);*/
     }//GEN-LAST:event_btn_voltarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.popularCamboBox("SELECT nome_local FROM localizacao");
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

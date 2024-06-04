@@ -4,6 +4,8 @@
  */
 package com.mycompany.wstorage;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Igor Stein
@@ -76,10 +78,22 @@ public class tela_login extends javax.swing.JFrame {
             }
         });
 
-        txt_usuario.setForeground(new java.awt.Color(153, 153, 153));
-        txt_usuario.setText("Digite seu CPF");
+        txt_usuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txt_usuario.setToolTipText("");
         txt_usuario.setSelectedTextColor(new java.awt.Color(204, 204, 204));
+        txt_usuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_usuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_usuarioFocusLost(evt);
+            }
+        });
+        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -172,6 +186,32 @@ public class tela_login extends javax.swing.JFrame {
         tela_esqueceuSenha lbl_esqueciSenha = new tela_esqueceuSenha();
         lbl_esqueciSenha.setVisible(true);
     }//GEN-LAST:event_lbl_esqueciSenhaMouseClicked
+
+    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
+        // TODO add your handling code here:
+        String text = txt_usuario.getText();
+        if (!text.matches("\\d*")){ // Verifica se o texto contém apenas letras
+            JOptionPane.showMessageDialog(null,
+            "Por favor, insira apenas número.",
+            "Entrada Inválida",
+            JOptionPane.ERROR_MESSAGE);
+            txt_usuario.requestFocus(); // Requer foco novamente se a entrada for inválida
+        }
+    }//GEN-LAST:event_txt_usuarioActionPerformed
+
+    private void txt_usuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usuarioFocusGained
+        // TODO add your handling code here:
+        if(txt_usuario.getText().equals("Digite seu CPF aqui...")) {
+            txt_usuario.setText("");
+        }
+    }//GEN-LAST:event_txt_usuarioFocusGained
+
+    private void txt_usuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usuarioFocusLost
+        // TODO add your handling code here:
+        if(txt_usuario.getText().equals("")) {
+            txt_usuario.setText("Digite seu CPF aqui...");
+        }
+    }//GEN-LAST:event_txt_usuarioFocusLost
 
     /**
      * @param args the command line arguments
