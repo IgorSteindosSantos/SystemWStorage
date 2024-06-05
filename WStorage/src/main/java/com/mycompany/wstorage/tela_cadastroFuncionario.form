@@ -10,6 +10,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -99,14 +102,14 @@
                                           </Group>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                                  <Component id="lbl_imagem_funcionario" min="-2" pref="297" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                                                   <Component id="btn_salvar_imagem1" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                                                   <Component id="btn_excluir_imagem" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                                                  <Component id="lbl_imagem_funcionario" min="-2" pref="281" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -121,6 +124,13 @@
                               </Group>
                           </Group>
                       </Group>
+                  </Group>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="579" max="32767" attributes="0"/>
+                      <Component id="jFileChooser1" min="-2" pref="115" max="-2" attributes="0"/>
+                      <EmptySpace pref="381" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -185,6 +195,13 @@
                       <Component id="btn_voltar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="186" max="32767" attributes="0"/>
+                      <Component id="jFileChooser1" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace pref="360" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -411,6 +428,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_salvar_imagem1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_excluir_imagem">
           <Properties>
@@ -419,6 +439,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_excluir_imagemActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JFileChooser" name="jFileChooser1">
         </Component>
       </SubComponents>
     </Container>

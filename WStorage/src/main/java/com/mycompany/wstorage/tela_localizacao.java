@@ -31,6 +31,17 @@ public class tela_localizacao extends javax.swing.JFrame {
         initComponents();
     }
     
+public void id_autoincrement() throws SQLException {
+    conexao = DriverManager.getConnection(url,usuario,senha);
+    String sql = "SELECT id_maquina FROM maquinas ORDER BY id_maquina DESC LIMIT 1";
+    PreparedStatement pst = conexao.prepareStatement(sql);
+    ResultSet rs = pst.executeQuery();
+    while (rs.next()) {
+        rs.getInt("id_maquina");
+    }
+    
+}  
+  
 public void limparCampos() {
     txt_nome.setText("");
     txt_codigo.setText("");
@@ -300,8 +311,13 @@ public void  tb_localizacao (String sql){
     }//GEN-LAST:event_btn_cadastraActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //Popular tabela tb_localizacao
-        this.tb_localizacao("SELECT * FROM localizacao");
+        try {
+            //Popular tabela tb_localizacao
+            this.tb_localizacao("SELECT * FROM localizacao");
+            this.id_autoincrement();
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked

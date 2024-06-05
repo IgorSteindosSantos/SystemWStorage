@@ -351,7 +351,7 @@ public class tela_menu extends javax.swing.JFrame {
         //Date data = new Date();
         //DateFormat formatador = DateFormat.getDateInstance(DateFormat.FULL);
         Date dataHoraAtual = new Date();
-        String data = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(dataHoraAtual);
+        String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
         lbl_data.setText(data);
     }//GEN-LAST:event_lbl_dataAncestorAdded
 

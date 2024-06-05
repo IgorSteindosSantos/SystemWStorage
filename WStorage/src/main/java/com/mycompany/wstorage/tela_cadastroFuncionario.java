@@ -4,6 +4,9 @@
  */
 package com.mycompany.wstorage;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Igor Stein
@@ -50,10 +53,16 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         lbl_imagem_funcionario = new javax.swing.JLabel();
         btn_salvar_imagem1 = new javax.swing.JButton();
         btn_excluir_imagem = new javax.swing.JButton();
+        jFileChooser1 = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1150, 80));
@@ -134,9 +143,19 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
 
         btn_salvar_imagem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_salvar_imagem1.setText("Salvar");
+        btn_salvar_imagem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvar_imagem1ActionPerformed(evt);
+            }
+        });
 
         btn_excluir_imagem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_excluir_imagem.setText("Excluir");
+        btn_excluir_imagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluir_imagemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -185,19 +204,24 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
                                             .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(113, 113, 113)
-                                                .addComponent(lbl_imagem_funcionario, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(151, 151, 151)
                                                 .addComponent(btn_salvar_imagem1)
                                                 .addGap(75, 75, 75)
-                                                .addComponent(btn_excluir_imagem)))))
+                                                .addComponent(btn_excluir_imagem))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(129, 129, 129)
+                                                .addComponent(lbl_imagem_funcionario, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lbl_nome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lbl_foto)
                                 .addGap(140, 140, 140))))))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(579, Short.MAX_VALUE)
+                    .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(381, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,6 +272,11 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(btn_exluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(186, Short.MAX_VALUE)
+                    .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(360, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -268,6 +297,35 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         tela_cadastroFuncionario.this.dispose();
     }//GEN-LAST:event_btn_voltarActionPerformed
+
+    private void btn_salvar_imagem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvar_imagem1ActionPerformed
+        // TODO add your handling code here:
+        jFileChooser1.setVisible(true);
+        int result = this.jFileChooser1.showOpenDialog(this.jFileChooser1);
+       
+       
+       
+        if(result == JFileChooser.APPROVE_OPTION){
+            String filePath = this.jFileChooser1.getSelectedFile().getAbsolutePath();
+           
+           
+            ImageIcon icon = new ImageIcon(filePath);
+           
+            this.lbl_imagem_funcionario.setIcon(icon);
+           
+            System.out.println("Caminho do arquivo: " + filePath);
+        }
+    }//GEN-LAST:event_btn_salvar_imagem1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        jFileChooser1.setVisible(false);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btn_excluir_imagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluir_imagemActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_excluir_imagemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +370,7 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton btn_voltar;
     private javax.swing.JComboBox<String> cbx_cargo;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

@@ -99,7 +99,7 @@
                                                   <Component id="txt_funcionario" min="-2" pref="348" max="-2" attributes="0"/>
                                                   <Group type="102" attributes="0">
                                                       <Component id="lbl_tipoManutencao" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                                       <Component id="lbl_localizacao" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -177,7 +177,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lbl_tipoManutencao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lbl_localizacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_localizacao" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">

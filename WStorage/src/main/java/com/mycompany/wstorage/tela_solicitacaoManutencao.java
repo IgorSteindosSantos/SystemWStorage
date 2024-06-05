@@ -178,7 +178,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                                                 .addComponent(txt_funcionario, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addComponent(lbl_tipoManutencao)
-                                                    .addGap(74, 74, 74)
+                                                    .addGap(53, 53, 53)
                                                     .addComponent(lbl_localizacao)))
                                             .addGap(85, 85, 85)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
