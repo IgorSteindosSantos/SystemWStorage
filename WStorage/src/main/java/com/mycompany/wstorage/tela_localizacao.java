@@ -18,20 +18,19 @@ import javax.swing.table.DefaultTableModel;
  * @author isantos
  */
 public class tela_localizacao extends javax.swing.JFrame {
-    Connection conexao = null;
-    PreparedStatement statement = null;
-
+    //Setando
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
     String senha = "247022";
-    /**
-     * Creates new form tela_localizacao
-     */
+    Connection conexao = null;
+    PreparedStatement statement = null;
+
+    
     public tela_localizacao() {
         initComponents();
     }
     
-public void id_localizacao () {
+    public void id_localizacao () {
         try {
             //Pupulando txt_codigo com id_local
             int ultimoId = 0;
@@ -46,28 +45,27 @@ public void id_localizacao () {
                     Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            //converter
+            //converter para string
             this.txt_codigo.setText(String.valueOf(ultimoId));
         } catch (SQLException ex) {
-            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
   
-public void limparCampos() {
-    txt_nome.setText("");
-    txt_codigo.setText("");
-}    
+    public void limparCampos() {
+        txt_nome.setText("");
+        txt_codigo.setText("");
+    }    
 
-public void  tb_localizacao (String sql){
+    public void  tb_localizacao (String sql){
     try {
+        //Pupulando tabela tb_localizacao
         conexao = DriverManager.getConnection(url,usuario,senha);
-                    
         PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
         banco.execute(); // criar o vetor
         ResultSet resultado = banco.executeQuery(sql);
         DefaultTableModel model = (DefaultTableModel) tb_localizacao.getModel();
-        model.setNumRows(0);
-                    
+        model.setNumRows(0);                    
             while (resultado.next()){
                 model.addRow(new Object[] {
                 //retorna os dados da tabela do BD, cada campo e um coluna.
@@ -80,7 +78,8 @@ public void  tb_localizacao (String sql){
         } catch (SQLException ex) {
             Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -307,7 +306,7 @@ public void  tb_localizacao (String sql){
 
     private void btn_cadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastraActionPerformed
         try {
-            // TODO add your handling code here:
+            //cadastrando uma localização
             conexao = DriverManager.getConnection(url,usuario,senha);
             String sql = "INSERT INTO localizacao (nome_local) VALUES (?)";
             statement = conexao.prepareStatement(sql);
@@ -315,7 +314,7 @@ public void  tb_localizacao (String sql){
             statement.execute();
             statement.close();
             limparCampos();//Limpar os TXT ao clicar no BTN
-            id_localizacao();
+            id_localizacao();//Atualizar o id_localização
             this.tb_localizacao("SELECT * FROM localizacao");
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
@@ -323,32 +322,9 @@ public void  tb_localizacao (String sql){
     }//GEN-LAST:event_btn_cadastraActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //int ultimoId = 0;
         //Popular tabela tb_localizacao
         this.tb_localizacao("SELECT * FROM localizacao");
-        id_localizacao();
-        /*try {
-        
-            //Popular tabela tb_localizacao
-            this.tb_localizacao("SELECT * FROM localizacao");
-        
-            //Pupulando txt_codigo com id_local 
-            conexao = DriverManager.getConnection(url,usuario,senha);
-            String sql = "SELECT MAX(id_local) as ultimoID FROM localizacao;";
-            PreparedStatement pst = conexao.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                ultimoId = rs.getInt("ultimoID")+1;        
-            }
-           
-            //converter
-            this.txt_codigo.setText(String.valueOf(ultimoId));
-            
-            
-            this.id_autoincrement();
-        } catch (SQLException ex) {
-            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        id_localizacao();//Atualizar o id_localização
     }//GEN-LAST:event_formWindowOpened
 
     private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
@@ -356,7 +332,7 @@ public void  tb_localizacao (String sql){
     }//GEN-LAST:event_jScrollPane1MouseClicked
 
     private void tb_localizacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_localizacaoMouseClicked
-        // TODO add your handling code here:
+        //Populando o txt com os dados da tabela
         int linha = tb_localizacao.getSelectedRow();
         txt_codigo.setText(tb_localizacao.getValueAt(linha, 0).toString());
         txt_nome.setText(tb_localizacao.getValueAt(linha, 1).toString());
@@ -364,7 +340,7 @@ public void  tb_localizacao (String sql){
 
     private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atualizarActionPerformed
         try {
-            // TODO add your handling code here:
+            //Atualizando os dados selecionados da tabela
             conexao = DriverManager.getConnection(url,usuario,senha);
             String sql = "UPDATE localizacao SET nome_local = ? WHERE id_local = ?";
             statement = conexao.prepareStatement(sql);
@@ -373,7 +349,7 @@ public void  tb_localizacao (String sql){
             statement.execute();
             statement.close();
             limparCampos();//Limpar os TXT ao clicar no BTN
-            id_localizacao();
+            id_localizacao();//Atualizar o id_localização
             this.tb_localizacao("SELECT * FROM localizacao");
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
@@ -382,7 +358,7 @@ public void  tb_localizacao (String sql){
 
     private void btn_deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletarActionPerformed
         try {
-            // TODO add your handling code here:
+            //Deletar os dados selecionados da tabela
             conexao = DriverManager.getConnection(url,usuario,senha);
             String sql = "DELETE FROM localizacao WHERE id_local = ?";
             statement = conexao.prepareStatement(sql);
@@ -390,7 +366,7 @@ public void  tb_localizacao (String sql){
             statement.execute();
             statement.close();
             limparCampos();//Limpar os TXT ao clicar no BTN
-            id_localizacao();
+            id_localizacao();//Atualizar o id_localização
             this.tb_localizacao("SELECT * FROM localizacao");
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
