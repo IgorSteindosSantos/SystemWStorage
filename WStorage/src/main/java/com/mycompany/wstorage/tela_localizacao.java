@@ -23,7 +23,7 @@ public class tela_localizacao extends javax.swing.JFrame {
 
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     /**
      * Creates new form tela_localizacao
      */
@@ -33,11 +33,13 @@ public class tela_localizacao extends javax.swing.JFrame {
     
 public void id_autoincrement() throws SQLException {
     conexao = DriverManager.getConnection(url,usuario,senha);
-    String sql = "SELECT id_maquina FROM maquinas ORDER BY id_maquina DESC LIMIT 1";
+    String sql = "SELECT MAX(id_maquina)+1 as ultimoID FROM maquinas;";
     PreparedStatement pst = conexao.prepareStatement(sql);
     ResultSet rs = pst.executeQuery();
-    while (rs.next()) {
-        rs.getInt("id_maquina");
+    if (rs.next()) {
+       // int ultimoId = rs.getInt("ultimoID")+1;
+        
+        
     }
     
 }  
@@ -311,9 +313,24 @@ public void  tb_localizacao (String sql){
     }//GEN-LAST:event_btn_cadastraActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        int ultimoId = 0;
         try {
             //Popular tabela tb_localizacao
             this.tb_localizacao("SELECT * FROM localizacao");
+            
+            //Criando novo id
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "SELECT MAX(id_local)+1 as ultimoID FROM localizacao;";
+            PreparedStatement pst = conexao.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                ultimoId = rs.getInt("ultimoID");        
+            }
+           
+            //converter
+            this.txt_codigo.setText(String.valueOf(ultimoId));
+            
+            
             this.id_autoincrement();
         } catch (SQLException ex) {
             Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);

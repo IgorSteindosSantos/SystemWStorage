@@ -4,19 +4,58 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Podol
  */
 public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
+    Connection conexao = null;
+    PreparedStatement statement = null;
 
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senha = "";
     /**
      * Creates new form tela_lista_cadastraMaquinas
      */
     public tela_lista_cadastroMaquinas() {
         initComponents();
     }
-
+    public void  tb_maquina (String sql){
+    try {
+        conexao = DriverManager.getConnection(url,usuario,senha);
+                    
+        PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
+        banco.execute(); // criar o vetor
+        ResultSet resultado = banco.executeQuery(sql);
+        DefaultTableModel model = (DefaultTableModel) tb_maquinas.getModel();
+        model.setNumRows(0);
+                    
+            while (resultado.next()){
+                model.addRow(new Object[] {
+                //retorna os dados da tabela do BD, cada campo e um coluna.
+                resultado.getString("id_maquina"),
+                resultado.getString("nome"),
+                resultado.getString("modelo"),
+                resultado.getString("nome_local"),
+                
+                });
+            }
+            banco.close();
+            conexao.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,13 +72,18 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_maquinas = new javax.swing.JTable();
         lbl_home = new javax.swing.JLabel();
         lbl_pesquisar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -61,8 +105,8 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
         txt_pesquisar.setText("Pesquisar por...");
         txt_pesquisar.setPreferredSize(new java.awt.Dimension(93, 30));
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_maquinas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tb_maquinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -78,17 +122,14 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane1.setViewportView(jTable1);
+        tb_maquinas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane1.setViewportView(tb_maquinas);
 
-        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
             }
         });
-
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,6 +208,16 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
         lbl_home.setVisible(true);
     }//GEN-LAST:event_lbl_homeMouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.tb_maquina("SELECT m.id_maquina, m.nome, m.modelo, l.nome_local"
+                + "      FROM maquinas m"
+                + "      INNER JOIN localizacao l"
+                + "      ON m.cod_localizacao = l.id_local"
+                + "      ORDER BY id_maquina");
+    }//GEN-LAST:event_formWindowOpened
+
+    
     /**
      * @param args the command line arguments
      */
@@ -209,10 +260,10 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_maquinas;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JTable tb_maquinas;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables
 }

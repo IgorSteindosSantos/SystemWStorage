@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,7 +27,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
 
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     /**
      * Creates new form tela_cadastroMaquinas
      */
@@ -40,8 +41,10 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     txt_modelo.setText("");
     txt_numeroSerie.setText("");
     txta_descricao.setText("");
+    txt_dimensoes.setText("");
     }
     
+   
     public void popularCamboBox (String sql) {
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
@@ -435,11 +438,28 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        this.popularCamboBox("SELECT * FROM localizacao ORDER BY id_local");
-        this.limparCampos();
-        jFileChooser1.setVisible(false);
-        
+        try {
+            // TODO add your handling code here:
+            this.popularCamboBox("SELECT * FROM localizacao ORDER BY id_local");
+            this.limparCampos();
+            jFileChooser1.setVisible(false);
+            
+            int ultimoId = 0;
+            //Criando novo id
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "SELECT MAX(id_maquina)+1 as ultimoID FROM maquinas;";
+            PreparedStatement pst = conexao.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                ultimoId = rs.getInt("ultimoID");        
+            }
+           
+            //converter
+            this.txt_idmaquina.setText(String.valueOf(ultimoId));
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_cadastroMaquinas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+               
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_salvarimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarimgActionPerformed
@@ -462,13 +482,19 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_salvarimgActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        
+                    
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
-            String sql = "INSERT INTO maquinas (numero_serie,nome,modelo,fabricante,dimensoes,link_manual,descricao) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO maquinas (numero_serie,nome,modelo,fabricante,dimensoes,link_manual,descricao,cod_localizacao) VALUES (?,?,?,?,?,?,?,?)";
             int num = Integer.parseInt(txt_numeroSerie.getText());
             double numD = Double.parseDouble(txt_dimensoes.getText());
-            //int comboBox = Integer.parseInt((String) cbx_localizacao.getSelectedItem());
+            
+            //passando combobox para o banco
+            String comboBox = (String) cbx_localizacao.getSelectedItem();
+            String [] partes = comboBox.split(" - ");
+            String id = partes[0].trim();
+            int id_local = Integer.parseInt(id);
+
             statement = conexao.prepareStatement(sql);
             statement.setInt(1, num);
             statement.setString(2, txt_nome.getText());
@@ -478,9 +504,11 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             statement.setString(6, txt_linkmanual.getText());
             statement.setString(7, txta_descricao.getText());
             //statement.setString(8, jFormattedTextField1.getText());
-            //statement.setInt(8, comboBox);
+            statement.setInt(8, id_local);
             statement.execute();
             statement.close();
+            limparCampos();
+            JOptionPane.showInternalMessageDialog(null,"Máquina cadastrada com sucesso!");
         } catch (SQLException ex) {
             Logger.getLogger(tela_cadastroMaquinas.class.getName()).log(Level.SEVERE, null, ex);
         }
