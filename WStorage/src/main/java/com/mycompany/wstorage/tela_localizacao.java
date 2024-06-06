@@ -23,7 +23,7 @@ public class tela_localizacao extends javax.swing.JFrame {
 
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
+    String senha = "247022";
     /**
      * Creates new form tela_localizacao
      */
@@ -31,18 +31,27 @@ public class tela_localizacao extends javax.swing.JFrame {
         initComponents();
     }
     
-public void id_autoincrement() throws SQLException {
-    conexao = DriverManager.getConnection(url,usuario,senha);
-    String sql = "SELECT MAX(id_maquina)+1 as ultimoID FROM maquinas;";
-    PreparedStatement pst = conexao.prepareStatement(sql);
-    ResultSet rs = pst.executeQuery();
-    if (rs.next()) {
-       // int ultimoId = rs.getInt("ultimoID")+1;
-        
-        
-    }
-    
-}  
+public void id_localizacao () {
+        try {
+            //Pupulando txt_codigo com id_local
+            int ultimoId = 0;
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            String sql = "SELECT MAX(id_local)+1 as ultimoID FROM localizacao;";
+            PreparedStatement pst = conexao.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                try {
+                    ultimoId = rs.getInt("ultimoID");
+                } catch (SQLException ex) {
+                    Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            //converter
+            this.txt_codigo.setText(String.valueOf(ultimoId));
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
   
 public void limparCampos() {
     txt_nome.setText("");
@@ -306,6 +315,7 @@ public void  tb_localizacao (String sql){
             statement.execute();
             statement.close();
             limparCampos();//Limpar os TXT ao clicar no BTN
+            id_localizacao();
             this.tb_localizacao("SELECT * FROM localizacao");
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
@@ -313,18 +323,22 @@ public void  tb_localizacao (String sql){
     }//GEN-LAST:event_btn_cadastraActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        int ultimoId = 0;
-        try {
+        //int ultimoId = 0;
+        //Popular tabela tb_localizacao
+        this.tb_localizacao("SELECT * FROM localizacao");
+        id_localizacao();
+        /*try {
+        
             //Popular tabela tb_localizacao
             this.tb_localizacao("SELECT * FROM localizacao");
-            
-            //Criando novo id
+        
+            //Pupulando txt_codigo com id_local 
             conexao = DriverManager.getConnection(url,usuario,senha);
-            String sql = "SELECT MAX(id_local)+1 as ultimoID FROM localizacao;";
+            String sql = "SELECT MAX(id_local) as ultimoID FROM localizacao;";
             PreparedStatement pst = conexao.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                ultimoId = rs.getInt("ultimoID");        
+                ultimoId = rs.getInt("ultimoID")+1;        
             }
            
             //converter
@@ -334,7 +348,7 @@ public void  tb_localizacao (String sql){
             this.id_autoincrement();
         } catch (SQLException ex) {
             Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_formWindowOpened
 
     private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
@@ -359,6 +373,7 @@ public void  tb_localizacao (String sql){
             statement.execute();
             statement.close();
             limparCampos();//Limpar os TXT ao clicar no BTN
+            id_localizacao();
             this.tb_localizacao("SELECT * FROM localizacao");
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
@@ -375,6 +390,7 @@ public void  tb_localizacao (String sql){
             statement.execute();
             statement.close();
             limparCampos();//Limpar os TXT ao clicar no BTN
+            id_localizacao();
             this.tb_localizacao("SELECT * FROM localizacao");
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
