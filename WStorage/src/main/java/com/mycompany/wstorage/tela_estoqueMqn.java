@@ -4,19 +4,62 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Igor Stein
  */
 public class tela_estoqueMqn extends javax.swing.JFrame {
-
+    //Estabelecendo conexão com o banco
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senha = "247022";
+    Connection conexao = null;
+    PreparedStatement statement = null;
+    
     /**
      * Creates new form tela_estoqueMqn
      */
     public tela_estoqueMqn() {
         initComponents();
     }
-
+    
+    public void  tb_maquina (String sql){
+    try {
+        conexao = DriverManager.getConnection(url,usuario,senha);            
+        PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
+        banco.execute(); // criar o vetor
+        ResultSet resultado = banco.executeQuery(sql);
+        DefaultTableModel model = (DefaultTableModel) tb_estoqueMaquinas.getModel();
+        model.setNumRows(0);
+                    
+            while (resultado.next()){
+                model.addRow(new Object[] {
+                //retorna os dados da tabela do BD, cada campo e um coluna.
+                resultado.getString("id_maquina"),
+                resultado.getString("nome"),
+                resultado.getString("numero_serie"),
+                resultado.getString("dimensoes"),
+                resultado.getString("modelo"),
+                resultado.getString("nome_local"),
+                resultado.getString("status")
+                });
+            }
+            banco.close();
+            conexao.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,12 +76,17 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
         btn_equipamentos = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_estoqueMaquinas = new javax.swing.JTable();
         lbl_home = new javax.swing.JLabel();
         lbl_pesquisar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,16 +110,16 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_estoqueMaquinas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tb_estoqueMaquinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome", "Modelo", "Localização", "Situação"
+                "Código", "Nome", "Numero de Serie", "Dimensoes", "Modelo", "Localização", "Situação"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tb_estoqueMaquinas);
 
         lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,6 +208,14 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
         jLabel1.setVisible(true);
     }//GEN-LAST:event_lbl_homeMouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.tb_maquina("SELECT m.id_maquina, m.nome,m.numero_serie,m.dimensoes, m.modelo, l.nome_local,m.status"
+                + "      FROM maquinas m"
+                + "      INNER JOIN localizacao l"
+                + "      ON m.cod_localizacao = l.id_local"
+                + "      ORDER BY id_maquina");
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -201,10 +257,10 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_estoque;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JTable tb_estoqueMaquinas;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables
 }

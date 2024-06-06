@@ -315,7 +315,7 @@ public class tela_localizacao extends javax.swing.JFrame {
             statement.close();
             limparCampos();//Limpar os TXT ao clicar no BTN
             id_localizacao();//Atualizar o id_localização
-            this.tb_localizacao("SELECT * FROM localizacao");
+            this.tb_localizacao("SELECT * FROM localizacao");//Atualizar tabela
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
             }
