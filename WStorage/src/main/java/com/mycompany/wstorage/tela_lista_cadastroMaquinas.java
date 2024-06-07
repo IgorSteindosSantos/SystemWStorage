@@ -18,10 +18,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Podol
  */
 public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
+    //public static String id;
+    
     //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
+    String senha = "247022";
     Connection conexao = null;
     PreparedStatement statement = null;
     
@@ -218,11 +220,11 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //Populando tb_maquinas 
-        this.tb_maquina("SELECT m.id_maquina, m.nome, m.modelo, l.nome_local, DATE_FORMAT(m.data_emissao, '%d/%m/%Y') AS data_formatada"
+        /*this.tb_maquina("SELECT m.id_maquina, m.nome, m.modelo, l.nome_local, DATE_FORMAT(m.data_emissao, '%d/%m/%Y') AS data_formatada"
                 + " FROM maquinas m"
                 + " INNER JOIN localizacao l"
                 + " ON m.cod_localizacao = l.id_local"
-                + " ORDER BY id_maquina;");
+                + " ORDER BY id_maquina;");*/
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -235,7 +237,12 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void tb_maquinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_maquinasMouseClicked
-
+        //int linha = tb_maquinas.getSelectedRow();
+        
+        //id = tb_maquinas.getValueAt(linha, 0).toString();
+        //tela_lista_cadastroMaquinas.this.dispose();
+       // tela_cadastroMaquinas objeto2 = new tela_cadastroMaquinas();
+        //objeto2.setVisible(true);
     }//GEN-LAST:event_tb_maquinasMouseClicked
 
     

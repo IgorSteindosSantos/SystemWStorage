@@ -4,6 +4,7 @@
  */
 package com.mycompany.wstorage;
 
+//import static com.mycompany.wstorage.tela_lista_cadastroMaquinas.id;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,12 +23,53 @@ import javax.swing.JOptionPane;
  * @author Podol
  */
 public class tela_cadastroMaquinas extends javax.swing.JFrame {
+    //int id_maquina = Integer.parseInt(id);
     Connection conexao = null;
     PreparedStatement statement = null;
+    ResultSet resultado = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
-  
+    String senha = "247022";
+    
+    public void popularCampos() {
+        txt_imagem.setVisible(false);
+        jFileChooser1.setVisible(false);
+        btn_salvar.setVisible(false);
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            statement = conexao.prepareStatement(
+                    "SELECT * FROM maquinas WHERE id_maquina = ?");
+            //statement.setInt(1,id_maquina);
+            resultado = statement.executeQuery();
+            
+            if(resultado.next()) {
+                try {
+                   
+                    
+                    txt_idmaquina.setText(resultado.getString("id_maquina"));
+                    txt_numeroSerie.setText(resultado.getString("numero_serie"));
+                    txt_nome.setText(resultado.getString("nome"));
+                    txt_modelo.setText(resultado.getString("modelo"));
+                    txt_fabricante.setText(resultado.getString("fabricante"));
+                    txt_dimensoes.setText(resultado.getString("dimensoes"));
+                    txt_linkmanual.setText(resultado.getString("link_manual"));
+                    txta_descricao.setText(resultado.getString("descricao"));
+                    
+                    String databanco = resultado.getString("data_emissao");
+                    String data = new SimpleDateFormat("dd/MM/yyyy").format(databanco);
+                    txt_dataemissao.setText(data);
+                    
+         
+                } catch (SQLException ex) {
+                    Logger.getLogger(tela_cadastroMaquinas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        } catch (SQLException ex) {            
+            Logger.getLogger(tela_cadastroMaquinas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void limparCampos() {
     txt_nome.setText("");
     txt_modelo.setText("");
@@ -123,6 +165,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         txta_descricao = new javax.swing.JTextArea();
         txt_dataemissao = new javax.swing.JTextField();
         txt_imagem = new javax.swing.JTextField();
+        btn_editar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
@@ -241,7 +284,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         btn_exluirimg.setText("Excluir");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txta_descricao.setColumns(20);
         txta_descricao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -264,6 +307,11 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         txt_imagem.setText("jTextField1");
         txt_imagem.setEnabled(false);
 
+        btn_editar.setBackground(new java.awt.Color(32, 107, 165));
+        btn_editar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_editar.setText("Editar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -279,14 +327,6 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(166, 166, 166))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_salvar)
-                .addGap(70, 70, 70)
-                .addComponent(btn_excluir)
-                .addGap(72, 72, 72)
-                .addComponent(btn_voltar)
-                .addGap(298, 298, 298))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,8 +399,19 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbl_descricao)
                         .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(btn_voltar)
+                                .addGap(130, 130, 130)
+                                .addComponent(btn_excluir)
+                                .addGap(133, 133, 133)
+                                .addComponent(btn_editar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_salvar)
+                                .addGap(78, 78, 78)))
                         .addGap(54, 54, 54))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -433,7 +484,8 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -460,7 +512,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
 
         tela_cadastroMaquinas.this.dispose();
@@ -471,7 +523,10 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         this.popularCamboBox("SELECT * FROM localizacao ORDER BY id_local");
         jFileChooser1.setVisible(false);//Ocutando amba procurar imagem
         id_maquina();//Atualizar o id_maquina
+        //popularCampos();
         txt_imagem.setVisible(false);
+        btn_excluir.setVisible(false);
+        btn_editar.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_salvarimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarimgActionPerformed
@@ -480,9 +535,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         int result = this.jFileChooser1.showOpenDialog(this.jFileChooser1);
         if(result == JFileChooser.APPROVE_OPTION){
             String filePath = this.jFileChooser1.getSelectedFile().getAbsolutePath();
-
             ImageIcon icon = new ImageIcon(filePath);
-           
             this.jLabel2.setIcon(icon);
             this.txt_imagem.setText(filePath);
         }
@@ -495,19 +548,16 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             String sql = "INSERT INTO maquinas (numero_serie,nome,modelo,fabricante,dimensoes,link_manual,descricao,data_emissao,cod_localizacao,status,imagens) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             int num = Integer.parseInt(txt_numeroSerie.getText());
             double numD = Double.parseDouble(txt_dimensoes.getText());
-      
             //passando combobox para o banco
             String comboBox = (String) cbx_localizacao.getSelectedItem();
             String [] partes = comboBox.split(" - ");
             String id = partes[0].trim();
             int id_local = Integer.parseInt(id);
-            
             //convertendo data para o banco 
             String dia = txt_dataemissao.getText().substring(0, 2);
             String mes = txt_dataemissao.getText().substring(3, 5);       
             String ano = txt_dataemissao.getText().substring(6);
             String data = ano+"-"+mes+"-"+dia;
-            
             //colocando status na maquina com o checkbox
             String checkbox = "";
             if(jCheckBox_status.isSelected()) {
@@ -590,6 +640,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_excluir;
     private javax.swing.JButton btn_exluirimg;
     private javax.swing.JButton btn_salvar;
