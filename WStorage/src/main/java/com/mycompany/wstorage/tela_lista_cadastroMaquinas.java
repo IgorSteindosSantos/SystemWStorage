@@ -21,7 +21,7 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
     //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     Connection conexao = null;
     PreparedStatement statement = null;
     
@@ -30,29 +30,29 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
     }
     
     public void  tb_maquina (String sql){
-    try {
-        conexao = DriverManager.getConnection(url,usuario,senha);            
-        PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
-        banco.execute(); // criar o vetor
-        ResultSet resultado = banco.executeQuery(sql);
-        DefaultTableModel model = (DefaultTableModel) tb_maquinas.getModel();
-        model.setNumRows(0);
-                    
-            while (resultado.next()){
-                model.addRow(new Object[] {
-                //retorna os dados da tabela do BD, cada campo e um coluna.
-                resultado.getString("id_maquina"),
-                resultado.getString("nome"),
-                resultado.getString("modelo"),
-                resultado.getString("nome_local"),
-                resultado.getString("data_formatada")
-                });
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);            
+            PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
+            banco.execute(); // criar o vetor
+            ResultSet resultado = banco.executeQuery(sql);
+            DefaultTableModel model = (DefaultTableModel) tb_maquinas.getModel();
+            model.setNumRows(0);
+
+                while (resultado.next()){
+                    model.addRow(new Object[] {
+                    //retorna os dados da tabela do BD, cada campo e um coluna.
+                    resultado.getString("id_maquina"),
+                    resultado.getString("nome"),
+                    resultado.getString("modelo"),
+                    resultado.getString("nome_local"),
+                    resultado.getString("data_formatada")
+                    });
+                }
+                banco.close();
+                conexao.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
             }
-            banco.close();
-            conexao.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     @SuppressWarnings("unchecked")
@@ -73,6 +73,13 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -117,9 +124,13 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
             }
         });
         tb_maquinas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tb_maquinas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_maquinasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_maquinas);
 
-        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
@@ -212,13 +223,20 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
                 + " INNER JOIN localizacao l"
                 + " ON m.cod_localizacao = l.id_local"
                 + " ORDER BY id_maquina;");
-        
-        /*this.tb_maquina("SELECT m.id_maquina, m.nome, m.modelo, l.nome_local,m.data_emissao"
-                + "      FROM maquinas m"
-                + "      INNER JOIN localizacao l"
-                + "      ON m.cod_localizacao = l.id_local"
-                + "      ORDER BY id_maquina");*/
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        //Populando tb_maquinas quando voltar o foco
+        this.tb_maquina("SELECT m.id_maquina, m.nome, m.modelo, l.nome_local, DATE_FORMAT(m.data_emissao, '%d/%m/%Y') AS data_formatada"
+                + " FROM maquinas m"
+                + " INNER JOIN localizacao l"
+                + " ON m.cod_localizacao = l.id_local"
+                + " ORDER BY id_maquina;");
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void tb_maquinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_maquinasMouseClicked
+
+    }//GEN-LAST:event_tb_maquinasMouseClicked
 
     
     /**

@@ -26,7 +26,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     PreparedStatement statement = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
   
     public void limparCampos() {
     txt_nome.setText("");
@@ -122,6 +122,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txta_descricao = new javax.swing.JTextArea();
         txt_dataemissao = new javax.swing.JTextField();
+        txt_imagem = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
@@ -240,7 +241,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         btn_exluirimg.setText("Excluir");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
 
         txta_descricao.setColumns(20);
         txta_descricao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -259,6 +260,10 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             }
         });
 
+        txt_imagem.setEditable(false);
+        txt_imagem.setText("jTextField1");
+        txt_imagem.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -266,9 +271,14 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_cadastroMaquinas)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(33, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbl_cadastroMaquinas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(166, 166, 166))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_salvar)
@@ -356,8 +366,13 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(lbl_cadastroMaquinas)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(lbl_cadastroMaquinas))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(txt_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -447,7 +462,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        // TODO add your handling code here:
+
         tela_cadastroMaquinas.this.dispose();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
@@ -456,6 +471,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         this.popularCamboBox("SELECT * FROM localizacao ORDER BY id_local");
         jFileChooser1.setVisible(false);//Ocutando amba procurar imagem
         id_maquina();//Atualizar o id_maquina
+        txt_imagem.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_salvarimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarimgActionPerformed
@@ -468,8 +484,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(filePath);
            
             this.jLabel2.setIcon(icon);
-           
-            System.out.println("Caminho do arquivo: " + filePath);
+            this.txt_imagem.setText(filePath);
         }
     }//GEN-LAST:event_btn_salvarimgActionPerformed
 
@@ -477,10 +492,10 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                     
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
-            String sql = "INSERT INTO maquinas (numero_serie,nome,modelo,fabricante,dimensoes,link_manual,descricao,data_emissao,cod_localizacao,status) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO maquinas (numero_serie,nome,modelo,fabricante,dimensoes,link_manual,descricao,data_emissao,cod_localizacao,status,imagens) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             int num = Integer.parseInt(txt_numeroSerie.getText());
             double numD = Double.parseDouble(txt_dimensoes.getText());
-            
+      
             //passando combobox para o banco
             String comboBox = (String) cbx_localizacao.getSelectedItem();
             String [] partes = comboBox.split(" - ");
@@ -500,7 +515,6 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             } else {
                 checkbox+="Desativado";
             }
-            
             statement = conexao.prepareStatement(sql);
             statement.setInt(1, num);
             statement.setString(2, txt_nome.getText());
@@ -512,6 +526,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             statement.setString(8, data);
             statement.setInt(9, id_local);
             statement.setString(10, checkbox);
+            statement.setString(11, txt_imagem.getText());
             statement.execute();
             statement.close();
             limparCampos();
@@ -603,6 +618,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     private javax.swing.JTextField txt_dimensoes;
     private javax.swing.JTextField txt_fabricante;
     private javax.swing.JTextField txt_idmaquina;
+    private javax.swing.JTextField txt_imagem;
     private javax.swing.JTextField txt_linkmanual;
     private javax.swing.JTextField txt_modelo;
     private javax.swing.JTextField txt_nome;
