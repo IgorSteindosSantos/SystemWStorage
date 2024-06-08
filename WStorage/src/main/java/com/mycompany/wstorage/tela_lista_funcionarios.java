@@ -18,13 +18,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Igor Stein
  */
 public class tela_lista_funcionarios extends javax.swing.JFrame {
-
-   //Estabelecendo conexão com o banco
+    //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
     String senha = "247022";
     Connection conexao = null;
-    PreparedStatement statement = null;
+    
     
     public tela_lista_funcionarios() {
         initComponents();
@@ -118,6 +117,11 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
                 "Código", "Nome", "Cargo", "Data de Emissão", "Status"
             }
         ));
+        tb_funcionarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_funcionariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_funcionarios);
 
         lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
@@ -203,9 +207,7 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
-        this.tb_funcionario("SELECT id_funcionario,nome,cargo,DATE_FORMAT(dataemissao, '%d/%m/%Y') AS data_formatada,status"
-                + "FROM funcionarios ORDER BY id_funcionario;");
-            
+        this.tb_funcionario("SELECT id_funcionario,nome,cargo,DATE_FORMAT(dataemissao, '%d/%m/%Y')AS data_formatada,status FROM funcionarios ORDER BY id_funcionario;"); 
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -213,6 +215,10 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
         //this.tb_funcionario("SELECT id_funcionario,nome,cargo,DATE_FORMAT(dataemissao, '%d/%m/%Y') AS data_formatada,status"
                // + "FROM funcionarios ORDER BY id_funcionario;");
     }//GEN-LAST:event_formWindowOpened
+
+    private void tb_funcionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcionariosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_funcionariosMouseClicked
 
     /**
      * @param args the command line arguments

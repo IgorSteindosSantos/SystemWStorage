@@ -4,17 +4,57 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Igor Stein
  */
 public class tela_lista_usuarios extends javax.swing.JFrame {
-
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senha = "247022";
+    Connection conexao = null;
+    
     /**
      * Creates new form tela_lista_usuarios
      */
     public tela_lista_usuarios() {
         initComponents();
+    }
+    
+     public void  tb_funcionario (String sql){
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);            
+            PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
+            banco.execute(); // criar o vetor
+            ResultSet resultado = banco.executeQuery(sql);
+            DefaultTableModel model = (DefaultTableModel) tb_usuario.getModel();
+            model.setNumRows(0);
+
+                while (resultado.next()){
+                    model.addRow(new Object[] {
+                    //retorna os dados da tabela do BD, cada campo e um coluna.
+                    resultado.getString("id_funcionario"),
+                    resultado.getString("idenficacao"),
+                    resultado.getString("nome"),
+                    resultado.getString("cpf"),                 
+                    resultado.getString("cargo"),
+                    resultado.getString("status")
+                    });
+                }
+                banco.close();
+                conexao.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     /**
@@ -32,13 +72,18 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
         txt_pesquisar = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_usuario = new javax.swing.JTable();
         lbl_home = new javax.swing.JLabel();
         lbl_pesquisar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStoarage");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -50,7 +95,7 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
         txt_pesquisar.setText("Pesquisar por...");
         txt_pesquisar.setPreferredSize(new java.awt.Dimension(71, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_usuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -58,7 +103,7 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
                 "Código", "Identificador", "Nome", "CPF", "Cargo", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tb_usuario);
 
         lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,6 +182,11 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
         lbl_home.setVisible(true);*/
     }//GEN-LAST:event_lbl_homeMouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.tb_funcionario("SELECT id_funcionario,idenficacao,nome,cpf,cargo,status FROM funcionarios ORDER BY id_funcionario;");
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -177,10 +227,10 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_pesquisar;
     private javax.swing.JLabel lbl_usuario;
+    private javax.swing.JTable tb_usuario;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables
 }

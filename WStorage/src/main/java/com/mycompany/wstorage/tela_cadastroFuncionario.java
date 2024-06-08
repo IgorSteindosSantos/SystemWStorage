@@ -9,8 +9,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -22,6 +20,7 @@ import javax.swing.JOptionPane;
  * @author Igor Stein
  */
 public class tela_cadastroFuncionario extends javax.swing.JFrame {
+    
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
@@ -42,6 +41,7 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         txt_identificacao.setText("");
         txt_senha.setText("");
     }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,7 +79,7 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         jFileChooser1 = new javax.swing.JFileChooser();
         txt_imagem = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {

@@ -23,52 +23,13 @@ import javax.swing.JOptionPane;
  * @author Podol
  */
 public class tela_cadastroMaquinas extends javax.swing.JFrame {
-    //int id_maquina = Integer.parseInt(id);
+    
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
     String senha = "247022";
-    
-    public void popularCampos() {
-        txt_imagem.setVisible(false);
-        jFileChooser1.setVisible(false);
-        btn_salvar.setVisible(false);
-        try {
-            conexao = DriverManager.getConnection(url,usuario,senha);
-            statement = conexao.prepareStatement(
-                    "SELECT * FROM maquinas WHERE id_maquina = ?");
-            //statement.setInt(1,id_maquina);
-            resultado = statement.executeQuery();
-            
-            if(resultado.next()) {
-                try {
-                   
-                    
-                    txt_idmaquina.setText(resultado.getString("id_maquina"));
-                    txt_numeroSerie.setText(resultado.getString("numero_serie"));
-                    txt_nome.setText(resultado.getString("nome"));
-                    txt_modelo.setText(resultado.getString("modelo"));
-                    txt_fabricante.setText(resultado.getString("fabricante"));
-                    txt_dimensoes.setText(resultado.getString("dimensoes"));
-                    txt_linkmanual.setText(resultado.getString("link_manual"));
-                    txta_descricao.setText(resultado.getString("descricao"));
-                    
-                    String databanco = resultado.getString("data_emissao");
-                    String data = new SimpleDateFormat("dd/MM/yyyy").format(databanco);
-                    txt_dataemissao.setText(data);
-                    
-         
-                } catch (SQLException ex) {
-                    Logger.getLogger(tela_cadastroMaquinas.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-            }
-        } catch (SQLException ex) {            
-            Logger.getLogger(tela_cadastroMaquinas.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
     public void limparCampos() {
     txt_nome.setText("");
