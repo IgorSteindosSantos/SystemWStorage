@@ -30,7 +30,7 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void  tb_funcionarios (String sql){
+    public void  tb_funcionario (String sql){
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);            
             PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
@@ -44,9 +44,9 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
                     //retorna os dados da tabela do BD, cada campo e um coluna.
                     resultado.getString("id_funcionario"),
                     resultado.getString("nome"),
-                    resultado.getString("cargo"),
-                    resultado.getString(""),
-                    resultado.getString("data_formatada")
+                    resultado.getString("cargo"),                 
+                    resultado.getString("data_formatada"),
+                    resultado.getString("status")
                     });
                 }
                 banco.close();
@@ -73,6 +73,18 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStoarage");
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -103,7 +115,7 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Cargo", "Localização", "Status"
+                "Código", "Nome", "Cargo", "Data de Emissão", "Status"
             }
         ));
         jScrollPane1.setViewportView(tb_funcionarios);
@@ -188,6 +200,19 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
         tela_menu lbl_home = new tela_menu();
         lbl_home.setVisible(true);
     }//GEN-LAST:event_lbl_homeMouseClicked
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+        this.tb_funcionario("SELECT id_funcionario,nome,cargo,DATE_FORMAT(dataemissao, '%d/%m/%Y') AS data_formatada,status"
+                + "FROM funcionarios ORDER BY id_funcionario;");
+            
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        //this.tb_funcionario("SELECT id_funcionario,nome,cargo,DATE_FORMAT(dataemissao, '%d/%m/%Y') AS data_formatada,status"
+               // + "FROM funcionarios ORDER BY id_funcionario;");
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

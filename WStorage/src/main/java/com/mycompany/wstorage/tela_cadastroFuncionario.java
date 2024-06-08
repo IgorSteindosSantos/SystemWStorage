@@ -368,7 +368,7 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             conexao = DriverManager.getConnection(url,usuario,senha);
-            String sql = "INSERT INTO funcionarios (idenficacao,nome,cpf,cargo,senha,status,imagens,descricao) VALUES (?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO funcionarios (idenficacao,nome,cpf,cargo,senha,status,imagens,descricao,dataemissao) VALUES (?,?,?,?,?,?,?,?,NOW())";
             int num = Integer.parseInt(txt_identificacao.getText());
             String comboBox = (String) cbx_cargo.getSelectedItem();
             //colocando status na maquina com o checkbox
