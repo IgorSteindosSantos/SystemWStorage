@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 public class tela_cadastroEquipamentos extends javax.swing.JFrame {
 
     Connection conexao = null;
+    ResultSet resultado = null;
     PreparedStatement statement = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
@@ -35,14 +36,14 @@ public class tela_cadastroEquipamentos extends javax.swing.JFrame {
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
             
-            PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
-            banco.execute(); // criar o vetor
-            ResultSet resultado = banco.executeQuery(sql);
+            statement = conexao.prepareStatement(sql);
+            statement.execute(); // criar o vetor
+            resultado = statement.executeQuery(sql);
             cbx_localizacao.removeAllItems();
             while(resultado.next()){               
                 cbx_localizacao.addItem(resultado.getInt("id_local")+ " - " +resultado.getString("nome_local"));
             }
-            banco.close();
+            statement.close();
             conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(tela_cadastroMaquinas.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,11 +56,11 @@ public class tela_cadastroEquipamentos extends javax.swing.JFrame {
             int ultimoId = 0;
             conexao = DriverManager.getConnection(url,usuario,senha);
             String sql = "SELECT MAX(id_equipamento)+1 as ultimoID FROM equipamentos;";
-            PreparedStatement pst = conexao.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
+            statement = conexao.prepareStatement(sql);
+            resultado = statement.executeQuery();
+            if (resultado.next()) {
                 try {
-                    ultimoId = rs.getInt("ultimoID");
+                    ultimoId = resultado.getInt("ultimoID");
                 } catch (SQLException ex) {
                     Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -110,7 +111,7 @@ public class tela_cadastroEquipamentos extends javax.swing.JFrame {
         cbx_localizacao = new javax.swing.JComboBox<>();
         txt_imagem = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
