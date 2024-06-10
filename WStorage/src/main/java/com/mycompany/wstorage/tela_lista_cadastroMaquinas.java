@@ -220,21 +220,12 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_homeMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //Populando tb_maquinas 
-        /*this.tb_maquina("SELECT m.id_maquina, m.nome, m.modelo, l.nome_local, DATE_FORMAT(m.data_emissao, '%d/%m/%Y') AS data_formatada"
-                + " FROM maquinas m"
-                + " INNER JOIN localizacao l"
-                + " ON m.cod_localizacao = l.id_local"
-                + " ORDER BY id_maquina;");*/
+      
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         //Populando tb_maquinas quando voltar o foco
-        this.tb_maquina("SELECT m.id_maquina, m.nome, m.modelo, l.nome_local, DATE_FORMAT(m.data_emissao, '%d/%m/%Y') AS data_formatada"
-                + " FROM maquinas m"
-                + " INNER JOIN localizacao l"
-                + " ON m.cod_localizacao = l.id_local"
-                + " ORDER BY id_maquina;");
+        this.tb_maquina("SELECT * FROM vw_masquinas");
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void tb_maquinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_maquinasMouseClicked

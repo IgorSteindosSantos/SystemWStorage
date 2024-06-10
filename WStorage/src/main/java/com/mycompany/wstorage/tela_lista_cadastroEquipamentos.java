@@ -217,11 +217,7 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
-        this.tb_equipamentos("SELECT e.id_equipamento, e.nome, l.nome_local, DATE_FORMAT(e.data_emissao, '%d/%m/%Y') AS data_formatada"
-                + " FROM equipamentos e"
-                + " INNER JOIN localizacao l"
-                + " ON e.cod_localizacao = l.id_local"
-                + " ORDER BY id_equipamento;");
+        this.tb_equipamentos("SELECT * FROM vw_equipamentos;");
     }//GEN-LAST:event_formWindowGainedFocus
 
     /**
