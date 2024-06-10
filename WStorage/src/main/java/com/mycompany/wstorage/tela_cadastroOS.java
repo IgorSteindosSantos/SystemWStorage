@@ -64,7 +64,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         lbl_nomeEquipamento = new javax.swing.JLabel();
         txt_nomeEquipamento = new javax.swing.JTextField();
         lbl_nomeEquipamento1 = new javax.swing.JLabel();
-        txt_nomeEquipamento1 = new javax.swing.JTextField();
+        txt_quantidade = new javax.swing.JTextField();
         btn_adiconar = new javax.swing.JButton();
         btn_excluir = new javax.swing.JButton();
         btn_psgEquipamento = new javax.swing.JButton();
@@ -73,7 +73,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
-        setPreferredSize(new java.awt.Dimension(1340, 800));
         setResizable(false);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -246,11 +245,16 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         lbl_nomeEquipamento1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_nomeEquipamento1.setText("Quantidade");
 
-        txt_nomeEquipamento1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_nomeEquipamento1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_quantidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_quantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         btn_adiconar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_adiconar.setText("Adicionar");
+        btn_adiconar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adiconarActionPerformed(evt);
+            }
+        });
 
         btn_excluir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_excluir.setText("Excluir");
@@ -280,7 +284,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                     .addComponent(lbl_nomeEquipamento))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_nomeEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_nomeEquipamento1))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,9 +302,9 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btn_adiconar)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_codEquipamento)
-                            .addComponent(lbl_nomeEquipamento)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_nomeEquipamento, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_codEquipamento)))
                     .addComponent(lbl_nomeEquipamento1))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -308,7 +312,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_codEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_nomeEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nomeEquipamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_psgEquipamento))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -514,6 +518,56 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_psgEquipamentoActionPerformed
 
+    private void btn_adiconarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adiconarActionPerformed
+        String quantidadeStr = txt_quantidade.getText().trim();
+        if (quantidadeStr.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, insira uma quantidade.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int quantidade;
+        quantidade = Integer.parseInt(quantidadeStr);
+        try {
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Quantidade inválida! Por favor, insira um número.", "Erro", JOptionPane.ERROR_MESSAGE);
+            txt_quantidade.requestFocus();
+            txt_quantidade.setText("");
+            return;
+        }
+
+        if (quantidade <= 0) {
+            JOptionPane.showMessageDialog(null, "Quantidade deve ser maior que zero.", "Erro", JOptionPane.ERROR_MESSAGE);
+            txt_quantidade.requestFocus();
+            txt_quantidade.setText("");
+            return;
+        }
+        
+        /*conexao = DriverManager.getConnection(url, usuario, senha);
+        String sql = "INSERT INTO OrdemServico (cod_identificacao, cod_localizacao, cod_servico, cod_equipamento, qtd_equipamento, data_emissao) "
+                + "VALUES (?,?,?,?,?,NOW());";
+        int idFuncionario = Integer.parseInt(txt_identificador.getText());
+        int idEquipamento = Integer.parseInt(txt_codEquipamento.getText());
+        int qtd = Integer.parseInt(txt_quantidade.getText());
+        //passando combobox para o banco
+            String comboBox = (String) cbx_localizacao.getSelectedItem();
+            String [] partes = comboBox.split(" - ");
+            String id = partes[0].trim();
+            int id_local = Integer.parseInt(id);
+        //passando combobox para o banco
+            String comboBoxSerivo = (String) cbx_servico.getSelectedItem();
+            String [] partes1 = comboBoxSerivo.split(" - ");
+            String id1 = partes1[0].trim();
+            int id_servico = Integer.parseInt(id1);
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, idFuncionario);
+        statement.setInt(2, id_local);
+        statement.setInt(3, id_servico);
+        statement.setInt(4, idEquipamento);
+        statement.setInt(5, qtd);
+        statement.execute();
+        statement.close();*/
+        
+    }//GEN-LAST:event_btn_adiconarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -578,7 +632,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     private javax.swing.JTextField txt_identificador;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextField txt_nomeEquipamento;
-    private javax.swing.JTextField txt_nomeEquipamento1;
+    private javax.swing.JTextField txt_quantidade;
     private javax.swing.JTextArea txta_descricao;
     // End of variables declaration//GEN-END:variables
 }

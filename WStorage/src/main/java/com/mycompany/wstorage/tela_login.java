@@ -4,6 +4,13 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,9 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class tela_login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form tela_login
-     */
+    //Estabelecendo conexão com o banco
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senhas = "247022";
+    Connection conexao = null;
+    PreparedStatement statement = null;
+    ResultSet resultado = null;
+    
     public tela_login() {
         initComponents();
     }
@@ -41,6 +53,18 @@ public class tela_login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(32, 107, 165));
 
@@ -175,10 +199,32 @@ public class tela_login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_avancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_avancarActionPerformed
-        // TODO add your handling code here:
-        tela_login.this.dispose();
-        tela_menu btn_avancar = new tela_menu();
-        btn_avancar.setVisible(true);
+        String cpf = txt_usuario.getText();
+        String senha = txt_senha.getText();
+        if(!cpf.matches("\\d*") ) {
+             JOptionPane.showMessageDialog(null,"Por favor, insira apenas número.", "Entrada Inválida", JOptionPane.ERROR_MESSAGE);
+             txt_usuario.requestFocus();
+             txt_usuario.setText("");
+             return;
+        }
+        
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senhas);
+            String sql = "SELECT * FROM funcionarios WHERE cpf = ? AND senha = ?";
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, cpf);
+            statement.setString(2, senha);
+            resultado = statement.executeQuery();
+            if(resultado.next()){
+                tela_login.this.dispose();
+                tela_menu btn_avancar = new tela_menu();
+                btn_avancar.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null,"Usuário ou senha inválidos..", "Entrada Inválida", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_avancarActionPerformed
 
     private void lbl_esqueciSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_esqueciSenhaMouseClicked
@@ -212,6 +258,14 @@ public class tela_login extends javax.swing.JFrame {
             txt_usuario.setText("Digite seu CPF aqui...");
         }
     }//GEN-LAST:event_txt_usuarioFocusLost
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        lbl_logo.requestFocus();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
