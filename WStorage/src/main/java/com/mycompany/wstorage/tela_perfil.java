@@ -4,15 +4,24 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author Igor Stein
  */
 public class tela_perfil extends javax.swing.JFrame {
 
-    /**
-     * Creates new form tela_perfil
-     */
+    Connection conexao = null;
+    ResultSet resultado = null;
+    PreparedStatement statement = null;
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senha = "";
+    
     public tela_perfil() {
         initComponents();
     }
@@ -52,6 +61,13 @@ public class tela_perfil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -122,7 +138,6 @@ public class tela_perfil extends javax.swing.JFrame {
 
         lbl_foto.setBackground(new java.awt.Color(204, 204, 204));
         lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Downloads\\camera.png")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         btn_salvaFt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -255,6 +270,10 @@ public class tela_perfil extends javax.swing.JFrame {
         /*Fechando tela_perfil e voltando para tel_menu*/
         tela_perfil.this.dispose();
     }//GEN-LAST:event_btn_voltarActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+       
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
