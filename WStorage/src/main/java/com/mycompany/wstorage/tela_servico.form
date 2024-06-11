@@ -131,11 +131,6 @@
         <Component class="javax.swing.JSeparator" name="s_servicos2">
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_home">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\Users\isantos\Documents\GitHub\SystemWStorage\WStorage\src\main\java\imagem\icon_home.png"/>
-            </Property>
-          </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_homeMouseClicked"/>
           </Events>
@@ -309,11 +304,6 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="lbl_pesquisar">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\Users\isantos\Documents\GitHub\SystemWStorage\WStorage\src\main\java\imagem\icon_pesquisar.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -26,7 +26,7 @@ public class tela_cadastroEquipamentos extends javax.swing.JFrame {
     PreparedStatement statement = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
+    String senha = "247022";
     
     public tela_cadastroEquipamentos() {
         initComponents();

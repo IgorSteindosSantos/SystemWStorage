@@ -49,7 +49,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             
             PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
             banco.execute(); // criar o vetor
-            ResultSet resultado = banco.executeQuery(sql);
+            resultado = banco.executeQuery(sql);
             cbx_localizacao.removeAllItems();
             while(resultado.next()){               
                 cbx_localizacao.addItem(resultado.getInt("id_local")+ " - " +resultado.getString("nome_local"));

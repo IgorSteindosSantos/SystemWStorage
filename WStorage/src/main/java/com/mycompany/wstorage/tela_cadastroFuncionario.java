@@ -26,7 +26,7 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
     ResultSet resultado = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
+    String senha = "247022";
     /**
      * Creates new form tela_cadastroFuncionario
      */
@@ -38,7 +38,6 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         txt_nome.setText("");
         txt_cpf.setText("");
         txta_descricao.setText("");
-        txt_identificacao.setText("");
         txt_senha.setText("");
     }
     
@@ -60,8 +59,6 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         lbl_foto = new javax.swing.JLabel();
         lbl_cpf = new javax.swing.JLabel();
         txt_cpf = new javax.swing.JTextField();
-        lbl_identificacao = new javax.swing.JLabel();
-        txt_identificacao = new javax.swing.JTextField();
         lbl_cargo = new javax.swing.JLabel();
         cbx_cargo = new javax.swing.JComboBox<>();
         lbl_senha = new javax.swing.JLabel();
@@ -108,12 +105,6 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
 
         txt_cpf.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txt_cpf.setPreferredSize(new java.awt.Dimension(64, 30));
-
-        lbl_identificacao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_identificacao.setText("Identificação");
-
-        txt_identificacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txt_identificacao.setPreferredSize(new java.awt.Dimension(64, 30));
 
         lbl_cargo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_cargo.setText("Cargo");
@@ -172,7 +163,6 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         jCheckBox_status.setText("Status Ativo");
 
         lbl_imagem_funcionario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_imagem_funcionario.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Downloads\\camera.png")); // NOI18N
         lbl_imagem_funcionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btn_salvar_imagem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -228,8 +218,6 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
                                                     .addComponent(lbl_cpf))
                                                 .addGap(37, 37, 37)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txt_identificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lbl_identificacao)
                                                     .addComponent(lbl_senha)
                                                     .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -288,13 +276,9 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
                             .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBox_status))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_cpf)
-                            .addComponent(lbl_identificacao))
+                        .addComponent(lbl_cpf)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_identificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_cargo)
@@ -368,8 +352,7 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             conexao = DriverManager.getConnection(url,usuario,senha);
-            String sql = "INSERT INTO funcionarios (idenficacao,nome,cpf,cargo,senha,status,imagens,descricao,dataemissao) VALUES (?,?,?,?,?,?,?,?,NOW())";
-            int num = Integer.parseInt(txt_identificacao.getText());
+            String sql = "INSERT INTO funcionarios (nome,cpf,cargo,senha,status,imagens,descricao,dataemissao) VALUES (?,?,?,?,?,?,?,NOW())";
             String comboBox = (String) cbx_cargo.getSelectedItem();
             //colocando status na maquina com o checkbox
             String checkbox = "";
@@ -379,14 +362,13 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
                 checkbox+="Desativado";
             }
             statement = conexao.prepareStatement(sql);
-            statement.setInt(1, num);
-            statement.setString(2, txt_nome.getText());
-            statement.setString(3, txt_cpf.getText());
-            statement.setString(4, comboBox);
-            statement.setString(5, txt_senha.getText());
-            statement.setString(6, checkbox);
-            statement.setString(7, txt_imagem.getText());
-            statement.setString(8, txta_descricao.getText());
+            statement.setString(1, txt_nome.getText());
+            statement.setString(2, txt_cpf.getText());
+            statement.setString(3, comboBox);
+            statement.setString(4, txt_senha.getText());
+            statement.setString(5, checkbox);
+            statement.setString(6, txt_imagem.getText());
+            statement.setString(7, txta_descricao.getText());
             statement.execute();
             statement.close();
             limparCampos();
@@ -463,12 +445,10 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_descricao;
     private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lbl_funcionario;
-    private javax.swing.JLabel lbl_identificacao;
     private javax.swing.JLabel lbl_imagem_funcionario;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_senha;
     private javax.swing.JTextField txt_cpf;
-    private javax.swing.JTextField txt_identificacao;
     private javax.swing.JTextField txt_imagem;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextField txt_senha;
