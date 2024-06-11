@@ -4,15 +4,29 @@
  */
 package com.mycompany.wstorage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Podol
  */
 public class tela_lista_cadastroOS extends javax.swing.JFrame {
 
-    /**
-     * Creates new form tela_lista_cadastroOS
-     */
+    //Estabelecendo conexão com o banco
+    String url = "jdbc:mysql://localhost/wstorage_db";
+    String usuario = "root";
+    String senha = "247022";
+    Connection conexao = null;
+    PreparedStatement statement = null;
+    ResultSet resultado = null;
+    
     public tela_lista_cadastroOS() {
         initComponents();
     }
@@ -34,13 +48,20 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_os = new javax.swing.JTable();
         lbl_home = new javax.swing.JLabel();
         lbl_pesquisar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -73,8 +94,8 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         txt_pesquisar.setText("Pesquisar por...");
         txt_pesquisar.setPreferredSize(new java.awt.Dimension(102, 30));
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_os.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tb_os.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -82,18 +103,15 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
                 "Código", "Funcionário", "Serviço", "Data de Emissão", "Localização", "Status"
             }
         ));
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        tb_os.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(tb_os);
+        tb_os.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        lbl_home.setIcon(new javax.swing.ImageIcon("D:\\Users\\isantos\\Documents\\GitHub\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
             }
         });
-
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("D:\\Users\\isantos\\Documents\\GitHub\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,26 +120,31 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 1450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 1450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(59, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbl_os)
-                                .addGap(12, 12, 12)
-                                .addComponent(btn_novo)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_devolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1434, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lbl_pesquisar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lbl_home)
-                                .addGap(17, 17, 17)))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                                .addContainerGap(1160, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lbl_os)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(btn_novo)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_devolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +189,34 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void  tb_os (String sql){
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);            
+            statement = (PreparedStatement)conexao.prepareStatement(sql);
+            statement.execute(); // criar o vetor
+            resultado = statement.executeQuery(sql);
+            DefaultTableModel model = (DefaultTableModel) tb_os.getModel();
+            model.setNumRows(0);
 
+                while (resultado.next()){
+                    model.addRow(new Object[] {
+                    //retorna os dados da tabela do BD, cada campo e um coluna.
+                    resultado.getString("id_os"),
+                    resultado.getString("nome"),
+                    resultado.getString("nome_servico"),
+                    resultado.getString("data_emissao"),
+                    resultado.getString("nome_local"),
+                    resultado.getString("status")
+                    });
+                }
+                resultado.close();
+                conexao.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
     private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
         // TODO add your handling code here:
         //tela_lista_cadastroOS.this.dispose();
@@ -187,6 +237,11 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         tela_menu lbl_home = new tela_menu();
         lbl_home.setVisible(true);
     }//GEN-LAST:event_lbl_homeMouseClicked
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+        this.tb_os("SELECT * FROM vw_tbOS;");
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -230,10 +285,10 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_os;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JTable tb_os;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables
 }

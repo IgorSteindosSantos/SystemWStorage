@@ -4,6 +4,8 @@
  */
 package com.mycompany.wstorage;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class tela_cadastroOS extends javax.swing.JFrame {
 
-    //Estabelecendo conexão com o banco
+    // Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
     String senha = "247022";
@@ -32,35 +34,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void  tb_equipamentos (){
-        try {
-        conexao = DriverManager.getConnection(url, usuario, senha);
-        String sql = "SELECT * FROM OSequipamentos WHERE ordem_servico_id = ?;";
-        
-        statement = conexao.prepareStatement(sql);
-        int idos = Integer.parseInt(txt_id.getText()); 
-        statement.setInt(1, idos);
-        resultado = statement.executeQuery();
-        
-        // Limpar tabela
-        DefaultTableModel model = (DefaultTableModel) tb_equipamentos.getModel();
-        model.setRowCount(0);
-        
-        // Adicionar resultados na tabela
-        while (resultado.next()) {
-            int codEquipamento = resultado.getInt("id_equipamento");
-            String nome = resultado.getString("nome");
-            String local = resultado.getString("nome_local");
-            int quantidade = resultado.getInt("quantidade");
-            model.addRow(new Object[]{codEquipamento, nome, local, quantidade});
-        }
-        
-        resultado.close();
-        statement.close();
-    } catch (SQLException ex) {
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -81,6 +55,9 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         lbl_identificador = new javax.swing.JLabel();
         txt_identificador = new javax.swing.JTextField();
         btn_pesquisar = new javax.swing.JButton();
+        btn_avancar = new javax.swing.JButton();
+        btn_excluirOS = new javax.swing.JButton();
+        btn_editar = new javax.swing.JButton();
         pn_equipamento = new javax.swing.JPanel();
         lbl_codEquipamento = new javax.swing.JLabel();
         txt_codEquipamento = new javax.swing.JTextField();
@@ -89,13 +66,13 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         lbl_nomeEquipamento1 = new javax.swing.JLabel();
         txt_quantidade = new javax.swing.JTextField();
         btn_adiconar = new javax.swing.JButton();
-        btn_excluir = new javax.swing.JButton();
+        btn_excluirEqp = new javax.swing.JButton();
         btn_psgEquipamento = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btn_avancar = new javax.swing.JButton();
+        lbl_permissaoEquipamentos = new javax.swing.JLabel();
         btn_voltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_equipamentos = new javax.swing.JTable();
+        btn_emitr = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
@@ -169,6 +146,32 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             }
         });
 
+        btn_avancar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_avancar.setText("Salvar");
+        btn_avancar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_avancarActionPerformed(evt);
+            }
+        });
+
+        btn_excluirOS.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_excluirOS.setText("Excluir");
+        btn_excluirOS.setEnabled(false);
+        btn_excluirOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluirOSActionPerformed(evt);
+            }
+        });
+
+        btn_editar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_editar.setText("Editar");
+        btn_editar.setEnabled(false);
+        btn_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_dadosLayout = new javax.swing.GroupLayout(pn_dados);
         pn_dados.setLayout(pn_dadosLayout);
         pn_dadosLayout.setHorizontalGroup(
@@ -203,6 +206,14 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_pesquisar)))))
                 .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(pn_dadosLayout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(btn_avancar)
+                .addGap(29, 29, 29)
+                .addComponent(btn_excluirOS)
+                .addGap(39, 39, 39)
+                .addComponent(btn_editar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn_dadosLayout.setVerticalGroup(
             pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,9 +241,14 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                     .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_descricao)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(33, 33, 33)
+                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_avancar)
+                    .addComponent(btn_excluirOS)
+                    .addComponent(btn_editar))
+                .addGap(21, 21, 21))
         );
 
         pn_equipamento.setBackground(new java.awt.Color(255, 255, 255));
@@ -266,9 +282,14 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             }
         });
 
-        btn_excluir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_excluir.setText("Excluir");
-        btn_excluir.setEnabled(false);
+        btn_excluirEqp.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_excluirEqp.setText("Excluir");
+        btn_excluirEqp.setEnabled(false);
+        btn_excluirEqp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluirEqpActionPerformed(evt);
+            }
+        });
 
         btn_psgEquipamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_psgEquipamento.setText("Pesquisar");
@@ -279,9 +300,9 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 255, 102));
-        jLabel1.setText("Adicione os equipamentos");
+        lbl_permissaoEquipamentos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lbl_permissaoEquipamentos.setForeground(new java.awt.Color(102, 255, 102));
+        lbl_permissaoEquipamentos.setText("Adicione os equipamentos");
 
         javax.swing.GroupLayout pn_equipamentoLayout = new javax.swing.GroupLayout(pn_equipamento);
         pn_equipamento.setLayout(pn_equipamentoLayout);
@@ -298,12 +319,12 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                         .addComponent(btn_psgEquipamento))
                     .addGroup(pn_equipamentoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)))
+                        .addComponent(lbl_permissaoEquipamentos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_equipamentoLayout.createSequentialGroup()
                         .addGap(342, 342, 342)
-                        .addComponent(btn_excluir))
+                        .addComponent(btn_excluirEqp))
                     .addGroup(pn_equipamentoLayout.createSequentialGroup()
                         .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_nomeEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,22 +357,12 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                             .addComponent(txt_quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_psgEquipamento))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
+                        .addComponent(lbl_permissaoEquipamentos))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_equipamentoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_excluir)
+                        .addComponent(btn_excluirEqp)
                         .addGap(15, 15, 15))))
         );
-
-        btn_avancar.setBackground(new java.awt.Color(32, 107, 165));
-        btn_avancar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btn_avancar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_avancar.setText("Emitir O.S");
-        btn_avancar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_avancarActionPerformed(evt);
-            }
-        });
 
         btn_voltar.setBackground(new java.awt.Color(32, 107, 165));
         btn_voltar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -370,10 +381,25 @@ public class tela_cadastroOS extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Localização", "Quantidade"
+                "Código", "Nome", "Quantidade"
             }
         ));
+        tb_equipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_equipamentosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_equipamentos);
+
+        btn_emitr.setBackground(new java.awt.Color(32, 107, 165));
+        btn_emitr.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btn_emitr.setForeground(new java.awt.Color(255, 255, 255));
+        btn_emitr.setText("Emitir O.S");
+        btn_emitr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_emitrActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -387,12 +413,12 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                     .addComponent(pn_equipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(btn_avancar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_emitr, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(176, 176, 176)
                 .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(398, 398, 398))
+                .addGap(454, 454, 454))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,11 +430,11 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))
                     .addComponent(pn_dados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_avancar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_emitr, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(89, 89, 89))
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -425,10 +451,69 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void  tb_equipamentos (){
+        try {
+        conexao = DriverManager.getConnection(url, usuario, senha);
+        String sql = "SELECT e.id_equipamento, e.nome, s.quantidade"
+                + " FROM OSequipamentos s"
+                + " JOIN equipamentos e on s.cod_equipamento = e.id_equipamento"
+                + " WHERE ordem_servico_id = ?;";
+        
+        statement = conexao.prepareStatement(sql);
+        int idos = Integer.parseInt(txt_id.getText()); 
+        statement.setInt(1, idos);
+        resultado = statement.executeQuery();
+        
+        // Limpar tabela
+        DefaultTableModel model = (DefaultTableModel) tb_equipamentos.getModel();
+        model.setRowCount(0);
+        
+        // Adicionar resultados na tabela
+        while (resultado.next()) {
+            int codEquipamento = resultado.getInt("id_equipamento");
+            String nome = resultado.getString("nome");
+            //String local = resultado.getString("nome_local");
+            int quantidade = resultado.getInt("quantidade");
+            model.addRow(new Object[]{codEquipamento, nome, quantidade});
+        } 
+        resultado.close();
+        //        statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void limparCamposETabela() {
+        // Limpar campos de texto
+        txt_identificador.setText("");
+        txt_id.setText("");
+        txt_nome.setText("");
+        txt_codEquipamento.setText("");
+        txt_nomeEquipamento.setText("");
+        txt_quantidade.setText("");
+        txta_descricao.setText("");
+
+        // Limpar tabela
+        DefaultTableModel model = (DefaultTableModel) tb_equipamentos.getModel();
+        model.setRowCount(0);
+
+        // Desabilitar campos e botões
+        txt_quantidade.setEnabled(false);
+        txt_codEquipamento.setEnabled(false);
+        btn_psgEquipamento.setEnabled(false);
+        btn_adiconar.setEnabled(false);
+        btn_excluirEqp.setEnabled(false);
+        lbl_permissaoEquipamentos.setVisible(false);
+
+        // Resetar comboboxes
+        cbx_localizacao.setSelectedIndex(0);
+        cbx_servico.setSelectedIndex(0);
+}
+    
     public void CamboBoxLocalizacao (String sql) {
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
-            
             statement = conexao.prepareStatement(sql);
             statement.execute(); // criar o vetor
             resultado = statement.executeQuery(sql);
@@ -446,7 +531,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     public void CamboBoxServico (String sql) {
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
-            
             statement = conexao.prepareStatement(sql);
             statement.execute(); // criar o vetor
             resultado = statement.executeQuery(sql);
@@ -462,51 +546,66 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     }
     
     private void btn_avancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_avancarActionPerformed
+        // Verificar se o campo de identificação do funcionário está vazio
+        if (txt_identificador.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um funcionário.");
+            return; // Encerrar o método se o campo estiver vazio
+        }
+
+        // Verificar se uma localização foi selecionada
+        if (cbx_localizacao.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma localização.");
+            return; // Encerrar o método se nenhuma localização foi selecionada
+        }
+
         try {
-            conexao = DriverManager.getConnection(url,usuario,senha);
-            String sql = "INSERT INTO OrdemServico (cod_identificacao, cod_localizacao, cod_servico, descricao, data_emissao) VALUES (?,?,?,?,NOW());";
+            conexao = DriverManager.getConnection(url, usuario, senha);
+
+            String sql = "INSERT INTO OrdemServico (cod_identificacao, cod_localizacao, cod_servico, descricao, data_emissao,status) VALUES (?,?,?,?,NOW(),'Aberto');";
             int idFuncionario = Integer.parseInt(txt_identificador.getText());
+
             //passando combobox para o banco
             String comboBox = (String) cbx_localizacao.getSelectedItem();
             String [] partes = comboBox.split(" - ");
             String id = partes[0].trim();
             int id_local = Integer.parseInt(id);
+
             //passando combobox para o banco
             String comboBox2 = (String) cbx_servico.getSelectedItem();
             String [] partes2 = comboBox2.split(" - ");
             String id2 = partes2[0].trim();
             int id_servico = Integer.parseInt(id2);
+
             statement = conexao.prepareStatement(sql, statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, idFuncionario);
             statement.setInt(2, id_local);
             statement.setInt(3, id_servico);
             statement.setString(4, txta_descricao.getText());
             statement.execute();
-            
-            
+
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
-            int ordemServicoId = generatedKeys.getInt(1);
-            // Guardar o ID gerado para a próxima atualização
-            txt_id.setText(String.valueOf(ordemServicoId));
-        }
+                int ordemServicoId = generatedKeys.getInt(1);
+                // Guardar o ID gerado para a próxima atualização
+                txt_id.setText(String.valueOf(ordemServicoId));
+            }
             statement.close();
+
+            //Habilitar campos apos inserir dados
             txt_quantidade.setEnabled(true);
             txt_codEquipamento.setEnabled(true);
             btn_psgEquipamento.setEnabled(true);
             btn_adiconar.setEnabled(true);
-            btn_excluir.setEnabled(true);
-            jLabel1.setVisible(true);
+            btn_excluirEqp.setEnabled(true);
+            btn_excluirOS.setEnabled(true);
+            lbl_permissaoEquipamentos.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_avancarActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        // TODO add your handling code here:
         tela_cadastroOS.this.dispose();
-        /*tela_lista_cadastroOS btn_voltar = new tela_lista_cadastroOS();
-        btn_voltar.setVisible(true);*/
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
@@ -551,9 +650,14 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // Popular o combBox localizacao
         this.CamboBoxLocalizacao("SELECT * FROM localizacao ORDER BY id_local;");
+        
+        // Popular o comboBox Servico
         this.CamboBoxServico("SELECT * FROM servicos ORDER BY id_servico;");
-        jLabel1.setVisible(false);
+        
+        // Deixar label que mostra permissao para adicionar equipamentos
+        lbl_permissaoEquipamentos.setVisible(false);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void btn_psgEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_psgEquipamentoActionPerformed
@@ -599,34 +703,214 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     private void btn_adiconarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adiconarActionPerformed
         try {
         conexao = DriverManager.getConnection(url, usuario, senha);
-        
-        // SQL para inserir um equipamento na ordem de serviço
-        String sqlInsert = "INSERT INTO OSequipamentos (ordem_servico_id, cod_equipamento, quantidade) VALUES (?, ?, ?)";
-        
+
         // Obtendo valores dos campos
         int ordemServicoId = Integer.parseInt(txt_id.getText());
         int codEquipamento = Integer.parseInt(txt_codEquipamento.getText());
         int quantidade = Integer.parseInt(txt_quantidade.getText());
-        
-        // Preparando e executando a inserção
-        statement = conexao.prepareStatement(sqlInsert);
+
+        // SQL para verificar se o equipamento já existe na ordem de serviço
+        String sqlCheck = "SELECT quantidade FROM OSequipamentos WHERE ordem_servico_id = ? AND cod_equipamento = ?";
+        statement = conexao.prepareStatement(sqlCheck);
         statement.setInt(1, ordemServicoId);
         statement.setInt(2, codEquipamento);
-        statement.setInt(3, quantidade);
-        statement.executeUpdate();
-        
+        resultado = statement.executeQuery();
+
+        if (resultado.next()) {
+            // Equipamento já existe, atualizar a quantidade
+            int quantidadeExistente = resultado.getInt("quantidade");
+            int novaQuantidade = quantidadeExistente + quantidade;
+
+            String sqlUpdate = "UPDATE OSequipamentos SET quantidade = ? WHERE ordem_servico_id = ? AND cod_equipamento = ?";
+            statement = conexao.prepareStatement(sqlUpdate);
+            statement.setInt(1, novaQuantidade);
+            statement.setInt(2, ordemServicoId);
+            statement.setInt(3, codEquipamento);
+            statement.executeUpdate();
+        } else {
+            // Equipamento não existe, inserir um novo registro
+            String sqlInsert = "INSERT INTO OSequipamentos (ordem_servico_id, cod_equipamento, quantidade) VALUES (?, ?, ?)";
+            statement = conexao.prepareStatement(sqlInsert);
+            statement.setInt(1, ordemServicoId);
+            statement.setInt(2, codEquipamento);
+            statement.setInt(3, quantidade);
+            statement.executeUpdate();
+        }
+
+        resultado.close();
         statement.close();
-        tb_equipamentos();
-        // Exibindo mensagem de sucesso ou atualizando a interface conforme necessário
-        JOptionPane.showMessageDialog(this, "Equipamento adicionado com sucesso!");
+        
+        tb_equipamentos(); // Popular tabela com os equipamentos
+
+        // Limpar campo apos adicionar um equipamento
+        txt_codEquipamento.setText("");
+        txt_nomeEquipamento.setText("");
+        txt_quantidade.setText("");
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos.");
+        }
+             
+    }//GEN-LAST:event_btn_adiconarActionPerformed
+
+    private void btn_emitrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emitrActionPerformed
+        try {
+        conexao = DriverManager.getConnection(url, usuario, senha);
+
+        // Obter o ID da OS
+        int ordemServicoId = Integer.parseInt(txt_id.getText());
+
+        // Recuperar os dados da OS do banco de dados
+        String sqlOS = "SELECT * FROM OrdemServico WHERE id_os = ?";
+        statement = conexao.prepareStatement(sqlOS);
+        statement.setInt(1, ordemServicoId);
+        resultado = statement.executeQuery();
+
+        StringBuilder sb = new StringBuilder();
+
+        if (resultado.next()) {
+            sb.append("Ordem de Serviço ID: ").append(resultado.getInt("id_os")).append("\n");
+            sb.append("ID Funcionário: ").append(resultado.getInt("cod_identificacao")).append("\n");
+            sb.append("Localização ID: ").append(resultado.getInt("cod_localizacao")).append("\n");
+            sb.append("Serviço ID: ").append(resultado.getInt("cod_servico")).append("\n");
+            sb.append("Descrição: ").append(resultado.getString("descricao")).append("\n");
+            sb.append("Data de Emissão: ").append(resultado.getTimestamp("data_emissao")).append("\n");
+        }
+
+        statement.close();
+
+        // Recuperar os dados dos equipamentos relacionados à OS do banco de dados
+        String sqlEquip = "SELECT * FROM OSequipamentos WHERE ordem_servico_id = ?";
+        statement = conexao.prepareStatement(sqlEquip);
+        statement.setInt(1, ordemServicoId);
+        resultado = statement.executeQuery();
+
+        sb.append("\nEquipamentos:\n");
+        while (resultado.next()) {
+            sb.append("Código Equipamento: ").append(resultado.getInt("cod_equipamento")).append("\n");
+            sb.append("Quantidade: ").append(resultado.getInt("quantidade")).append("\n");
+        }
+
+        statement.close();
+
+        // Especificar o caminho e nome do arquivo
+        String filePath = "C:\\Users\\Igor Stein\\Desktop\\OrdemdeServicos\\OS_" + ordemServicoId + ".txt";
+
+        // Escrever o conteúdo no arquivo
+        FileWriter fileWriter = new FileWriter(filePath);
+        fileWriter.write(sb.toString());
+        fileWriter.close();
+
+        JOptionPane.showMessageDialog(this, "Ordem de Serviço salva com sucesso! Arquivo salvo em: " + filePath);
+        limparCamposETabela();// Limpar campos e tabela apos JOption
         
     } catch (SQLException ex) {
+        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(this, "Erro ao salvar o arquivo. Por favor, tente novamente.");
         Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos.");
     }
+    }//GEN-LAST:event_btn_emitrActionPerformed
+
+    private void tb_equipamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_equipamentosMouseClicked
+      
+    }//GEN-LAST:event_tb_equipamentosMouseClicked
+
+    private void btn_excluirEqpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirEqpActionPerformed
+        // TODO add your handling code here:
+        try {
+        conexao = DriverManager.getConnection(url, usuario, senha);
+
+        // Obtendo valores dos campos
+        int ordemServicoId = Integer.parseInt(txt_id.getText());
+        int codEquipamento = Integer.parseInt(txt_codEquipamento.getText());
+        int quantidadeRemover = Integer.parseInt(txt_quantidade.getText());
+
+        // SQL para verificar a quantidade atual do equipamento na ordem de serviço
+        String sqlSelect = "SELECT quantidade FROM OSequipamentos WHERE ordem_servico_id = ? AND cod_equipamento = ?";
+        statement = conexao.prepareStatement(sqlSelect);
+        statement.setInt(1, ordemServicoId);
+        statement.setInt(2, codEquipamento);
+        ResultSet rs = statement.executeQuery();
+
+        if (rs.next()) {
+            int quantidadeAtual = rs.getInt("quantidade");
+
+            if (quantidadeRemover < quantidadeAtual) {
+                // Atualizar a quantidade existente
+                int novaQuantidade = quantidadeAtual - quantidadeRemover;
+                String sqlUpdate = "UPDATE OSequipamentos SET quantidade = ? WHERE ordem_servico_id = ? AND cod_equipamento = ?";
+                statement = conexao.prepareStatement(sqlUpdate);
+                statement.setInt(1, novaQuantidade);
+                statement.setInt(2, ordemServicoId);
+                statement.setInt(3, codEquipamento);
+                statement.executeUpdate();
+            } else {
+                // Excluir o item se a quantidade a remover for maior ou igual à quantidade atual
+                String sqlDelete = "DELETE FROM OSequipamentos WHERE ordem_servico_id = ? AND cod_equipamento = ?";
+                statement = conexao.prepareStatement(sqlDelete);
+                statement.setInt(1, ordemServicoId);
+                statement.setInt(2, codEquipamento);
+                statement.executeUpdate();
+            }
+        }
+
+        rs.close();
+        statement.close();
         
-    }//GEN-LAST:event_btn_adiconarActionPerformed
+        tb_equipamentos(); // Atualizar a tabela com os equipamentos
+        
+        // Limpar campos após a exclusão
+        txt_codEquipamento.setText("");
+        txt_nomeEquipamento.setText("");
+        txt_quantidade.setText("");
+    } catch (SQLException ex) {
+        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Por favor, insira um valor válido.");
+    }
+    }//GEN-LAST:event_btn_excluirEqpActionPerformed
+
+    private void btn_excluirOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirOSActionPerformed
+        // TODO add your handling code here:
+        try {
+        conexao = DriverManager.getConnection(url, usuario, senha);
+        int ordemServicoId = Integer.parseInt(txt_id.getText());
+
+        // Excluir os equipamentos relacionados à OS
+        String sqlDeleteEquipamentos = "DELETE FROM OSequipamentos WHERE ordem_servico_id = ?";
+        statement = conexao.prepareStatement(sqlDeleteEquipamentos);
+        statement.setInt(1, ordemServicoId);
+        statement.executeUpdate();
+        statement.close();
+
+        // Excluir a OS
+        String sqlDeleteOS = "DELETE FROM OrdemServico WHERE id_os = ?";
+        statement = conexao.prepareStatement(sqlDeleteOS);
+        statement.setInt(1, ordemServicoId);
+        int rowsDeleted = statement.executeUpdate();
+
+        if (rowsDeleted > 0) {
+            JOptionPane.showMessageDialog(this, "Ordem de Serviço exluida com sucesso!");
+            limparCamposETabela(); // Limpar campos e tabela após excluir
+            tela_cadastroOS.this.dispose(); //Fechar tela de OS
+        } else {
+            JOptionPane.showMessageDialog(this, "Não foi possível encontrar a Ordem de Serviço para excluir.");
+        }
+
+        statement.close();
+        conexao.close(); 
+    } catch (SQLException ex) {
+        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_btn_excluirOSActionPerformed
+
+    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_editarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -666,13 +950,15 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adiconar;
     private javax.swing.JButton btn_avancar;
-    private javax.swing.JButton btn_excluir;
+    private javax.swing.JButton btn_editar;
+    private javax.swing.JButton btn_emitr;
+    private javax.swing.JButton btn_excluirEqp;
+    private javax.swing.JButton btn_excluirOS;
     private javax.swing.JButton btn_pesquisar;
     private javax.swing.JButton btn_psgEquipamento;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JComboBox<String> cbx_localizacao;
     private javax.swing.JComboBox<String> cbx_servico;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -684,6 +970,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_nomeEquipamento;
     private javax.swing.JLabel lbl_nomeEquipamento1;
+    private javax.swing.JLabel lbl_permissaoEquipamentos;
     private javax.swing.JLabel lbl_servico;
     private javax.swing.JPanel pn_dados;
     private javax.swing.JPanel pn_equipamento;
