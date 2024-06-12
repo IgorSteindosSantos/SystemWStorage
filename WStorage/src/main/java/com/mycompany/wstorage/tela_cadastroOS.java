@@ -25,7 +25,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     // Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
@@ -55,9 +55,10 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         lbl_identificador = new javax.swing.JLabel();
         txt_identificador = new javax.swing.JTextField();
         btn_pesquisar = new javax.swing.JButton();
-        btn_avancar = new javax.swing.JButton();
+        btn_salvar = new javax.swing.JButton();
         btn_excluirOS = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
+        chb_status = new javax.swing.JCheckBox();
         pn_equipamento = new javax.swing.JPanel();
         lbl_codEquipamento = new javax.swing.JLabel();
         txt_codEquipamento = new javax.swing.JTextField();
@@ -146,11 +147,11 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             }
         });
 
-        btn_avancar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_avancar.setText("Salvar");
-        btn_avancar.addActionListener(new java.awt.event.ActionListener() {
+        btn_salvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_salvar.setText("Salvar");
+        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_avancarActionPerformed(evt);
+                btn_salvarActionPerformed(evt);
             }
         });
 
@@ -172,48 +173,59 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             }
         });
 
+        chb_status.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chb_status.setText("Fechar Ordem de Serviço");
+
         javax.swing.GroupLayout pn_dadosLayout = new javax.swing.GroupLayout(pn_dados);
         pn_dados.setLayout(pn_dadosLayout);
         pn_dadosLayout.setHorizontalGroup(
             pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_dadosLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_nome)
-                    .addComponent(lbl_descricao)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_dadosLayout.createSequentialGroup()
-                            .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbl_localizacao))
-                            .addGap(18, 18, 18)
-                            .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbl_servico)
-                                .addComponent(cbx_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(pn_dadosLayout.createSequentialGroup()
-                        .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_id)
-                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_dadosLayout.createSequentialGroup()
-                                .addComponent(lbl_identificador)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(pn_dadosLayout.createSequentialGroup()
-                                .addComponent(txt_identificador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_pesquisar)))))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(pn_dadosLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(btn_avancar)
-                .addGap(29, 29, 29)
+                .addGap(94, 94, 94)
+                .addComponent(btn_salvar)
+                .addGap(40, 40, 40)
                 .addComponent(btn_excluirOS)
                 .addGap(39, 39, 39)
                 .addComponent(btn_editar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pn_dadosLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_dadosLayout.createSequentialGroup()
+                        .addComponent(chb_status)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pn_dadosLayout.createSequentialGroup()
+                        .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_nome)
+                            .addComponent(lbl_descricao)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pn_dadosLayout.createSequentialGroup()
+                                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_id)
+                                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pn_dadosLayout.createSequentialGroup()
+                                        .addComponent(lbl_identificador)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(pn_dadosLayout.createSequentialGroup()
+                                        .addComponent(txt_identificador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_pesquisar)))))
+                        .addContainerGap(31, Short.MAX_VALUE))
+                    .addGroup(pn_dadosLayout.createSequentialGroup()
+                        .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_localizacao)
+                            .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_dadosLayout.createSequentialGroup()
+                                .addComponent(lbl_servico)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(pn_dadosLayout.createSequentialGroup()
+                                .addComponent(cbx_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         pn_dadosLayout.setVerticalGroup(
             pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,25 +239,27 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_pesquisar))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(lbl_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_servico)
-                    .addComponent(lbl_localizacao, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbx_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_descricao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
                 .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_avancar)
+                    .addComponent(lbl_localizacao)
+                    .addComponent(lbl_servico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chb_status)
+                .addGap(56, 56, 56)
+                .addComponent(lbl_descricao)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_salvar)
                     .addComponent(btn_excluirOS)
                     .addComponent(btn_editar))
                 .addGap(21, 21, 21))
@@ -300,8 +314,8 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             }
         });
 
-        lbl_permissaoEquipamentos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lbl_permissaoEquipamentos.setForeground(new java.awt.Color(102, 255, 102));
+        lbl_permissaoEquipamentos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_permissaoEquipamentos.setForeground(new java.awt.Color(0, 153, 51));
         lbl_permissaoEquipamentos.setText("Adicione os equipamentos");
 
         javax.swing.GroupLayout pn_equipamentoLayout = new javax.swing.GroupLayout(pn_equipamento);
@@ -309,32 +323,32 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         pn_equipamentoLayout.setHorizontalGroup(
             pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_equipamentoLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_equipamentoLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addComponent(lbl_permissaoEquipamentos)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pn_equipamentoLayout.createSequentialGroup()
                         .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbl_codEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txt_codEquipamento))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_psgEquipamento))
-                    .addGroup(pn_equipamentoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_permissaoEquipamentos)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pn_equipamentoLayout.createSequentialGroup()
-                        .addGap(342, 342, 342)
-                        .addComponent(btn_excluirEqp))
-                    .addGroup(pn_equipamentoLayout.createSequentialGroup()
+                        .addComponent(btn_psgEquipamento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_nomeEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_nomeEquipamento))
-                        .addGap(18, 18, 18)
-                        .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_nomeEquipamento1))
-                        .addGap(22, 22, 22)
-                        .addComponent(btn_adiconar)))
+                            .addGroup(pn_equipamentoLayout.createSequentialGroup()
+                                .addGap(342, 342, 342)
+                                .addComponent(btn_excluirEqp))
+                            .addGroup(pn_equipamentoLayout.createSequentialGroup()
+                                .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_nomeEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_nomeEquipamento))
+                                .addGap(18, 18, 18)
+                                .addGroup(pn_equipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_nomeEquipamento1))
+                                .addGap(22, 22, 22)
+                                .addComponent(btn_adiconar)))))
                 .addContainerGap())
         );
         pn_equipamentoLayout.setVerticalGroup(
@@ -545,7 +559,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         }
     }
     
-    private void btn_avancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_avancarActionPerformed
+    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
         // Verificar se o campo de identificação do funcionário está vazio
         if (txt_identificador.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, selecione um funcionário.");
@@ -553,7 +567,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         }
 
         // Verificar se uma localização foi selecionada
-        if (cbx_localizacao.getSelectedIndex() == 0) {
+        if (cbx_localizacao.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma localização.");
             return; // Encerrar o método se nenhuma localização foi selecionada
         }
@@ -561,7 +575,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         try {
             conexao = DriverManager.getConnection(url, usuario, senha);
 
-            String sql = "INSERT INTO OrdemServico (cod_identificacao, cod_localizacao, cod_servico, descricao, data_emissao,status) VALUES (?,?,?,?,NOW(),'Aberto');";
+            String sql = "INSERT INTO OrdemServico (cod_identificacao, cod_localizacao, cod_servico, descricao, status,data_emissao) VALUES (?,?,?,?,?,NOW());";
             int idFuncionario = Integer.parseInt(txt_identificador.getText());
 
             //passando combobox para o banco
@@ -575,12 +589,21 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             String [] partes2 = comboBox2.split(" - ");
             String id2 = partes2[0].trim();
             int id_servico = Integer.parseInt(id2);
-
+            
+            //colocando status na maquina com o checkbox
+            String checkbox = "";
+            if(chb_status.isSelected()) {
+                checkbox+="Fechada";
+            } else {
+                checkbox+="Aberta";
+            }
+            
             statement = conexao.prepareStatement(sql, statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, idFuncionario);
             statement.setInt(2, id_local);
             statement.setInt(3, id_servico);
             statement.setString(4, txta_descricao.getText());
+            statement.setString(5, checkbox);
             statement.execute();
 
             ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -602,7 +625,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_avancarActionPerformed
+    }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
         tela_cadastroOS.this.dispose();
@@ -795,7 +818,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         statement.close();
 
         // Especificar o caminho e nome do arquivo
-        String filePath = "C:\\Users\\Igor Stein\\Desktop\\OrdemdeServicos\\OS_" + ordemServicoId + ".txt";
+        String filePath = "D:\\Users\\isantos\\Desktop\\AAA\\OS_" + ordemServicoId + ".txt";
 
         // Escrever o conteúdo no arquivo
         FileWriter fileWriter = new FileWriter(filePath);
@@ -949,16 +972,17 @@ public class tela_cadastroOS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adiconar;
-    private javax.swing.JButton btn_avancar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_emitr;
     private javax.swing.JButton btn_excluirEqp;
     private javax.swing.JButton btn_excluirOS;
     private javax.swing.JButton btn_pesquisar;
     private javax.swing.JButton btn_psgEquipamento;
+    private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JComboBox<String> cbx_localizacao;
     private javax.swing.JComboBox<String> cbx_servico;
+    private javax.swing.JCheckBox chb_status;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

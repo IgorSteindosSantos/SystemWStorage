@@ -23,7 +23,7 @@ public class tela_servico extends javax.swing.JFrame {
 
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     
 public void  tb_manutencoes (String sql){
     try {

@@ -26,7 +26,7 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
     ResultSet resultado = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     /**
      * Creates new form tela_cadastroFuncionario
      */

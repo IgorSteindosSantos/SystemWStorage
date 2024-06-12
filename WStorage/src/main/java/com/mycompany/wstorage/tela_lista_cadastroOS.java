@@ -22,10 +22,11 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
+    public static String id;
     
     public tela_lista_cadastroOS() {
         initComponents();
@@ -104,6 +105,11 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
             }
         ));
         tb_os.setColumnSelectionAllowed(true);
+        tb_os.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_osMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_os);
         tb_os.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
@@ -205,7 +211,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
                     resultado.getString("id_os"),
                     resultado.getString("nome"),
                     resultado.getString("nome_servico"),
-                    resultado.getString("data_emissao"),
+                    resultado.getString("data_formatada"),
                     resultado.getString("nome_local"),
                     resultado.getString("status")
                     });
@@ -242,6 +248,15 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.tb_os("SELECT * FROM vw_tbOS;");
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void tb_osMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_osMouseClicked
+        
+        int linha = tb_os.getSelectedRow();
+        id = tb_os.getValueAt(linha, 0).toString();
+        tela_cadastroOS objeto2 = new tela_cadastroOS();
+        objeto2.setVisible(true);
+        
+    }//GEN-LAST:event_tb_osMouseClicked
 
     /**
      * @param args the command line arguments
