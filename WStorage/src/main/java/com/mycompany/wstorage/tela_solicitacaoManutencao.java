@@ -383,7 +383,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                     statement.execute();
                     statement.close();
                     LimparCampos();
-                    JOptionPane.showMessageDialog(null, "Manutenção cadastrada com sucesso.", "Manutenção", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Manutenção cadastrada com sucesso.", "Manutenção", JOptionPane.INFORMATION_MESSAGE);
                 } catch (SQLException ex) {
                     Logger.getLogger(tela_solicitacaoManutencao.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -432,7 +432,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                     statement.execute();
                     statement.close();
                     LimparCampos();
-                    JOptionPane.showMessageDialog(null, "Manutenção cadastrada com sucesso.", "Manutenção", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Manutenção cadastrada com sucesso.", "Manutenção", JOptionPane.INFORMATION_MESSAGE);
                 } catch (SQLException ex) {
                     Logger.getLogger(tela_solicitacaoManutencao.class.getName()).log(Level.SEVERE, null, ex);
                 }
