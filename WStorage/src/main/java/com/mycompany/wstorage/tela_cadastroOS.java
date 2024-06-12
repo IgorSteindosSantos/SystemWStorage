@@ -54,7 +54,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         txta_descricao = new javax.swing.JTextArea();
         lbl_identificador = new javax.swing.JLabel();
         txt_identificador = new javax.swing.JTextField();
-        btn_pesquisar = new javax.swing.JButton();
+        btn_pesquisarFuncionario = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         btn_excluirOS = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
@@ -139,11 +139,11 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         txt_identificador.setMinimumSize(new java.awt.Dimension(64, 25));
         txt_identificador.setPreferredSize(new java.awt.Dimension(73, 30));
 
-        btn_pesquisar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_pesquisar.setText("Pesquisar");
-        btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btn_pesquisarFuncionario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_pesquisarFuncionario.setText("Pesquisar");
+        btn_pesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_pesquisarActionPerformed(evt);
+                btn_pesquisarFuncionarioActionPerformed(evt);
             }
         });
 
@@ -212,7 +212,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                                     .addGroup(pn_dadosLayout.createSequentialGroup()
                                         .addComponent(txt_identificador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btn_pesquisar)))))
+                                        .addComponent(btn_pesquisarFuncionario)))))
                         .addContainerGap(31, Short.MAX_VALUE))
                     .addGroup(pn_dadosLayout.createSequentialGroup()
                         .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,7 +238,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_pesquisar))
+                    .addComponent(btn_pesquisarFuncionario))
                 .addGap(18, 18, 18)
                 .addComponent(lbl_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -598,6 +598,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 checkbox+="Aberta";
             }
             
+            // RETURN_GENERATED_KEYS - Torna possível posteriormente obter o valor da chave gerada a partir do comando: preparedStatement.getGeneratedKeys();
             statement = conexao.prepareStatement(sql, statement.RETURN_GENERATED_KEYS);
             statement.setInt(1, idFuncionario);
             statement.setInt(2, id_local);
@@ -631,7 +632,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         tela_cadastroOS.this.dispose();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
-    private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
+    private void btn_pesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarFuncionarioActionPerformed
         String idFuncionario = txt_identificador.getText().trim();
 
         if (idFuncionario.isEmpty()) {
@@ -670,7 +671,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao buscar funcionário: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
         
-    }//GEN-LAST:event_btn_pesquisarActionPerformed
+    }//GEN-LAST:event_btn_pesquisarFuncionarioActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // Popular o combBox localizacao
@@ -976,7 +977,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     private javax.swing.JButton btn_emitr;
     private javax.swing.JButton btn_excluirEqp;
     private javax.swing.JButton btn_excluirOS;
-    private javax.swing.JButton btn_pesquisar;
+    private javax.swing.JButton btn_pesquisarFuncionario;
     private javax.swing.JButton btn_psgEquipamento;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_voltar;

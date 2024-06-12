@@ -17,6 +17,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -62,11 +65,9 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
                           <Component id="btn_salvar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                          <Component id="btn_excluir" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                           <Component id="btn_voltar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -75,47 +76,57 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="lbl_codigo" max="32767" attributes="0"/>
-                                      <Component id="txt_codigo" max="32767" attributes="0"/>
+                                      <Component id="txt_codigoManutencao" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="txt_codigoEqp" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="btn_salvarImagem" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                                                  <Component id="btn_exluirImagem" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="lbl_foto" min="-2" pref="259" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbl_codigoEqp" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="lbl_imagem" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                          <Component id="rb_maquina" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="rb_equipamento" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <Component id="lbl_nome" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_nome" min="-2" pref="348" max="-2" attributes="0"/>
-                              <Component id="lbl_funcionario" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_funcionario" min="-2" pref="348" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="lbl_tipoManutencao" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="lbl_localizacao" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="lbl_descricao" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cbx_manutencao" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cbx_localizacao" min="-2" pref="165" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="jScrollPane1" alignment="1" min="-2" pref="726" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txt_nomeProduto" alignment="0" min="-2" pref="348" max="-2" attributes="0"/>
+                                      <Component id="lbl_nome" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_codigoEqp" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="txt_codigoProduto" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btn_pesquisar" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lbl_tipoManutencao" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                          <Component id="lbl_localizacao" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="cbx_manutencao" min="-2" pref="165" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="cbx_localizacao" min="-2" pref="165" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btn_salvarImagem" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                          <Component id="btn_exluirImagem" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="lbl_foto" min="-2" pref="259" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -133,56 +144,55 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_codigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_codigoEqp" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_imagem" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_codigo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="txt_codigoEqp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="txt_codigoManutencao" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="rb_equipamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rb_maquina" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lbl_codigoEqp" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txt_codigoProduto" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="btn_pesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="lbl_nome" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txt_nome" min="-2" pref="35" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lbl_funcionario" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txt_funcionario" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="txt_nomeProduto" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lbl_foto" min="-2" pref="179" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_localizacao" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_tipoManutencao" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbx_manutencao" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="cbx_localizacao" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btn_salvarImagem" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="btn_exluirImagem" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="lbl_tipoManutencao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_localizacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cbx_manutencao" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="cbx_localizacao" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                   <Component id="lbl_descricao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="198" max="-2" attributes="0"/>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="158" max="-2" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn_salvar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="btn_excluir" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="btn_voltar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -201,7 +211,7 @@
             <Property name="text" type="java.lang.String" value="Solicita&#xe7;&#xe3;o de Manuten&#xe7;&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_codigo">
+        <Component class="javax.swing.JTextField" name="txt_codigoManutencao">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -214,7 +224,7 @@
             <Property name="text" type="java.lang.String" value="C&#xf3;digo Manuten&#xe7;&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_codigoEqp">
+        <Component class="javax.swing.JTextField" name="txt_codigoProduto">
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_codigoEqp">
           <Properties>
@@ -229,20 +239,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nome"/>
+            <Property name="text" type="java.lang.String" value="Nome Produto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_nome">
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_funcionario">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio Solicitante"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txt_funcionario">
+        <Component class="javax.swing.JTextField" name="txt_nomeProduto">
         </Component>
         <Component class="javax.swing.JComboBox" name="cbx_manutencao">
           <Properties>
@@ -350,20 +350,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_salvarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn_excluir">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="a5" green="6b" red="20" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Excluir"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="btn_voltar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -390,6 +376,33 @@
               </Border>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_pesquisar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Pesquisar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_pesquisarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_equipamento">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Equipamento"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_equipamentoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_maquina">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="M&#xe1;quina"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_maquinaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

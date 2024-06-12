@@ -94,7 +94,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         ftxt_dataAgendamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lbl_nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_nome.setText("Nome");
+        lbl_nome.setText("Nome Produto");
 
         txt_nome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txt_nome.setEnabled(false);
@@ -179,7 +179,6 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lbl_nome)
                                                 .addComponent(lbl_funcionario)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -195,7 +194,8 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                                                         .addGap(41, 41, 41)
                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addComponent(lbl_codigoProduto)
-                                                            .addComponent(txt_codigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                            .addComponent(txt_codigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(lbl_nome))
                                             .addGap(69, 69, 69)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()

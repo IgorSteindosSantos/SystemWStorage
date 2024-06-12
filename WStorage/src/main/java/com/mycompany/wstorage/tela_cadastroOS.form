@@ -151,7 +151,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="txt_identificador" max="32767" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btn_pesquisar" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btn_pesquisarFuncionario" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -191,7 +191,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txt_id" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="txt_identificador" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btn_pesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_pesquisarFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lbl_nome" min="-2" pref="17" max="-2" attributes="0"/>
@@ -369,7 +369,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_pesquisar">
+            <Component class="javax.swing.JButton" name="btn_pesquisarFuncionario">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="0"/>
@@ -377,7 +377,7 @@
                 <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_pesquisarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_pesquisarFuncionarioActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_salvar">

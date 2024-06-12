@@ -29,7 +29,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     ResultSet resultado = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
+    String senha = "247022";
     
     public void limparCampos() {
     txt_nome.setText("");

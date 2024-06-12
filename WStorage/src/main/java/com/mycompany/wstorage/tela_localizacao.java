@@ -21,7 +21,7 @@ public class tela_localizacao extends javax.swing.JFrame {
     //Setando
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
+    String senha = "247022";
     Connection conexao = null;
     PreparedStatement statement = null;
 
