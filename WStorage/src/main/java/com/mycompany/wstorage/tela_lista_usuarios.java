@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class tela_lista_usuarios extends javax.swing.JFrame {
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
+    String senha = "247022";
     Connection conexao = null;
     
     /**

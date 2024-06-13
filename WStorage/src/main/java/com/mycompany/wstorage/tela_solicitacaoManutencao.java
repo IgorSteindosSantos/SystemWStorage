@@ -373,7 +373,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                     String [] partes2 = comboBox2.split(" - ");
                     String id2 = partes2[0].trim();
                     int id_manutencao = Integer.parseInt(id2);
-                    
+                                        
                     statement = conexao.prepareStatement(sql);
                     statement.setInt(1, idProduto);
                     statement.setInt(2, id_local);
@@ -473,8 +473,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                 txt_codigoProduto.requestFocus();
                 txt_codigoProduto.setText("");
                 return;
-            }
-                
+            }    
                 conexao = DriverManager.getConnection(url, usuario, senha);
                 String sql = "SELECT nome FROM maquinas WHERE id_maquina = ?;";
                 statement = conexao.prepareStatement(sql);

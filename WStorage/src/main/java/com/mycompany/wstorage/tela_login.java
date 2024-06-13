@@ -22,7 +22,7 @@ public class tela_login extends javax.swing.JFrame {
     //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senhas = "";
+    String senhas = "247022";
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;

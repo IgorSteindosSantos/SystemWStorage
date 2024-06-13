@@ -20,7 +20,7 @@ public class tela_perfil extends javax.swing.JFrame {
     PreparedStatement statement = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "";
+    String senha = "247022";
     
     public tela_perfil() {
         initComponents();
