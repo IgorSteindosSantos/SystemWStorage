@@ -60,24 +60,6 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        /*try {
-            // Ler e converter os horários
-            LocalTime startTime = LocalTime.parse(txt_inicio.getText());
-            LocalTime endTime = LocalTime.parse(txt_final.getText());
-
-            // Calcular a diferença de tempo
-            Duration duration = Duration.between(startTime, endTime);
-
-            // Extrair horas da diferença de tempo
-            long hours = duration.toHours();
-            long minutes = duration.toMinutes() % 60;
-
-            // Exibir o resultado em horas no JLabel
-            txt_tempoEstimado.setText(hours + " horas, " + minutes + " minutos ");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Formato de hora inválido. Use HH:MM:SS.");
-        }*/
     }
     
     public void CamboBoxLocalizacao (String sql) {
@@ -360,7 +342,6 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -407,7 +388,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -418,7 +399,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

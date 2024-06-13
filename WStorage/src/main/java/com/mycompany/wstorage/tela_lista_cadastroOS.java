@@ -44,7 +44,6 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbl_os = new javax.swing.JLabel();
         btn_novo = new javax.swing.JButton();
-        btn_devolucao = new javax.swing.JButton();
         txt_pesquisar = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -76,17 +75,6 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         btn_novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_novoActionPerformed(evt);
-            }
-        });
-
-        btn_devolucao.setBackground(new java.awt.Color(32, 107, 165));
-        btn_devolucao.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btn_devolucao.setForeground(new java.awt.Color(255, 255, 255));
-        btn_devolucao.setText("Devolução");
-        btn_devolucao.setPreferredSize(new java.awt.Dimension(89, 30));
-        btn_devolucao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_devolucaoActionPerformed(evt);
             }
         });
 
@@ -143,9 +131,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(lbl_os)
                                         .addGap(12, 12, 12)
-                                        .addComponent(btn_novo)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btn_devolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btn_novo)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,9 +147,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_devolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -233,13 +217,6 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         btn_novo.setVisible(true);
     }//GEN-LAST:event_btn_novoActionPerformed
 
-    private void btn_devolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_devolucaoActionPerformed
-        // TODO add your handling code here:
-        //tela_lista_cadastroOS.this.dispose();
-        tela_devolucaoEqpOS btn_avancar = new tela_devolucaoEqpOS();
-        btn_avancar.setVisible(true);
-    }//GEN-LAST:event_btn_devolucaoActionPerformed
-
     private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
         // TODO add your handling code here:
         tela_lista_cadastroOS.this.dispose();
@@ -297,7 +274,6 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_devolucao;
     private javax.swing.JButton btn_novo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

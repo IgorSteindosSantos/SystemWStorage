@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Podol
  */
-public class tela_cadastroOS extends javax.swing.JFrame {
+public class tela_devolucaoOS extends javax.swing.JFrame {
 
     // Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
@@ -30,7 +30,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     PreparedStatement statement = null;
     ResultSet resultado = null;
     
-    public tela_cadastroOS() {
+    public tela_devolucaoOS() {
         initComponents();
     }
 
@@ -216,12 +216,9 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                         .addContainerGap(31, Short.MAX_VALUE))
                     .addGroup(pn_dadosLayout.createSequentialGroup()
                         .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_dadosLayout.createSequentialGroup()
-                                .addComponent(lbl_localizacao)
-                                .addGap(134, 134, 134))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_dadosLayout.createSequentialGroup()
-                                .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                            .addComponent(lbl_localizacao)
+                            .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_dadosLayout.createSequentialGroup()
                                 .addComponent(lbl_servico)
@@ -246,17 +243,17 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addComponent(lbl_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_localizacao)
                     .addComponent(lbl_servico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbx_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(chb_status)
-                .addGap(36, 36, 36)
+                .addGap(56, 56, 56)
                 .addComponent(lbl_descricao)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -497,7 +494,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         resultado.close();
         //        statement.close();
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -593,7 +590,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             String id2 = partes2[0].trim();
             int id_servico = Integer.parseInt(id2);
             
-            //colocando status na O.S com o checkbox
+            //colocando status na maquina com o checkbox
             String checkbox = "";
             if(chb_status.isSelected()) {
                 checkbox+="Fechada";
@@ -626,14 +623,13 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             btn_excluirEqp.setEnabled(true);
             btn_excluirOS.setEnabled(true);
             lbl_permissaoEquipamentos.setVisible(true);
-            chb_status.setEnabled(true);
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        tela_cadastroOS.this.dispose();
+        tela_devolucaoOS.this.dispose();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_pesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarFuncionarioActionPerformed
@@ -671,7 +667,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 txt_nome.setText(nome);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erro ao buscar funcionário: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -686,7 +682,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         
         // Deixar label que mostra permissao para adicionar equipamentos
         lbl_permissaoEquipamentos.setVisible(false);
-        chb_status.setEnabled(false);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void btn_psgEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_psgEquipamentoActionPerformed
@@ -724,7 +719,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 txt_nomeEquipamento.setText(nome);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erro ao buscar Equipamento: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_psgEquipamentoActionPerformed
@@ -776,7 +771,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         txt_nomeEquipamento.setText("");
         txt_quantidade.setText("");
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos.");
         }
@@ -835,10 +830,10 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         limparCamposETabela();// Limpar campos e tabela apos JOption
         
     } catch (SQLException ex) {
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
     } catch (IOException ex) {
         JOptionPane.showMessageDialog(this, "Erro ao salvar o arquivo. Por favor, tente novamente.");
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos.");
     }
@@ -897,7 +892,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         txt_nomeEquipamento.setText("");
         txt_quantidade.setText("");
     } catch (SQLException ex) {
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(this, "Por favor, insira um valor válido.");
     }
@@ -925,7 +920,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         if (rowsDeleted > 0) {
             JOptionPane.showMessageDialog(this, "Ordem de Serviço exluida com sucesso!");
             limparCamposETabela(); // Limpar campos e tabela após excluir
-            tela_cadastroOS.this.dispose(); //Fechar tela de OS
+            tela_devolucaoOS.this.dispose(); //Fechar tela de OS
         } else {
             JOptionPane.showMessageDialog(this, "Não foi possível encontrar a Ordem de Serviço para excluir.");
         }
@@ -933,7 +928,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         statement.close();
         conexao.close(); 
     } catch (SQLException ex) {
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(tela_devolucaoOS.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_btn_excluirOSActionPerformed
 
@@ -958,20 +953,21 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tela_cadastroOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_devolucaoOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tela_cadastroOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_devolucaoOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tela_cadastroOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_devolucaoOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tela_cadastroOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_devolucaoOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_cadastroOS().setVisible(true);
+                new tela_devolucaoOS().setVisible(true);
             }
         });
     }
