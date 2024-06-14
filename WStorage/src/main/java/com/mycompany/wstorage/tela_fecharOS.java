@@ -463,7 +463,7 @@ public class tela_fecharOS extends javax.swing.JFrame {
     public void edicao() {
     try {
         conexao = DriverManager.getConnection(url, usuario, senha);
-        statement = conexao.prepareStatement("SELECT * FROM vw_EditarOrdemServico WHERE id_os = ?;");
+        statement = conexao.prepareStatement("SELECT * FROM vw_tbOS WHERE id_os = ?;");
         statement.setInt(1, cod_os);  // Supondo que você tenha definido o idOrdemServico em algum lugar do seu código
         resultado = statement.executeQuery();
 
@@ -482,10 +482,6 @@ public class tela_fecharOS extends javax.swing.JFrame {
             } else {
                 chb_status.setSelected(false);
             }
-            // Suponha que você tenha esses campos na sua interface
-     
-            txt_quantidade.setText(resultado.getString("quantidade"));
-            txt_codEquipamento.setText(resultado.getString("cod_equipamento"));
         }
 
         statement.close();

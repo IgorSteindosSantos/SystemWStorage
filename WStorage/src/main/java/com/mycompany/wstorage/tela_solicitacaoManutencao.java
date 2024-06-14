@@ -178,6 +178,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         });
 
         lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_camera.png")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btn_pesquisar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -447,11 +448,13 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
     private void rb_maquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_maquinaActionPerformed
         // TODO add your handling code here:
         rb_equipamento.setSelected(false);
+     
     }//GEN-LAST:event_rb_maquinaActionPerformed
 
     private void rb_equipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_equipamentoActionPerformed
         // TODO add your handling code here:
         rb_maquina.setSelected(false);
+        
     }//GEN-LAST:event_rb_equipamentoActionPerformed
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed

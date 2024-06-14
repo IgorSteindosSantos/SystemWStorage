@@ -57,7 +57,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         btn_pesquisarFuncionario = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         btn_excluirOS = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
         chb_status = new javax.swing.JCheckBox();
         pn_equipamento = new javax.swing.JPanel();
         lbl_codEquipamento = new javax.swing.JLabel();
@@ -164,15 +163,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             }
         });
 
-        btn_editar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_editar.setText("Editar");
-        btn_editar.setEnabled(false);
-        btn_editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_editarActionPerformed(evt);
-            }
-        });
-
         chb_status.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chb_status.setText("Fechar Ordem de Serviço");
 
@@ -183,11 +173,9 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             .addGroup(pn_dadosLayout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addComponent(btn_salvar)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_excluirOS)
-                .addGap(39, 39, 39)
-                .addComponent(btn_editar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(131, 131, 131))
             .addGroup(pn_dadosLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +242,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbx_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(chb_status)
                 .addGap(36, 36, 36)
                 .addComponent(lbl_descricao)
@@ -263,8 +251,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_salvar)
-                    .addComponent(btn_excluirOS)
-                    .addComponent(btn_editar))
+                    .addComponent(btn_excluirOS))
                 .addGap(21, 21, 21))
         );
 
@@ -821,7 +808,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         statement.close();
 
         // Especificar o caminho e nome do arquivo
-        String filePath = "D:\\Users\\isantos\\Desktop\\AAA\\OS_" + ordemServicoId + ".txt";
+        String filePath = "C:\\Users\\Igor Stein\\Desktop\\OrdemdeServicosOS_" + ordemServicoId + ".txt";
 
         // Escrever o conteúdo no arquivo
         FileWriter fileWriter = new FileWriter(filePath);
@@ -934,10 +921,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btn_excluirOSActionPerformed
 
-    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_editarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -975,7 +958,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adiconar;
-    private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_emitr;
     private javax.swing.JButton btn_excluirEqp;
     private javax.swing.JButton btn_excluirOS;
