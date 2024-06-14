@@ -4,6 +4,7 @@
  */
 package com.mycompany.wstorage;
 
+import static com.mycompany.wstorage.tela_lista_cadastroOS.id_OrdemServico;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,8 +21,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Podol
  */
-public class tela_cadastroOS extends javax.swing.JFrame {
-
+public class tela_fecharOS extends javax.swing.JFrame {
+    
     // Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
@@ -29,8 +30,11 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
+    int cod_os =  Integer.parseInt(id_OrdemServico);
     
-    public tela_cadastroOS() {
+    
+    
+    public tela_fecharOS() {
         initComponents();
     }
 
@@ -57,7 +61,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         btn_pesquisarFuncionario = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         btn_excluirOS = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
         chb_status = new javax.swing.JCheckBox();
         pn_equipamento = new javax.swing.JPanel();
         lbl_codEquipamento = new javax.swing.JLabel();
@@ -148,7 +151,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         });
 
         btn_salvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_salvar.setText("Salvar");
+        btn_salvar.setText("Atualizar");
         btn_salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_salvarActionPerformed(evt);
@@ -164,15 +167,6 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             }
         });
 
-        btn_editar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_editar.setText("Editar");
-        btn_editar.setEnabled(false);
-        btn_editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_editarActionPerformed(evt);
-            }
-        });
-
         chb_status.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chb_status.setText("Fechar Ordem de Serviço");
 
@@ -183,10 +177,8 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             .addGroup(pn_dadosLayout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addComponent(btn_salvar)
-                .addGap(40, 40, 40)
+                .addGap(123, 123, 123)
                 .addComponent(btn_excluirOS)
-                .addGap(39, 39, 39)
-                .addComponent(btn_editar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pn_dadosLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -254,7 +246,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbx_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(chb_status)
                 .addGap(36, 36, 36)
                 .addComponent(lbl_descricao)
@@ -263,8 +255,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(pn_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_salvar)
-                    .addComponent(btn_excluirOS)
-                    .addComponent(btn_editar))
+                    .addComponent(btn_excluirOS))
                 .addGap(21, 21, 21))
         );
 
@@ -411,7 +402,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         btn_emitr.setBackground(new java.awt.Color(32, 107, 165));
         btn_emitr.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btn_emitr.setForeground(new java.awt.Color(255, 255, 255));
-        btn_emitr.setText("Emitir O.S");
+        btn_emitr.setText("Salvar O.S");
         btn_emitr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_emitrActionPerformed(evt);
@@ -432,8 +423,8 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_emitr, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(176, 176, 176)
+                .addComponent(btn_emitr, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(160, 160, 160)
                 .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(454, 454, 454))
         );
@@ -469,6 +460,40 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
+    public void edicao() {
+    try {
+        conexao = DriverManager.getConnection(url, usuario, senha);
+        statement = conexao.prepareStatement("SELECT * FROM vw_EditarOrdemServico WHERE id_os = ?;");
+        statement.setInt(1, cod_os);  // Supondo que você tenha definido o idOrdemServico em algum lugar do seu código
+        resultado = statement.executeQuery();
+
+        if (resultado.next()) {
+            // Preencher os campos com os valores do resultado da consulta
+            txt_id.setText(resultado.getString("id_OS"));
+            txt_identificador.setText(resultado.getString("cod_identificacao"));
+            txt_nome.setText(resultado.getString("nome_funcionario"));
+            cbx_localizacao.removeAllItems();
+            cbx_localizacao.addItem(resultado.getInt("cod_localizacao") + " - " + resultado.getString("nome_local"));
+            cbx_servico.removeAllItems();
+            cbx_servico.addItem(resultado.getInt("cod_servico") + " - " + resultado.getString("nome_servico"));
+            txta_descricao.setText(resultado.getString("descricao"));
+            if (resultado.getString("status").equals("Fechada")) {
+                chb_status.setSelected(true);
+            } else {
+                chb_status.setSelected(false);
+            }
+            // Suponha que você tenha esses campos na sua interface
+     
+            txt_quantidade.setText(resultado.getString("quantidade"));
+            txt_codEquipamento.setText(resultado.getString("cod_equipamento"));
+        }
+
+        statement.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(tela_fecharOS.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+    
     public void  tb_equipamentos (){
         try {
         conexao = DriverManager.getConnection(url, usuario, senha);
@@ -497,7 +522,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         resultado.close();
         //        statement.close();
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_fecharOS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -566,59 +591,60 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         // Verificar se o campo de identificação do funcionário está vazio
         if (txt_identificador.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, selecione um funcionário.");
-            return; // Encerrar o método se o campo estiver vazio
+            return;
         }
 
         // Verificar se uma localização foi selecionada
         if (cbx_localizacao.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma localização.");
-            return; // Encerrar o método se nenhuma localização foi selecionada
+            return;
         }
 
         try {
             conexao = DriverManager.getConnection(url, usuario, senha);
 
-            String sql = "INSERT INTO OrdemServico (cod_identificacao, cod_localizacao, cod_servico, descricao, status,data_emissao) VALUES (?,?,?,?,?,NOW());";
+            // Verificar se há um ID de ordem de serviço para atualização
+            if (txt_id.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, selecione uma ordem de serviço para atualizar.");
+                return;
+            }
+
+            String sql = "UPDATE OrdemServico SET cod_identificacao = ?, cod_localizacao = ?, cod_servico = ?, descricao = ?, status = ? WHERE id_OS = ?";
             int idFuncionario = Integer.parseInt(txt_identificador.getText());
 
-            //passando combobox para o banco
+            // Passando combobox para o banco
             String comboBox = (String) cbx_localizacao.getSelectedItem();
-            String [] partes = comboBox.split(" - ");
+            String[] partes = comboBox.split(" - ");
             String id = partes[0].trim();
             int id_local = Integer.parseInt(id);
 
-            //passando combobox para o banco
+            // Passando combobox para o banco
             String comboBox2 = (String) cbx_servico.getSelectedItem();
-            String [] partes2 = comboBox2.split(" - ");
+            String[] partes2 = comboBox2.split(" - ");
             String id2 = partes2[0].trim();
             int id_servico = Integer.parseInt(id2);
-            
-            //colocando status na O.S com o checkbox
+
+            // Colocando status na O.S com o checkbox
             String checkbox = "";
-            if(chb_status.isSelected()) {
-                checkbox+="Fechada";
+            if (chb_status.isSelected()) {
+                checkbox += "Fechada";
             } else {
-                checkbox+="Aberta";
+                checkbox += "Aberta";
             }
-            
-            // RETURN_GENERATED_KEYS - Torna possível posteriormente obter o valor da chave gerada a partir do comando: preparedStatement.getGeneratedKeys();
-            statement = conexao.prepareStatement(sql, statement.RETURN_GENERATED_KEYS);
+
+            // Prepara a declaração de atualização
+            statement = conexao.prepareStatement(sql);
             statement.setInt(1, idFuncionario);
             statement.setInt(2, id_local);
             statement.setInt(3, id_servico);
             statement.setString(4, txta_descricao.getText());
             statement.setString(5, checkbox);
-            statement.execute();
+            statement.setInt(6, Integer.parseInt(txt_id.getText())); // Atualiza usando o ID da ordem de serviço
 
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                int ordemServicoId = generatedKeys.getInt(1);
-                // Guardar o ID gerado para a próxima atualização
-                txt_id.setText(String.valueOf(ordemServicoId));
-            }
+            statement.executeUpdate();
             statement.close();
 
-            //Habilitar campos apos inserir dados
+            // Habilitar campos apos atualizar dados
             txt_quantidade.setEnabled(true);
             txt_codEquipamento.setEnabled(true);
             btn_psgEquipamento.setEnabled(true);
@@ -627,13 +653,15 @@ public class tela_cadastroOS extends javax.swing.JFrame {
             btn_excluirOS.setEnabled(true);
             lbl_permissaoEquipamentos.setVisible(true);
             chb_status.setEnabled(true);
+
+            JOptionPane.showMessageDialog(this, "Ordem de serviço atualizada com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_fecharOS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        tela_cadastroOS.this.dispose();
+        tela_fecharOS.this.dispose();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_pesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarFuncionarioActionPerformed
@@ -671,7 +699,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 txt_nome.setText(nome);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_fecharOS.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erro ao buscar funcionário: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -686,7 +714,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         
         // Deixar label que mostra permissao para adicionar equipamentos
         lbl_permissaoEquipamentos.setVisible(false);
-        chb_status.setEnabled(false);
+        chb_status.setEnabled(true);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void btn_psgEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_psgEquipamentoActionPerformed
@@ -724,7 +752,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 txt_nomeEquipamento.setText(nome);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_fecharOS.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erro ao buscar Equipamento: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_psgEquipamentoActionPerformed
@@ -775,7 +803,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         txt_nomeEquipamento.setText("");
         txt_quantidade.setText("");
         } catch (SQLException ex) {
-            Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(tela_fecharOS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos.");
         }
@@ -783,62 +811,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_adiconarActionPerformed
 
     private void btn_emitrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emitrActionPerformed
-        try {
-        conexao = DriverManager.getConnection(url, usuario, senha);
-        int ordemServicoId = Integer.parseInt(txt_id.getText());
         
-        // Recuperar os dados da OS do banco de dados
-        String sqlOS = "SELECT * FROM OrdemServico WHERE id_os = ?";
-        statement = conexao.prepareStatement(sqlOS);
-        statement.setInt(1, ordemServicoId);
-        resultado = statement.executeQuery();
-
-        StringBuilder sb = new StringBuilder();
-
-        if (resultado.next()) {
-            sb.append("Ordem de Serviço ID: ").append(resultado.getInt("id_os")).append("\n");
-            sb.append("ID Funcionário: ").append(resultado.getInt("cod_identificacao")).append("\n");
-            sb.append("Localização ID: ").append(resultado.getInt("cod_localizacao")).append("\n");
-            sb.append("Serviço ID: ").append(resultado.getInt("cod_servico")).append("\n");
-            sb.append("Descrição: ").append(resultado.getString("descricao")).append("\n");
-            sb.append("Data de Emissão: ").append(resultado.getTimestamp("data_emissao")).append("\n");
-        }
-
-        statement.close();
-
-        // Recuperar os dados dos equipamentos relacionados à OS do banco de dados
-        String sqlEquip = "SELECT * FROM OSequipamentos WHERE ordem_servico_id = ?";
-        statement = conexao.prepareStatement(sqlEquip);
-        statement.setInt(1, ordemServicoId);
-        resultado = statement.executeQuery();
-
-        sb.append("\nEquipamentos:\n");
-        while (resultado.next()) {
-            sb.append("Código Equipamento: ").append(resultado.getInt("cod_equipamento")).append("\n");
-            sb.append("Quantidade: ").append(resultado.getInt("quantidade")).append("\n");
-        }
-
-        statement.close();
-
-        // Especificar o caminho e nome do arquivo
-        String filePath = "D:\\Users\\isantos\\Desktop\\AAA\\OS_" + ordemServicoId + ".txt";
-
-        // Escrever o conteúdo no arquivo
-        FileWriter fileWriter = new FileWriter(filePath);
-        fileWriter.write(sb.toString());
-        fileWriter.close();
-
-        JOptionPane.showMessageDialog(this, "Ordem de Serviço salva com sucesso! Arquivo salvo em: " + filePath);
-        limparCamposETabela();// Limpar campos e tabela apos JOption
-        
-    } catch (SQLException ex) {
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Erro ao salvar o arquivo. Por favor, tente novamente.");
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos.");
-    }
     }//GEN-LAST:event_btn_emitrActionPerformed
 
     private void tb_equipamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_equipamentosMouseClicked
@@ -894,7 +867,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         txt_nomeEquipamento.setText("");
         txt_quantidade.setText("");
     } catch (SQLException ex) {
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(tela_fecharOS.class.getName()).log(Level.SEVERE, null, ex);
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(this, "Por favor, insira um valor válido.");
     }
@@ -922,7 +895,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         if (rowsDeleted > 0) {
             JOptionPane.showMessageDialog(this, "Ordem de Serviço exluida com sucesso!");
             limparCamposETabela(); // Limpar campos e tabela após excluir
-            tela_cadastroOS.this.dispose(); //Fechar tela de OS
+            tela_fecharOS.this.dispose(); //Fechar tela de OS
         } else {
             JOptionPane.showMessageDialog(this, "Não foi possível encontrar a Ordem de Serviço para excluir.");
         }
@@ -930,13 +903,9 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         statement.close();
         conexao.close(); 
     } catch (SQLException ex) {
-        Logger.getLogger(tela_cadastroOS.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(tela_fecharOS.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_btn_excluirOSActionPerformed
-
-    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_editarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -955,27 +924,27 @@ public class tela_cadastroOS extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tela_cadastroOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_fecharOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tela_cadastroOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_fecharOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tela_cadastroOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_fecharOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tela_cadastroOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_fecharOS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_cadastroOS().setVisible(true);
+                new tela_fecharOS().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adiconar;
-    private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_emitr;
     private javax.swing.JButton btn_excluirEqp;
     private javax.swing.JButton btn_excluirOS;

@@ -4,6 +4,7 @@
  */
 package com.mycompany.wstorage;
 
+import static com.mycompany.wstorage.tela_lista_manutencoes.idM;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,8 +21,9 @@ import javax.swing.JOptionPane;
  *
  * @author Igor Stein
  */
-public class tela_agendarManutencao extends javax.swing.JFrame {
+public class tela_manutencaoEditar extends javax.swing.JFrame {
 
+    int idMantencoes = Integer.parseInt(idM);
     //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
@@ -30,8 +32,37 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
     PreparedStatement statement = null;
     ResultSet resultado = null;
     
-    public tela_agendarManutencao() {
+    public tela_manutencaoEditar() {
         initComponents();
+    }
+    
+    public void edicao() {
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);
+            statement = conexao.prepareStatement("SELECT * FROM vw_EditarManutencoes WHERE id_SM = ? ;");
+            statement.setInt(1, idMantencoes);
+            resultado = statement.executeQuery();
+            
+            if (resultado.next()) {
+            // Preencher os campos com os valores do resultado da consulta
+            txt_codigo.setText(resultado.getString("id_SM"));
+            txt_codigoProduto.setText(resultado.getString("cod_maquina"));
+            txt_nome.setText(resultado.getString("nome"));
+            ftxt_dataAgendamento.setText(resultado.getString("data_formatadaA"));
+            txt_inicio.setText(resultado.getString("hora_inicial"));
+            txt_final.setText(resultado.getString("hora_final"));
+            cbx_tipoManutencao.removeAllItems();
+            cbx_tipoManutencao.addItem(resultado.getInt("cod_maquina")+ " - " +resultado.getString("nome_manutencao"));
+            cbx_localizacao.removeAllItems();
+            cbx_localizacao.addItem(resultado.getInt("cod_localizacao")+ " - " +resultado.getString("nome_local"));
+            txt_tempoEstimado.setText(resultado.getString("tempoEstimado"));
+            txta_descricao.setText(resultado.getString("descricao"));
+            }
+        
+            statement.close();   
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_manutencaoEditar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void CamboBoxLocalizacao (String sql) {
@@ -94,14 +125,15 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         lbl_descricao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txta_descricao = new javax.swing.JTextArea();
-        btn_salvar = new javax.swing.JButton();
+        btn_atualizar = new javax.swing.JButton();
         btn_voltar = new javax.swing.JButton();
         btn_pesquisar = new javax.swing.JButton();
         txt_inicio = new javax.swing.JFormattedTextField();
         txt_final = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
+        btn_excluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("WStorage");
         setResizable(false);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -175,13 +207,13 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         txta_descricao.setRows(5);
         jScrollPane1.setViewportView(txta_descricao);
 
-        btn_salvar.setBackground(new java.awt.Color(32, 107, 165));
-        btn_salvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_salvar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_salvar.setText("Salvar");
-        btn_salvar.addActionListener(new java.awt.event.ActionListener() {
+        btn_atualizar.setBackground(new java.awt.Color(32, 107, 165));
+        btn_atualizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_atualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_atualizar.setText("Atualizar");
+        btn_atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salvarActionPerformed(evt);
+                btn_atualizarActionPerformed(evt);
             }
         });
 
@@ -223,6 +255,16 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        btn_excluir.setBackground(new java.awt.Color(32, 107, 165));
+        btn_excluir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_excluir.setForeground(new java.awt.Color(255, 255, 255));
+        btn_excluir.setText("Excluir");
+        btn_excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluirActionPerformed(evt);
             }
         });
 
@@ -300,10 +342,12 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(239, 239, 239)
-                .addComponent(btn_salvar)
-                .addGap(150, 150, 150)
+                .addComponent(btn_atualizar)
+                .addGap(59, 59, 59)
+                .addComponent(btn_excluir)
+                .addGap(74, 74, 74)
                 .addComponent(btn_voltar)
-                .addGap(33, 33, 33))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,8 +402,9 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -380,7 +425,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
 
     
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        tela_agendarManutencao.this.dispose();
+        tela_manutencaoEditar.this.dispose();
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
@@ -419,20 +464,19 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) { 
-                Logger.getLogger(tela_agendarManutencao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(tela_manutencaoEditar.class.getName()).log(Level.SEVERE, null, ex);
             }
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
-    private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        
+    private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atualizarActionPerformed
         try {
             conexao = DriverManager.getConnection(url, usuario, senha);
 
             // Verificar se a máquina já está em manutenção no mesmo dia
-            String checkSql = "SELECT COUNT(*) FROM Solicitar_Manutencaoes WHERE cod_maquina = ? AND data_agendada = ? AND status = 'Agendado'";
+            String checkSql = "SELECT COUNT(*) FROM Solicitar_Manutencaoes WHERE cod_maquina = ? AND data_agendada = ? AND status = 'Agendado' AND id_SM <> ?";
             int idProduto = Integer.parseInt(txt_codigoProduto.getText());
+            int idManutencoes = Integer.parseInt(txt_codigo.getText());
             
-
             // Converter data para formato adequado para consulta SQL
             String dia = ftxt_dataAgendamento.getText().substring(0, 2);
             String mes = ftxt_dataAgendamento.getText().substring(3, 5);
@@ -442,7 +486,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
             statement = conexao.prepareStatement(checkSql);
             statement.setInt(1, idProduto);
             statement.setString(2, data);
-            
+            statement.setInt(3, idManutencoes);
             
             resultado = statement.executeQuery();
             resultado.next();
@@ -456,11 +500,12 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
             }
 
             // Verificar se já existem três máquinas agendadas para este dia
-            String countSql = "SELECT COUNT(*) FROM Solicitar_Manutencaoes WHERE data_agendada = ? AND status = 'Agendado'";
+            String countSql = "SELECT COUNT(*) FROM Solicitar_Manutencaoes WHERE data_agendada = ? AND status = 'Agendado' AND id_SM <> ?";
 
             statement = conexao.prepareStatement(countSql);
             statement.setString(1, data);
-
+            statement.setInt(2, idManutencoes);
+            
             resultado = statement.executeQuery();
             resultado.next();
             int quantidadeTotalMaquinasNoDia = resultado.getInt(1);
@@ -473,9 +518,9 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
             }
 
             // Se não houverem problemas, proceda com a inserção da manutenção
-            String sql = "INSERT INTO Solicitar_Manutencaoes (cod_maquina, cod_localizacao, cod_tipo_manutencao, "
-                    + "descricao, tempoEstimado, data_agendada, hora_inicial, hora_final, status, data_emissao) "
-                    + "VALUES (?,?,?,?,?,?,?,?,'Agendado', NOW())";
+            String sql = "UPDATE Solicitar_Manutencaoes SET cod_maquina = ?, cod_localizacao = ?, cod_tipo_manutencao = ?, "
+                    + "descricao = ?, tempoEstimado = ?, data_agendada = ?, hora_inicial = ?, hora_final = ?, status = 'Agendado', data_emissao = NOW() "
+                    + "WHERE id_SM = ?";
 
             // Restante do código para preparar e executar a inserção
             String comboBox = (String) cbx_localizacao.getSelectedItem();
@@ -497,7 +542,8 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
             statement.setString(6, data);
             statement.setString(7, txt_inicio.getText());
             statement.setString(8, txt_final.getText());
-
+            statement.setInt(9, idManutencoes);
+            
             statement.execute();
             statement.close();
 
@@ -506,12 +552,13 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(tela_agendarManutencao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_salvarActionPerformed
+    }//GEN-LAST:event_btn_atualizarActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
         this.CamboBoxLocalizacao("SELECT * FROM localizacao ORDER BY id_local;");
         this.CamboBoxManutencao("SELECT * FROM manutencoes ORDER BY id_manutencao;");
+        edicao();
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -536,6 +583,38 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btn_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluirActionPerformed
+
+       try {
+        
+        conexao = DriverManager.getConnection(url, usuario, senha);
+        int idManutencoes = Integer.parseInt(txt_codigo.getText());
+        String deleteSql = "DELETE FROM Solicitar_Manutencaoes WHERE id_SM = ?";
+        statement = conexao.prepareStatement(deleteSql);
+        statement.setInt(1, idManutencoes);
+        int rowsDeleted = statement.executeUpdate();
+
+        // Verificar se a exclusão foi bem-sucedida
+        if (rowsDeleted > 0) {
+            JOptionPane.showMessageDialog(null, "Manutenção excluída com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            tela_manutencaoEditar.this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Manutenção não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_agendarManutencao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Fechar recursos
+            try {
+                if (statement != null) statement.close();
+                if (conexao != null) conexao.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(tela_agendarManutencao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btn_excluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -553,27 +632,29 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tela_agendarManutencao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_manutencaoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tela_agendarManutencao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_manutencaoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tela_agendarManutencao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_manutencaoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tela_agendarManutencao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tela_manutencaoEditar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_agendarManutencao().setVisible(true);
+                new tela_manutencaoEditar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_atualizar;
+    private javax.swing.JButton btn_excluir;
     private javax.swing.JButton btn_pesquisar;
-    private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JComboBox<String> cbx_localizacao;
     private javax.swing.JComboBox<String> cbx_tipoManutencao;

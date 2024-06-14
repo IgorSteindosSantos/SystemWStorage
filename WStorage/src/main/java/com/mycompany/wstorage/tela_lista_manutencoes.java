@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +18,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Igor Stein
  */
 public class tela_lista_manutencoes extends javax.swing.JFrame {
-
+    
+    public static String idM;
     //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
@@ -49,10 +49,6 @@ public class tela_lista_manutencoes extends javax.swing.JFrame {
         lbl_home = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_manutencaoAgendada = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tb_manutencaoNormal = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
@@ -112,81 +108,46 @@ public class tela_lista_manutencoes extends javax.swing.JFrame {
                 "Código", "Nome", "Tipo de Manutenção", "Data de Emissão", "Data de Previsão", "Status"
             }
         ));
+        tb_manutencaoAgendada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_manutencaoAgendadaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_manutencaoAgendada);
-
-        tb_manutencaoNormal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tb_manutencaoNormal.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Nome", "Tipo de Manutenção", "Data de Emissão", "Status"
-            }
-        ));
-        jScrollPane2.setViewportView(tb_manutencaoNormal);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator1)
-                            .addComponent(jSeparator2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbl_manutencoes)
-                                .addGap(56, 56, 56)
-                                .addComponent(jButton1)
-                                .addGap(42, 42, 42)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_pesquisar)
-                                .addGap(39, 39, 39)
-                                .addComponent(btn_novo)
-                                .addGap(43, 43, 43)
-                                .addComponent(btn_agendar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 588, Short.MAX_VALUE)
-                                .addComponent(lbl_home)
-                                .addGap(10, 10, 10))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1090, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1090, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jSeparator1)
+                        .addComponent(jSeparator2)
+                        .addComponent(lbl_manutencoes)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbl_pesquisar)
+                            .addGap(39, 39, 39)
+                            .addComponent(btn_novo)
+                            .addGap(43, 43, 43)
+                            .addComponent(btn_agendar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 588, Short.MAX_VALUE)
+                            .addComponent(lbl_home)
+                            .addGap(10, 10, 10))))
                 .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(52, 52, 52)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1090, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(58, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_manutencoes)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)))
+                .addComponent(lbl_manutencoes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,14 +161,9 @@ public class tela_lista_manutencoes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btn_agendar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(159, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(31, 31, 31)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,42 +180,16 @@ public class tela_lista_manutencoes extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+ 
     public void  tb_manutencoes (String sql){
-       try {
+
+        try {
         conexao = DriverManager.getConnection(url, usuario, senha);
         statement = conexao.prepareStatement(sql);
         resultado = statement.executeQuery();
         DefaultTableModel model = (DefaultTableModel) tb_manutencaoAgendada.getModel();
         model.setNumRows(0);
 
-
-                while (resultado.next()){
-                    model.addRow(new Object[] {
-                    //retorna os dados da tabela do BD, cada campo e um coluna.
-                    resultado.getString("id_SM"),
-                    resultado.getString("nome"),
-                    resultado.getString("nome_manutencao"),
-                    resultado.getString("data_formatada"),
-                    resultado.getString("status"),
-                    resultado.getString("status")
-                    });
-                }
-                resultado.close();
-                conexao.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }
-    
-     public void  tb_manutencoesA (String sql){
-        try {
-            conexao = DriverManager.getConnection(url,usuario,senha);            
-            statement = (PreparedStatement)conexao.prepareStatement(sql);
-            statement.execute(); // criar o vetor
-            resultado = statement.executeQuery(sql);
-            DefaultTableModel model = (DefaultTableModel) tb_manutencaoAgendada.getModel();
-            model.setNumRows(0);
 
                 while (resultado.next()){
                     model.addRow(new Object[] {
@@ -296,20 +226,16 @@ public class tela_lista_manutencoes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agendarActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        //this.tb_manutencoes("SELECT * FROM tb_manutencoes", true);
-        //this.tb_manutencoesA("SELECT * FROM vw_ManutencaoAgendada");
+        this.tb_manutencoes("SELECT id_SM, nome, nome_manutencao, data_formatada, data_formatadaA, status FROM vw_Manutencoes");
     }//GEN-LAST:event_formWindowGainedFocus
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.tb_manutencoesA("SELECT * FROM vw_ManutencaoAgendada;");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.tb_manutencoes("SELECT * FROM vw_manutencao;");
+    private void tb_manutencaoAgendadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_manutencaoAgendadaMouseClicked
+        int linha = tb_manutencaoAgendada.getSelectedRow();
+        idM = tb_manutencaoAgendada.getValueAt(linha, 0).toString();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+        tela_manutencaoEditar objeto2 = new tela_manutencaoEditar();
+        objeto2.setVisible(true);
+    }//GEN-LAST:event_tb_manutencaoAgendadaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -349,18 +275,14 @@ public class tela_lista_manutencoes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agendar;
     private javax.swing.JButton btn_novo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_manutencoes;
     private javax.swing.JLabel lbl_pesquisar;
     private javax.swing.JTable tb_manutencaoAgendada;
-    private javax.swing.JTable tb_manutencaoNormal;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables
 }

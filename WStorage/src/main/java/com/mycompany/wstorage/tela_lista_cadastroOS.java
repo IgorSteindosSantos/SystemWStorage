@@ -26,7 +26,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
-    public static String id;
+    public static String id_OrdemServico;
     
     public tela_lista_cadastroOS() {
         initComponents();
@@ -232,8 +232,8 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     private void tb_osMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_osMouseClicked
         
         int linha = tb_os.getSelectedRow();
-        id = tb_os.getValueAt(linha, 0).toString();
-        tela_cadastroOS objeto2 = new tela_cadastroOS();
+        id_OrdemServico = tb_os.getValueAt(linha, 0).toString();
+        tela_fecharOS objeto2 = new tela_fecharOS();
         objeto2.setVisible(true);
         
     }//GEN-LAST:event_tb_osMouseClicked
