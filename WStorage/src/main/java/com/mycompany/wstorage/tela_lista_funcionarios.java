@@ -23,18 +23,20 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
     String usuario = "root";
     String senha = "247022";
     Connection conexao = null;
-    
+    PreparedStatement statement = null;
+    ResultSet resultado = null;
     
     public tela_lista_funcionarios() {
         initComponents();
     }
 
     public void  tb_funcionario (String sql){
+        // Classe criada para popular tabela de funcionarios
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);            
-            PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
-            banco.execute(); // criar o vetor
-            ResultSet resultado = banco.executeQuery(sql);
+            statement = (PreparedStatement)conexao.prepareStatement(sql);
+            statement.execute(); // criar o vetor
+            resultado = statement.executeQuery(sql);
             DefaultTableModel model = (DefaultTableModel) tb_funcionarios.getModel();
             model.setNumRows(0);
 
@@ -48,7 +50,7 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
                     resultado.getString("status")
                     });
                 }
-                banco.close();
+                statement.close();
                 conexao.close();
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +61,7 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pn_funcionários = new javax.swing.JPanel();
         lbl_funcionarios = new javax.swing.JLabel();
         btn_novo = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -85,7 +87,7 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_funcionários.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_funcionarios.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_funcionarios.setText("Funcionários");
@@ -133,19 +135,19 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
 
         lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_funcionáriosLayout = new javax.swing.GroupLayout(pn_funcionários);
+        pn_funcionários.setLayout(pn_funcionáriosLayout);
+        pn_funcionáriosLayout.setHorizontalGroup(
+            pn_funcionáriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_funcionáriosLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pn_funcionáriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_funcionáriosLayout.createSequentialGroup()
                         .addComponent(lbl_funcionarios)
                         .addGap(18, 18, 18)
                         .addComponent(btn_novo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_funcionáriosLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -157,19 +159,19 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pn_funcionáriosLayout.setVerticalGroup(
+            pn_funcionáriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_funcionáriosLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_funcionáriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_funcionarios)
                     .addComponent(btn_novo, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_funcionáriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pn_funcionáriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(lbl_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -183,11 +185,11 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_funcionários, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_funcionários, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -211,9 +213,7 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        //this.tb_funcionario("SELECT id_funcionario,nome,cargo,DATE_FORMAT(dataemissao, '%d/%m/%Y') AS data_formatada,status"
-               // + "FROM funcionarios ORDER BY id_funcionario;");
+
     }//GEN-LAST:event_formWindowOpened
 
     private void tb_funcionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcionariosMouseClicked
@@ -257,13 +257,13 @@ public class tela_lista_funcionarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_novo;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_funcionarios;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JPanel pn_funcionários;
     private javax.swing.JTable tb_funcionarios;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables

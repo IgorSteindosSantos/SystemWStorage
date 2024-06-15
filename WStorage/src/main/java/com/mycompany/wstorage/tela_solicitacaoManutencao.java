@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author Ronieli
  */
 public class tela_solicitacaoManutencao extends javax.swing.JFrame {
-
+    // Estabelecer conexão com o banco
     Connection conexao = null;
     ResultSet resultado = null;
     PreparedStatement statement = null;
@@ -31,15 +33,19 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
     }
     
     public void LimparCampos() {
+        // Classe que limpa todos componetes do frame
         txt_codigoManutencao.setText("");
         rb_equipamento.setSelected(false);
         rb_maquina.setSelected(false);
         txt_codigoProduto.setText("");
         txt_nomeProduto.setText("");
         txt_descricao.setText("");
+        lbl_foto.setIcon(null);
+        txt_imagem.setText("");
     }
     
     public void CamboBoxLocalizacao (String sql) {
+        // Classe que popular o cbx_localizao com as localizações salvas no bd
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
             statement = conexao.prepareStatement(sql);
@@ -57,6 +63,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
     }
     
     public void CamboBoxManutencao (String sql) {
+        // Classe que popular o cbx_manutencao com as manutenções salvas no bd
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
             statement = conexao.prepareStatement(sql);
@@ -77,9 +84,9 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
+        jFileChooser1 = new javax.swing.JFileChooser();
+        pl_solicitarManutencao = new javax.swing.JPanel();
+        separator_manutencao = new javax.swing.JSeparator();
         lbl_manutencao = new javax.swing.JLabel();
         txt_codigoManutencao = new javax.swing.JTextField();
         lbl_codigo = new javax.swing.JLabel();
@@ -103,8 +110,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         btn_pesquisar = new javax.swing.JButton();
         rb_equipamento = new javax.swing.JRadioButton();
         rb_maquina = new javax.swing.JRadioButton();
-
-        jLabel2.setText("jLabel2");
+        txt_imagem = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
@@ -115,7 +121,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pl_solicitarManutencao.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_manutencao.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_manutencao.setText("Solicitação de Manutenção");
@@ -153,9 +159,19 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
 
         btn_exluirImagem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_exluirImagem.setText("Excluir");
+        btn_exluirImagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exluirImagemActionPerformed(evt);
+            }
+        });
 
         btn_salvarImagem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_salvarImagem.setText("Salvar");
+        btn_salvarImagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_salvarImagemActionPerformed(evt);
+            }
+        });
 
         btn_salvar.setBackground(new java.awt.Color(32, 107, 165));
         btn_salvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -203,62 +219,70 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        txt_imagem.setEditable(false);
+        txt_imagem.setText("imagem");
+        txt_imagem.setEnabled(false);
+
+        javax.swing.GroupLayout pl_solicitarManutencaoLayout = new javax.swing.GroupLayout(pl_solicitarManutencao);
+        pl_solicitarManutencao.setLayout(pl_solicitarManutencaoLayout);
+        pl_solicitarManutencaoLayout.setHorizontalGroup(
+            pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
+                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_manutencao)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(separator_manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
+                                .addComponent(lbl_manutencao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36))))
+                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                         .addGap(282, 282, 282)
                         .addComponent(btn_salvar)
                         .addGap(145, 145, 145)
                         .addComponent(btn_voltar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
+                                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lbl_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txt_codigoManutencao))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lbl_imagem)
-                                        .addGap(69, 69, 69))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                                         .addGap(22, 22, 22)
                                         .addComponent(rb_maquina)
                                         .addGap(18, 18, 18)
                                         .addComponent(rb_equipamento)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbl_imagem)
+                                        .addGap(70, 70, 70))))
                             .addComponent(lbl_descricao)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
+                                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_nomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_nome)
                                     .addComponent(lbl_codigoEqp)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                                         .addComponent(txt_codigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btn_pesquisar))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                                         .addComponent(lbl_tipoManutencao)
                                         .addGap(53, 53, 53)
                                         .addComponent(lbl_localizacao))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                                         .addComponent(cbx_manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pl_solicitarManutencaoLayout.createSequentialGroup()
                                         .addComponent(btn_salvarImagem)
                                         .addGap(86, 86, 86)
                                         .addComponent(btn_exluirImagem)
@@ -266,28 +290,30 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                                     .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pl_solicitarManutencaoLayout.setVerticalGroup(
+            pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(lbl_manutencao)
+                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_manutencao)
+                    .addComponent(txt_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separator_manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_codigo)
                     .addComponent(lbl_imagem))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
+                        .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_codigoManutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rb_equipamento)
                             .addComponent(rb_maquina))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbl_codigoEqp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_codigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_pesquisar))
                         .addGap(18, 18, 18)
@@ -295,17 +321,17 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_nomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pl_solicitarManutencaoLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_salvarImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_exluirImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_tipoManutencao)
                         .addComponent(lbl_localizacao)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbx_manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(81, 81, 81)
@@ -313,7 +339,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pl_solicitarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
@@ -323,11 +349,11 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pl_solicitarManutencao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pl_solicitarManutencao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -363,6 +389,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
                     
                     String sql = "INSERT INTO Solicitar_Manutencaoes (cod_maquina, cod_localizacao, "
                             + "cod_tipo_manutencao, descricao,status,data_emissao) VALUES (?,?,?,?,'Sem Agendamento',NOW());";
+                    
                     // Passando combobox para o banco
                     String comboBox = (String) cbx_localizacao.getSelectedItem();
                     String [] partes = comboBox.split(" - ");
@@ -446,15 +473,11 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void rb_maquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_maquinaActionPerformed
-        // TODO add your handling code here:
-        rb_equipamento.setSelected(false);
-     
+        rb_equipamento.setSelected(false);     
     }//GEN-LAST:event_rb_maquinaActionPerformed
 
     private void rb_equipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_equipamentoActionPerformed
-        // TODO add your handling code here:
-        rb_maquina.setSelected(false);
-        
+        rb_maquina.setSelected(false);        
     }//GEN-LAST:event_rb_equipamentoActionPerformed
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
@@ -553,6 +576,24 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         txt_nomeProduto.setEditable(false);
     }//GEN-LAST:event_formWindowOpened
 
+    private void btn_salvarImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarImagemActionPerformed
+        // Salvar imagem no txt_imagem para depois enviar pro banco 
+        jFileChooser1.setVisible(true);
+        int result = this.jFileChooser1.showOpenDialog(this.jFileChooser1);
+        if(result == JFileChooser.APPROVE_OPTION){
+            String filePath = this.jFileChooser1.getSelectedFile().getAbsolutePath();
+            ImageIcon icon = new ImageIcon(filePath);
+            this.lbl_foto.setIcon(icon);
+            this.txt_imagem.setText(filePath);
+        }
+    }//GEN-LAST:event_btn_salvarImagemActionPerformed
+
+    private void btn_exluirImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exluirImagemActionPerformed
+        // Excluindo foto 
+          txt_imagem.setText("");
+          lbl_foto.setIcon(null);
+    }//GEN-LAST:event_btn_exluirImagemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -596,10 +637,8 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
     private javax.swing.JButton btn_voltar;
     private javax.swing.JComboBox<String> cbx_localizacao;
     private javax.swing.JComboBox<String> cbx_manutencao;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_codigo;
     private javax.swing.JLabel lbl_codigoEqp;
     private javax.swing.JLabel lbl_descricao;
@@ -609,11 +648,14 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_manutencao;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_tipoManutencao;
+    private javax.swing.JPanel pl_solicitarManutencao;
     private javax.swing.JRadioButton rb_equipamento;
     private javax.swing.JRadioButton rb_maquina;
+    private javax.swing.JSeparator separator_manutencao;
     private javax.swing.JTextField txt_codigoManutencao;
     private javax.swing.JTextField txt_codigoProduto;
     private javax.swing.JTextPane txt_descricao;
+    private javax.swing.JTextField txt_imagem;
     private javax.swing.JTextField txt_nomeProduto;
     // End of variables declaration//GEN-END:variables
 }

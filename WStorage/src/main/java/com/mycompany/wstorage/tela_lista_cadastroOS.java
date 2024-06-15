@@ -26,6 +26,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
+    // Variavel publica para passar o ID da ordem de serviço
     public static String id_OrdemServico;
     
     public tela_lista_cadastroOS() {
@@ -41,7 +42,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pn_ordemServico = new javax.swing.JPanel();
         lbl_os = new javax.swing.JLabel();
         btn_novo = new javax.swing.JButton();
         txt_pesquisar = new javax.swing.JTextField();
@@ -63,7 +64,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_ordemServico.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_os.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_os.setText("Ordem de Serviços");
@@ -110,30 +111,30 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
 
         lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_ordemServicoLayout = new javax.swing.GroupLayout(pn_ordemServico);
+        pn_ordemServico.setLayout(pn_ordemServicoLayout);
+        pn_ordemServicoLayout.setHorizontalGroup(
+            pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_ordemServicoLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_ordemServicoLayout.createSequentialGroup()
+                        .addGroup(pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1450, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 1450, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(59, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_ordemServicoLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_ordemServicoLayout.createSequentialGroup()
+                                .addGroup(pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(pn_ordemServicoLayout.createSequentialGroup()
                                         .addComponent(lbl_os)
                                         .addGap(12, 12, 12)
                                         .addComponent(btn_novo)))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pn_ordemServicoLayout.createSequentialGroup()
                                 .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lbl_pesquisar)
@@ -141,23 +142,23 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
                                 .addComponent(lbl_home)
                                 .addGap(74, 74, 74))))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        pn_ordemServicoLayout.setVerticalGroup(
+            pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_ordemServicoLayout.createSequentialGroup()
+                .addGroup(pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_ordemServicoLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_ordemServicoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lbl_os)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pn_ordemServicoLayout.createSequentialGroup()
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pn_ordemServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbl_home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,11 +173,11 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_ordemServico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_ordemServico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -184,6 +185,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     public void  tb_os (String sql){
+        // Classe criada para popular tabela de ordem de serviço
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);            
             statement = (PreparedStatement)conexao.prepareStatement(sql);
@@ -211,9 +213,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     }
     
     private void btn_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_novoActionPerformed
-        // TODO add your handling code here:
-        //tela_lista_cadastroOS.this.dispose();
-        tela_cadastroOS btn_novo = new tela_cadastroOS();
+       tela_cadastroOS btn_novo = new tela_cadastroOS();
         btn_novo.setVisible(true);
     }//GEN-LAST:event_btn_novoActionPerformed
 
@@ -230,7 +230,7 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void tb_osMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_osMouseClicked
-        
+        // Pegando id da linha selecionada e colocando para variavel publica
         int linha = tb_os.getSelectedRow();
         id_OrdemServico = tb_os.getValueAt(linha, 0).toString();
         tela_fecharOS objeto2 = new tela_fecharOS();
@@ -275,13 +275,13 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_novo;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_os;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JPanel pn_ordemServico;
     private javax.swing.JTable tb_os;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables

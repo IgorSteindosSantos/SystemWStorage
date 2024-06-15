@@ -19,9 +19,10 @@ import javax.swing.table.DefaultTableModel;
  */
 
 public class tela_manutencao extends javax.swing.JFrame {
+    // Estabelecendo conexao com o banco
+    ResultSet resultado = null;
     Connection conexao = null;
     PreparedStatement statement = null;
-
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
     String senha = "247022";
@@ -29,34 +30,35 @@ public class tela_manutencao extends javax.swing.JFrame {
      * Creates new form tela_manutencao
      */
     
-public void  tb_manutencoes (String sql){
-    try {
-        conexao = DriverManager.getConnection(url,usuario,senha);
-                    
-        PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
-        banco.execute(); // criar o vetor
-        ResultSet resultado = banco.executeQuery(sql);
-        DefaultTableModel model = (DefaultTableModel) tb_manutencoes.getModel();
-        model.setNumRows(0);
-                    
-            while (resultado.next()){
-                model.addRow(new Object[] {
-                //retorna os dados da tabela do BD, cada campo e um coluna.
-                resultado.getString("id_manutencao"),
-                resultado.getString("nome_manutencao"),
-                });
-            }
-            banco.close();
-            conexao.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-}
+    public void  tb_manutencoes (String sql){
+        // Classe criada para popular tabela manutenções
+        try {
+            conexao = DriverManager.getConnection(url,usuario,senha);                    
+            statement = (PreparedStatement)conexao.prepareStatement(sql);
+            statement.execute(); // criar o vetor
+            resultado = statement.executeQuery(sql);
+            DefaultTableModel model = (DefaultTableModel) tb_manutencoes.getModel();
+            model.setNumRows(0);
 
-public void limparCampos() {
-    txt_nome.setText("");
-    txt_codigo.setText("");
-}
+                while (resultado.next()){
+                    model.addRow(new Object[] {
+                    //retorna os dados da tabela do BD, cada campo e um coluna.
+                    resultado.getString("id_manutencao"),
+                    resultado.getString("nome_manutencao"),
+                    });
+                }
+                statement.close();
+                conexao.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+
+    public void limparCampos() {
+        // Classe criada para limpar campos
+        txt_nome.setText("");
+        txt_codigo.setText("");
+    }
 
     public tela_manutencao() {
         initComponents();
@@ -71,7 +73,7 @@ public void limparCampos() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pn_manutencao = new javax.swing.JPanel();
         lbl_manutencao = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txt_pesquisar = new javax.swing.JTextField();
@@ -98,7 +100,7 @@ public void limparCampos() {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_manutencao.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_manutencao.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_manutencao.setText("Manutenções");
@@ -213,24 +215,24 @@ public void limparCampos() {
 
         lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_manutencaoLayout = new javax.swing.GroupLayout(pn_manutencao);
+        pn_manutencao.setLayout(pn_manutencaoLayout);
+        pn_manutencaoLayout.setHorizontalGroup(
+            pn_manutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_manutencaoLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_manutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_manutencao)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_manutencaoLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pn_manutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_manutencaoLayout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pn_manutencaoLayout.createSequentialGroup()
                                 .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lbl_pesquisar)
@@ -238,17 +240,17 @@ public void limparCampos() {
                                 .addComponent(lbl_home)))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pn_manutencaoLayout.setVerticalGroup(
+            pn_manutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_manutencaoLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(lbl_manutencao)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pn_manutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_manutencaoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_manutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -256,7 +258,7 @@ public void limparCampos() {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_manutencaoLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -266,11 +268,11 @@ public void limparCampos() {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_manutencao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_manutencao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -328,6 +330,7 @@ public void limparCampos() {
     }//GEN-LAST:event_btn_atualizarActionPerformed
 
     private void tb_manutencoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_manutencoesMouseClicked
+        // Popular tabela de acordo com o txt
         int linha = tb_manutencoes.getSelectedRow();
         txt_codigo.setText(tb_manutencoes.getValueAt(linha, 0).toString());
         txt_nome.setText(tb_manutencoes.getValueAt(linha, 1).toString());
@@ -376,7 +379,6 @@ public void limparCampos() {
     private javax.swing.JButton btn_atualizar;
     private javax.swing.JButton btn_cadastra;
     private javax.swing.JButton btn_deletar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -386,6 +388,7 @@ public void limparCampos() {
     private javax.swing.JLabel lbl_manutencao;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JPanel pn_manutencao;
     private javax.swing.JTable tb_manutencoes;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_nome;

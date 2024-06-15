@@ -30,28 +30,28 @@ public class tela_menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        pn_centralMenu = new javax.swing.JPanel();
+        pn_menuRapido = new javax.swing.JPanel();
+        lbl_menuRapido = new javax.swing.JLabel();
         btn_os = new javax.swing.JButton();
         btn_manutencoes = new javax.swing.JButton();
         btn_estoque = new javax.swing.JButton();
         btn_sair = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        pn_informação = new javax.swing.JPanel();
         lbl_usuario = new javax.swing.JLabel();
         lbl_data = new javax.swing.JLabel();
         lbl_logo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menu_informacoes = new javax.swing.JMenuBar();
         menu_configuracao = new javax.swing.JMenu();
-        M_perfil = new javax.swing.JMenuItem();
-        M_usuario = new javax.swing.JMenuItem();
-        M_localizacao = new javax.swing.JMenuItem();
-        m_manutencao = new javax.swing.JMenuItem();
-        M_servico = new javax.swing.JMenuItem();
+        mmi_perfil = new javax.swing.JMenuItem();
+        mmi_usuario = new javax.swing.JMenuItem();
+        mmi_localizacao = new javax.swing.JMenuItem();
+        mmi_manutencao = new javax.swing.JMenuItem();
+        mmi_servico = new javax.swing.JMenuItem();
         menu_relatorio = new javax.swing.JMenu();
         menu_cadastro = new javax.swing.JMenu();
         mni_equipamento = new javax.swing.JMenuItem();
-        jMenuItem1_maquinas = new javax.swing.JMenuItem();
+        mmi_maquinas = new javax.swing.JMenuItem();
         mni_funcionario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,17 +64,16 @@ public class tela_menu extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_centralMenu.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(32, 107, 165));
+        pn_menuRapido.setBackground(new java.awt.Color(32, 107, 165));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Menu Rápido");
+        lbl_menuRapido.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        lbl_menuRapido.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_menuRapido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_menuRapido.setText("Menu Rápido");
 
         btn_os.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_os.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_os.png")); // NOI18N
         btn_os.setText("Ordem de Serviço");
         btn_os.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +82,6 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_manutencoes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_manutencoes.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_manutencao.png")); // NOI18N
         btn_manutencoes.setText("Manutenções");
         btn_manutencoes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_manutencoes.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +91,6 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_estoque.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_estoque.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_estoque.png")); // NOI18N
         btn_estoque.setText("Estoque");
         btn_estoque.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_estoque.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +100,6 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_sair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_sair.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_sair.png")); // NOI18N
         btn_sair.setText("Sair");
         btn_sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,47 +107,44 @@ public class tela_menu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(btn_sair))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_manutencoes, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_os)
+        javax.swing.GroupLayout pn_menuRapidoLayout = new javax.swing.GroupLayout(pn_menuRapido);
+        pn_menuRapido.setLayout(pn_menuRapidoLayout);
+        pn_menuRapidoLayout.setHorizontalGroup(
+            pn_menuRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_menuRapido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pn_menuRapidoLayout.createSequentialGroup()
+                .addGroup(pn_menuRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_menuRapidoLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btn_sair))
+                    .addGroup(pn_menuRapidoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pn_menuRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_manutencoes, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pn_menuRapidoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_os)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+        pn_menuRapidoLayout.setVerticalGroup(
+            pn_menuRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_menuRapidoLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lbl_menuRapido)
+                .addGap(38, 38, 38)
                 .addComponent(btn_os, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addComponent(btn_manutencoes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(btn_sair)
                 .addGap(17, 17, 17))
         );
 
-        lbl_usuario.setText("Logado com: Igor Stein - Administrador");
+        lbl_usuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_usuario.setText("BEM-VINDO Igor Stein | Cargo: Adiministrador");
 
         lbl_data.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lbl_data.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -164,57 +157,58 @@ public class tela_menu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+        javax.swing.GroupLayout pn_informaçãoLayout = new javax.swing.GroupLayout(pn_informação);
+        pn_informação.setLayout(pn_informaçãoLayout);
+        pn_informaçãoLayout.setHorizontalGroup(
+            pn_informaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_informaçãoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(lbl_usuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_data, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pn_informaçãoLayout.setVerticalGroup(
+            pn_informaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_informaçãoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pn_informaçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_data, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_usuario))
                 .addContainerGap())
         );
 
-        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\logo_menu.png")); // NOI18N
+        lbl_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo_menu.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_centralMenuLayout = new javax.swing.GroupLayout(pn_centralMenu);
+        pn_centralMenu.setLayout(pn_centralMenuLayout);
+        pn_centralMenuLayout.setHorizontalGroup(
+            pn_centralMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pn_informação, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_centralMenuLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
-                .addComponent(lbl_logo)
-                .addGap(207, 207, 207))
+                .addComponent(pn_menuRapido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        pn_centralMenuLayout.setVerticalGroup(
+            pn_centralMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_centralMenuLayout.createSequentialGroup()
+                .addGroup(pn_centralMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_centralMenuLayout.createSequentialGroup()
+                        .addComponent(pn_menuRapido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(12, 12, 12))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(lbl_logo)
+                    .addGroup(pn_centralMenuLayout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pn_informação, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(32, 107, 165));
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menu_informacoes.setBackground(new java.awt.Color(32, 107, 165));
+        menu_informacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         menu_configuracao.setText("Configuração");
         menu_configuracao.setAutoscrolls(true);
@@ -225,51 +219,51 @@ public class tela_menu extends javax.swing.JFrame {
             }
         });
 
-        M_perfil.setText("Perfil");
-        M_perfil.addActionListener(new java.awt.event.ActionListener() {
+        mmi_perfil.setText("Perfil");
+        mmi_perfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                M_perfilActionPerformed(evt);
+                mmi_perfilActionPerformed(evt);
             }
         });
-        menu_configuracao.add(M_perfil);
+        menu_configuracao.add(mmi_perfil);
 
-        M_usuario.setText("Usuários");
-        M_usuario.addActionListener(new java.awt.event.ActionListener() {
+        mmi_usuario.setText("Usuários");
+        mmi_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                M_usuarioActionPerformed(evt);
+                mmi_usuarioActionPerformed(evt);
             }
         });
-        menu_configuracao.add(M_usuario);
+        menu_configuracao.add(mmi_usuario);
 
-        M_localizacao.setText("Localizações");
-        M_localizacao.addActionListener(new java.awt.event.ActionListener() {
+        mmi_localizacao.setText("Localizações");
+        mmi_localizacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                M_localizacaoActionPerformed(evt);
+                mmi_localizacaoActionPerformed(evt);
             }
         });
-        menu_configuracao.add(M_localizacao);
+        menu_configuracao.add(mmi_localizacao);
 
-        m_manutencao.setText("Manutenções");
-        m_manutencao.addActionListener(new java.awt.event.ActionListener() {
+        mmi_manutencao.setText("Manutenções");
+        mmi_manutencao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                m_manutencaoActionPerformed(evt);
+                mmi_manutencaoActionPerformed(evt);
             }
         });
-        menu_configuracao.add(m_manutencao);
+        menu_configuracao.add(mmi_manutencao);
 
-        M_servico.setText("Serviços");
-        M_servico.addActionListener(new java.awt.event.ActionListener() {
+        mmi_servico.setText("Serviços");
+        mmi_servico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                M_servicoActionPerformed(evt);
+                mmi_servicoActionPerformed(evt);
             }
         });
-        menu_configuracao.add(M_servico);
+        menu_configuracao.add(mmi_servico);
 
-        jMenuBar1.add(menu_configuracao);
+        menu_informacoes.add(menu_configuracao);
 
         menu_relatorio.setText("Relatórios");
         menu_relatorio.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jMenuBar1.add(menu_relatorio);
+        menu_informacoes.add(menu_relatorio);
 
         menu_cadastro.setText("Cadastro");
         menu_cadastro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -283,14 +277,14 @@ public class tela_menu extends javax.swing.JFrame {
         });
         menu_cadastro.add(mni_equipamento);
 
-        jMenuItem1_maquinas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jMenuItem1_maquinas.setText("Maquinas");
-        jMenuItem1_maquinas.addActionListener(new java.awt.event.ActionListener() {
+        mmi_maquinas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        mmi_maquinas.setText("Maquinas");
+        mmi_maquinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1_maquinasActionPerformed(evt);
+                mmi_maquinasActionPerformed(evt);
             }
         });
-        menu_cadastro.add(jMenuItem1_maquinas);
+        menu_cadastro.add(mmi_maquinas);
 
         mni_funcionario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         mni_funcionario.setText("Funcionário");
@@ -301,41 +295,38 @@ public class tela_menu extends javax.swing.JFrame {
         });
         menu_cadastro.add(mni_funcionario);
 
-        jMenuBar1.add(menu_cadastro);
+        menu_informacoes.add(menu_cadastro);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu_informacoes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_centralMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_centralMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1_maquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_maquinasActionPerformed
-        // TODO add your handling code here:
+    private void mmi_maquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmi_maquinasActionPerformed
         tela_menu.this.dispose();
         tela_lista_cadastroMaquinas jMenuItem1_maquinas = new tela_lista_cadastroMaquinas();
         jMenuItem1_maquinas.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1_maquinasActionPerformed
+    }//GEN-LAST:event_mmi_maquinasActionPerformed
 
     private void btn_estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_estoqueActionPerformed
-        // TODO add your handling code here:
         tela_menu.this.dispose();
         tela_estoqueEqp btn_estoque = new tela_estoqueEqp();
         btn_estoque.setVisible(true);
     }//GEN-LAST:event_btn_estoqueActionPerformed
 
     private void btn_osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_osActionPerformed
-        // TODO add your handling code here:
         tela_menu.this.dispose();
         tela_lista_cadastroOS btn_os = new tela_lista_cadastroOS();
         btn_os.setVisible(true);
@@ -347,51 +338,49 @@ public class tela_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_mni_funcionarioActionPerformed
 
     private void lbl_dataAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lbl_dataAncestorAdded
-        // TODO add your handling code here:
-        //Date data = new Date();
-        //DateFormat formatador = DateFormat.getDateInstance(DateFormat.FULL);
+        // Informar data no sistema
         Date dataHoraAtual = new Date();
         String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
-        lbl_data.setText(data);
+        lbl_data.setText("DATA: " + data);
     }//GEN-LAST:event_lbl_dataAncestorAdded
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_formWindowActivated
 
-    private void M_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_perfilActionPerformed
+    private void mmi_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmi_perfilActionPerformed
         tela_perfil M_perfil = new tela_perfil();
         M_perfil.setVisible(true);
-    }//GEN-LAST:event_M_perfilActionPerformed
+    }//GEN-LAST:event_mmi_perfilActionPerformed
 
-    private void M_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_usuarioActionPerformed
-        //tela_menu.this.dispose();
+    private void mmi_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmi_usuarioActionPerformed
         tela_lista_usuarios M_usuario = new tela_lista_usuarios();
         M_usuario.setVisible(true);
-    }//GEN-LAST:event_M_usuarioActionPerformed
+    }//GEN-LAST:event_mmi_usuarioActionPerformed
 
     private void menu_configuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_configuracaoActionPerformed
-        // TODO add your handling code here
+
     }//GEN-LAST:event_menu_configuracaoActionPerformed
 
-    private void M_localizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_localizacaoActionPerformed
+    private void mmi_localizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmi_localizacaoActionPerformed
         tela_localizacao M_localizacao = new tela_localizacao();
         M_localizacao.setVisible(true);
-    }//GEN-LAST:event_M_localizacaoActionPerformed
+    }//GEN-LAST:event_mmi_localizacaoActionPerformed
 
     private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
+        // Fechar o sistema
         exit(0);
     }//GEN-LAST:event_btn_sairActionPerformed
 
-    private void m_manutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_manutencaoActionPerformed
+    private void mmi_manutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmi_manutencaoActionPerformed
         tela_manutencao m_manutencao = new tela_manutencao();
         m_manutencao.setVisible(true);
-    }//GEN-LAST:event_m_manutencaoActionPerformed
+    }//GEN-LAST:event_mmi_manutencaoActionPerformed
 
-    private void M_servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_M_servicoActionPerformed
+    private void mmi_servicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmi_servicoActionPerformed
         tela_servico M_servico = new tela_servico();
         M_servico.setVisible(true);
-    }//GEN-LAST:event_M_servicoActionPerformed
+    }//GEN-LAST:event_mmi_servicoActionPerformed
 
     private void mni_equipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_equipamentoActionPerformed
         tela_menu.this.dispose();
@@ -441,28 +430,28 @@ public class tela_menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem M_localizacao;
-    private javax.swing.JMenuItem M_perfil;
-    private javax.swing.JMenuItem M_servico;
-    private javax.swing.JMenuItem M_usuario;
     private javax.swing.JButton btn_estoque;
     private javax.swing.JButton btn_manutencoes;
     private javax.swing.JButton btn_os;
     private javax.swing.JButton btn_sair;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1_maquinas;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbl_data;
     private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel lbl_menuRapido;
     private javax.swing.JLabel lbl_usuario;
-    private javax.swing.JMenuItem m_manutencao;
     private javax.swing.JMenu menu_cadastro;
     private javax.swing.JMenu menu_configuracao;
+    private javax.swing.JMenuBar menu_informacoes;
     private javax.swing.JMenu menu_relatorio;
+    private javax.swing.JMenuItem mmi_localizacao;
+    private javax.swing.JMenuItem mmi_manutencao;
+    private javax.swing.JMenuItem mmi_maquinas;
+    private javax.swing.JMenuItem mmi_perfil;
+    private javax.swing.JMenuItem mmi_servico;
+    private javax.swing.JMenuItem mmi_usuario;
     private javax.swing.JMenuItem mni_equipamento;
     private javax.swing.JMenuItem mni_funcionario;
+    private javax.swing.JPanel pn_centralMenu;
+    private javax.swing.JPanel pn_informação;
+    private javax.swing.JPanel pn_menuRapido;
     // End of variables declaration//GEN-END:variables
 }

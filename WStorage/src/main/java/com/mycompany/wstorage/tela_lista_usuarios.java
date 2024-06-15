@@ -18,11 +18,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Igor Stein
  */
 public class tela_lista_usuarios extends javax.swing.JFrame {
+    // Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
     String senha = "247022";
     Connection conexao = null;
-    
+    PreparedStatement statement = null;
+    ResultSet resultado = null;
     /**
      * Creates new form tela_lista_usuarios
      */
@@ -31,11 +33,12 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
     }
     
      public void  tb_funcionario (String sql){
+        // Classe criada para popular tabela funcionários
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);            
-            PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
-            banco.execute(); // criar o vetor
-            ResultSet resultado = banco.executeQuery(sql);
+            statement = (PreparedStatement)conexao.prepareStatement(sql);
+            statement.execute(); // criar o vetor
+            resultado = statement.executeQuery(sql);
             DefaultTableModel model = (DefaultTableModel) tb_usuario.getModel();
             model.setNumRows(0);
 
@@ -49,7 +52,7 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
                     resultado.getString("status")
                     });
                 }
-                banco.close();
+                statement.close();
                 conexao.close();
             } catch (SQLException ex) {
                 Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,7 +63,7 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pn_usuarios = new javax.swing.JPanel();
         lbl_usuario = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txt_pesquisar = new javax.swing.JTextField();
@@ -79,7 +82,7 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_usuarios.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_usuario.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_usuario.setText("Usuários");
@@ -108,23 +111,23 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
 
         lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_usuariosLayout = new javax.swing.GroupLayout(pn_usuarios);
+        pn_usuarios.setLayout(pn_usuariosLayout);
+        pn_usuariosLayout.setHorizontalGroup(
+            pn_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_usuariosLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pn_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_usuariosLayout.createSequentialGroup()
+                        .addGroup(pn_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_usuariosLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_usuario))
                         .addGap(0, 30, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_usuariosLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -133,17 +136,17 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
                         .addComponent(lbl_home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pn_usuariosLayout.setVerticalGroup(
+            pn_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_usuariosLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(lbl_usuario)
                 .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pn_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pn_usuariosLayout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pn_usuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lbl_home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -158,11 +161,11 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -172,8 +175,6 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
     private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
         // TODO add your handling code here:
         tela_lista_usuarios.this.dispose();
-        /*tela_menu lbl_home = new tela_menu();
-        lbl_home.setVisible(true);*/
     }//GEN-LAST:event_lbl_homeMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -217,13 +218,13 @@ public class tela_lista_usuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_pesquisar;
     private javax.swing.JLabel lbl_usuario;
+    private javax.swing.JPanel pn_usuarios;
     private javax.swing.JTable tb_usuario;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables

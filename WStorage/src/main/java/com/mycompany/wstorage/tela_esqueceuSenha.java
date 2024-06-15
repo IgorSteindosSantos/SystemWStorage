@@ -27,7 +27,7 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        pn_recuperarSenha = new javax.swing.JPanel();
         lbl_recuperarSenha = new javax.swing.JLabel();
         txt_identificador = new javax.swing.JTextField();
         lbl_identificador = new javax.swing.JLabel();
@@ -51,7 +51,7 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
         setTitle("WStorage");
         setResizable(false);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        pn_recuperarSenha.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_recuperarSenha.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_recuperarSenha.setText("Recuperar Senha");
@@ -76,33 +76,33 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
         lbl_informacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lbl_informacao.setText("Será gerado uma nova senha automaticamente ao preencher os dados.");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_recuperarSenhaLayout = new javax.swing.GroupLayout(pn_recuperarSenha);
+        pn_recuperarSenha.setLayout(pn_recuperarSenhaLayout);
+        pn_recuperarSenhaLayout.setHorizontalGroup(
+            pn_recuperarSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_recuperarSenhaLayout.createSequentialGroup()
+                .addGroup(pn_recuperarSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_recuperarSenhaLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(lbl_informacao))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(pn_recuperarSenhaLayout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_recuperarSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_identificador)
                             .addComponent(lbl_cpf)
                             .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(pn_recuperarSenhaLayout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(lbl_recuperarSenha))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(pn_recuperarSenhaLayout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(btn_gerarSenha)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pn_recuperarSenhaLayout.setVerticalGroup(
+            pn_recuperarSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_recuperarSenhaLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lbl_recuperarSenha)
                 .addGap(26, 26, 26)
@@ -124,11 +124,11 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_recuperarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_recuperarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -173,11 +173,11 @@ public class tela_esqueceuSenha extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_gerarSenha;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lbl_cpf;
     private javax.swing.JLabel lbl_identificador;
     private javax.swing.JLabel lbl_informacao;
     private javax.swing.JLabel lbl_recuperarSenha;
+    private javax.swing.JPanel pn_recuperarSenha;
     private javax.swing.JTextField txt_cpf;
     private javax.swing.JTextField txt_identificador;
     // End of variables declaration//GEN-END:variables

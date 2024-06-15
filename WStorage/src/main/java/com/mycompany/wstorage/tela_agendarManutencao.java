@@ -35,6 +35,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
     }
     
     public void CamboBoxLocalizacao (String sql) {
+        // Classe criada para popular comboBox localixação com os dados do banco
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
             statement = conexao.prepareStatement(sql);
@@ -52,6 +53,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
     }
     
     public void CamboBoxManutencao (String sql) {
+        // Classe criada para popular comboBox manutenção com os dados do banco
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
             statement = conexao.prepareStatement(sql);
@@ -72,7 +74,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pn_agendarManutencao = new javax.swing.JPanel();
         lbl_agendar = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lbl_codigo = new javax.swing.JLabel();
@@ -99,7 +101,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         btn_pesquisar = new javax.swing.JButton();
         txt_inicio = new javax.swing.JFormattedTextField();
         txt_final = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_calcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WStorage");
@@ -112,7 +114,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_agendarManutencao.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_agendar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_agendar.setText("Agendamento de Manutenção");
@@ -219,136 +221,136 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         txt_final.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_final.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jButton1.setText("Calcular");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_calcular.setText("Calcular");
+        btn_calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_calcularActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_agendarManutencaoLayout = new javax.swing.GroupLayout(pn_agendarManutencao);
+        pn_agendarManutencao.setLayout(pn_agendarManutencaoLayout);
+        pn_agendarManutencaoLayout.setHorizontalGroup(
+            pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_agendar)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_descricao)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
+                                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lbl_nome, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_agendarManutencaoLayout.createSequentialGroup()
+                                            .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(lbl_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(txt_codigo))
                                             .addGap(18, 18, 18)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(lbl_codigoProduto)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                                     .addComponent(txt_codigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(18, 18, 18)
                                                     .addComponent(btn_pesquisar)))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_agendarManutencaoLayout.createSequentialGroup()
+                                        .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lbl_tipoManutencao)
                                             .addComponent(cbx_tipoManutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(26, 26, 26)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lbl_localizacao)
                                             .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_agendarManutencaoLayout.createSequentialGroup()
+                                                    .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addComponent(ftxt_dataAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                                             .addComponent(lbl_inicializacao)
                                                             .addGap(185, 185, 185)))
                                                     .addGap(159, 159, 159))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                                     .addComponent(txt_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(lbl_finalizacao)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                                             .addComponent(txt_final, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                            .addComponent(jButton1)))
+                                                            .addComponent(btn_calcular)))
                                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                                 .addComponent(txt_tempoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(129, 129, 129))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
+                                        .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                                 .addGap(93, 93, 93)
                                                 .addComponent(lbl_tempoEstimado))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                                 .addGap(77, 77, 77)
                                                 .addComponent(lbl_dataAgendamento)))
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                 .addGap(239, 239, 239)
                 .addComponent(btn_salvar)
                 .addGap(150, 150, 150)
                 .addComponent(btn_voltar)
                 .addGap(33, 33, 33))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pn_agendarManutencaoLayout.setVerticalGroup(
+            pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(lbl_agendar)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
+                                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lbl_codigo)
                                     .addComponent(lbl_codigoProduto)
                                     .addComponent(lbl_dataAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_codigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btn_pesquisar)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addComponent(ftxt_dataAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(lbl_nome))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pn_agendarManutencaoLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(lbl_finalizacao))))
                     .addComponent(lbl_inicializacao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_final, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btn_calcular))
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tipoManutencao)
                     .addComponent(lbl_localizacao)
                     .addComponent(lbl_tempoEstimado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbx_tipoManutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_tempoEstimado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -357,7 +359,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_agendarManutencaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -367,11 +369,11 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pn_agendarManutencao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_agendarManutencao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -390,8 +392,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Por favor, insira um ID de Máquina.", "Erro", JOptionPane.ERROR_MESSAGE);
                 txt_codigoProduto.requestFocus();
                 return;
-            }
-            
+            }            
             try {
                 // Verifica se o ID contém apenas dígitos
                 Integer.parseInt(id);
@@ -424,70 +425,55 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        
         try {
             conexao = DriverManager.getConnection(url, usuario, senha);
-
             // Verificar se a máquina já está em manutenção no mesmo dia
             String checkSql = "SELECT COUNT(*) FROM Solicitar_Manutencaoes WHERE cod_maquina = ? AND data_agendada = ? AND status = 'Agendado'";
             int idProduto = Integer.parseInt(txt_codigoProduto.getText());
-            
-
             // Converter data para formato adequado para consulta SQL
             String dia = ftxt_dataAgendamento.getText().substring(0, 2);
             String mes = ftxt_dataAgendamento.getText().substring(3, 5);
             String ano = ftxt_dataAgendamento.getText().substring(6);
             String data = ano + "-" + mes + "-" + dia;
-
             statement = conexao.prepareStatement(checkSql);
             statement.setInt(1, idProduto);
             statement.setString(2, data);
-            
-            
             resultado = statement.executeQuery();
             resultado.next();
             int quantidadeMaquinasNoMesmoDia = resultado.getInt(1);
             resultado.close();
             statement.close();
-
             if (quantidadeMaquinasNoMesmoDia > 0) {
                 JOptionPane.showMessageDialog(null, "Esta máquina já está em manutenção para esta data.", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
             // Verificar se já existem três máquinas agendadas para este dia
             String countSql = "SELECT COUNT(*) FROM Solicitar_Manutencaoes WHERE data_agendada = ? AND status = 'Agendado'";
-
             statement = conexao.prepareStatement(countSql);
             statement.setString(1, data);
-
             resultado = statement.executeQuery();
             resultado.next();
             int quantidadeTotalMaquinasNoDia = resultado.getInt(1);
             resultado.close();
             statement.close();
-
             if (quantidadeTotalMaquinasNoDia >= 3) {
                 JOptionPane.showMessageDialog(null, "Limite de três máquinas agendadas para esta data já foi atingido.", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
             // Se não houverem problemas, proceda com a inserção da manutenção
             String sql = "INSERT INTO Solicitar_Manutencaoes (cod_maquina, cod_localizacao, cod_tipo_manutencao, "
                     + "descricao, tempoEstimado, data_agendada, hora_inicial, hora_final, status, data_emissao) "
                     + "VALUES (?,?,?,?,?,?,?,?,'Agendado', NOW())";
-
-            // Restante do código para preparar e executar a inserção
+            // Passando o que foi selecionado no bomboBox localizaçao
             String comboBox = (String) cbx_localizacao.getSelectedItem();
             String[] partes = comboBox.split(" - ");
             String idLocal = partes[0].trim();
             int id_local = Integer.parseInt(idLocal);
-
+            // Passando o que foi selecionado no bomboBox manutenção         
             String comboBox2 = (String) cbx_tipoManutencao.getSelectedItem();
             String[] partes2 = comboBox2.split(" - ");
             String idManutencao = partes2[0].trim();
             int id_manutencao = Integer.parseInt(idManutencao);
-
             statement = conexao.prepareStatement(sql);
             statement.setInt(1, idProduto);
             statement.setInt(2, id_local);
@@ -497,12 +483,10 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
             statement.setString(6, data);
             statement.setString(7, txt_inicio.getText());
             statement.setString(8, txt_final.getText());
-
             statement.execute();
             statement.close();
-
             JOptionPane.showMessageDialog(null, "Manutenção cadastrada com sucesso.", "Manutenção", JOptionPane.INFORMATION_MESSAGE);
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(tela_agendarManutencao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -514,7 +498,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         this.CamboBoxManutencao("SELECT * FROM manutencoes ORDER BY id_manutencao;");
     }//GEN-LAST:event_formWindowGainedFocus
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
         try {
             // Ler e validar os horários
             LocalTime horasTxt = LocalTime.parse(txt_inicio.getText());
@@ -534,7 +518,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_calcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -572,14 +556,13 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_calcular;
     private javax.swing.JButton btn_pesquisar;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JButton btn_voltar;
     private javax.swing.JComboBox<String> cbx_localizacao;
     private javax.swing.JComboBox<String> cbx_tipoManutencao;
     private javax.swing.JFormattedTextField ftxt_dataAgendamento;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_agendar;
@@ -593,6 +576,7 @@ public class tela_agendarManutencao extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_tempoEstimado;
     private javax.swing.JLabel lbl_tipoManutencao;
+    private javax.swing.JPanel pn_agendarManutencao;
     private javax.swing.JTextField txt_codigo;
     private javax.swing.JTextField txt_codigoProduto;
     private javax.swing.JFormattedTextField txt_final;

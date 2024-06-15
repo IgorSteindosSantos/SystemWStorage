@@ -32,6 +32,7 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
     }
 
     public void  tb_equipamentos (String sql){
+        // Classe criada para popular tabela
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);            
             statement = (PreparedStatement)conexao.prepareStatement(sql);
@@ -216,7 +217,6 @@ public class tela_lista_cadastroEquipamentos extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        // TODO add your handling code here:
         this.tb_equipamentos("SELECT * FROM vw_equipamentos;");
     }//GEN-LAST:event_formWindowGainedFocus
 

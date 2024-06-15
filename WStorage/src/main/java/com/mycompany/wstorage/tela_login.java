@@ -40,8 +40,8 @@ public class tela_login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pn_fundoAzul = new javax.swing.JPanel();
+        pn_centralBranco = new javax.swing.JPanel();
         lbl_logo = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         lbl_senha = new javax.swing.JLabel();
@@ -66,14 +66,14 @@ public class tela_login extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(32, 107, 165));
+        pn_fundoAzul.setBackground(new java.awt.Color(32, 107, 165));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
-        jPanel2.setToolTipText("");
+        pn_centralBranco.setBackground(new java.awt.Color(255, 255, 255));
+        pn_centralBranco.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), new java.awt.Color(102, 102, 102)));
+        pn_centralBranco.setToolTipText("");
 
         lbl_logo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\logo_wstorage.png")); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo_wstorage.png"))); // NOI18N
 
         lbl_usuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbl_usuario.setText("Usuário");
@@ -126,36 +126,36 @@ public class tela_login extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_centralBrancoLayout = new javax.swing.GroupLayout(pn_centralBranco);
+        pn_centralBranco.setLayout(pn_centralBrancoLayout);
+        pn_centralBrancoLayout.setHorizontalGroup(
+            pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_centralBrancoLayout.createSequentialGroup()
                 .addGap(156, 156, 156)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_avancar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_esqueciSenha))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(pn_centralBrancoLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_centralBrancoLayout.createSequentialGroup()
                         .addComponent(lbl_logo)
-                        .addContainerGap(73, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addContainerGap(54, Short.MAX_VALUE))
+                    .addGroup(pn_centralBrancoLayout.createSequentialGroup()
+                        .addGroup(pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbl_senha)
                             .addComponent(lbl_usuario)
                             .addComponent(txt_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(txt_senha))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+        pn_centralBrancoLayout.setVerticalGroup(
+            pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_centralBrancoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(lbl_usuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,20 +170,20 @@ public class tela_login extends javax.swing.JFrame {
                 .addGap(41, 41, 41))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_fundoAzulLayout = new javax.swing.GroupLayout(pn_fundoAzul);
+        pn_fundoAzul.setLayout(pn_fundoAzulLayout);
+        pn_fundoAzulLayout.setHorizontalGroup(
+            pn_fundoAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_fundoAzulLayout.createSequentialGroup()
                 .addGap(265, 265, 265)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addComponent(pn_centralBranco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(255, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        pn_fundoAzulLayout.setVerticalGroup(
+            pn_fundoAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_fundoAzulLayout.createSequentialGroup()
                 .addContainerGap(65, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pn_centralBranco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
         );
 
@@ -191,11 +191,11 @@ public class tela_login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_fundoAzul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pn_fundoAzul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -232,13 +232,11 @@ public class tela_login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_avancarActionPerformed
 
     private void lbl_esqueciSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_esqueciSenhaMouseClicked
-        // TODO add your handling code here:
         tela_esqueceuSenha lbl_esqueciSenha = new tela_esqueceuSenha();
         lbl_esqueciSenha.setVisible(true);
     }//GEN-LAST:event_lbl_esqueciSenhaMouseClicked
 
     private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
-        // TODO add your handling code here:
         String text = txt_usuario.getText();
         if (!text.matches("\\d*")){ // Verifica se o texto contém apenas letras
             JOptionPane.showMessageDialog(null,
@@ -250,21 +248,20 @@ public class tela_login extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usuarioActionPerformed
 
     private void txt_usuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usuarioFocusGained
-        // TODO add your handling code here:
         if(txt_usuario.getText().equals("Digite seu CPF aqui...")) {
             txt_usuario.setText("");
         }
     }//GEN-LAST:event_txt_usuarioFocusGained
 
     private void txt_usuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usuarioFocusLost
-        // TODO add your handling code here:
+
         if(txt_usuario.getText().equals("")) {
             txt_usuario.setText("Digite seu CPF aqui...");
         }
     }//GEN-LAST:event_txt_usuarioFocusLost
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -272,14 +269,12 @@ public class tela_login extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void txt_senhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_senhaFocusGained
-        // TODO add your handling code here:
         if(txt_senha.getText().equals("*****************")) {
             txt_senha.setText("");
         }
     }//GEN-LAST:event_txt_senhaFocusGained
 
     private void txt_senhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_senhaFocusLost
-        // TODO add your handling code here:
         if(txt_senha.getText().equals("")) {
             txt_senha.setText("*****************");
         }
@@ -322,12 +317,12 @@ public class tela_login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_avancar;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_esqueciSenha;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_senha;
     private javax.swing.JLabel lbl_usuario;
+    private javax.swing.JPanel pn_centralBranco;
+    private javax.swing.JPanel pn_fundoAzul;
     private javax.swing.JPasswordField txt_senha;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables

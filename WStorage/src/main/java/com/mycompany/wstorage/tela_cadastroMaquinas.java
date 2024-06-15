@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  * @author Podol
  */
 public class tela_cadastroMaquinas extends javax.swing.JFrame {
-    
+    // Estabelecer conexão com o banco
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
@@ -32,18 +32,20 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     String senha = "247022";
     
     public void limparCampos() {
-    txt_nome.setText("");
-    txt_modelo.setText("");
-    txt_modelo.setText("");
-    txt_fabricante.setText("");
-    txt_linkmanual.setText("");
-    txt_modelo.setText("");
-    txt_numeroSerie.setText("");
-    txta_descricao.setText("");
-    txt_dimensoes.setText("");
+        // Classe para limpar campos
+        txt_nome.setText("");
+        txt_modelo.setText("");
+        txt_modelo.setText("");
+        txt_fabricante.setText("");
+        txt_linkmanual.setText("");
+        txt_modelo.setText("");
+        txt_numeroSerie.setText("");
+        txta_descricao.setText("");
+        txt_dimensoes.setText("");
     }
    
     public void popularCamboBox (String sql) {
+        // Classe para popular cbx_localizacao com as localizações cadastradas no banco
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);
             
@@ -62,6 +64,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     }
     
     public void id_maquina () {
+        // Classe para pegar o ultimo id criado no banco
         try {
             //Pupulando txt_codigo com id_local
             int ultimoId = 0;
@@ -92,7 +95,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pn_maquinas = new javax.swing.JPanel();
         jFileChooser1 = new javax.swing.JFileChooser();
         lbl_cadastroMaquinas = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -121,7 +124,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         lbl_imgmaquina = new javax.swing.JLabel();
         btn_salvarimg = new javax.swing.JButton();
         btn_exluirimg = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_foto = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txta_descricao = new javax.swing.JTextArea();
         txt_dataemissao = new javax.swing.JTextField();
@@ -137,7 +140,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_maquinas.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_cadastroMaquinas.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         lbl_cadastroMaquinas.setText("Cadastro de Máquinas");
@@ -244,8 +247,8 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         btn_exluirimg.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btn_exluirimg.setText("Excluir");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txta_descricao.setColumns(20);
         txta_descricao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -273,97 +276,97 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
         btn_editar.setText("Editar");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_maquinasLayout = new javax.swing.GroupLayout(pn_maquinas);
+        pn_maquinas.setLayout(pn_maquinasLayout);
+        pn_maquinasLayout.setHorizontalGroup(
+            pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_maquinasLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_maquinasLayout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(33, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_maquinasLayout.createSequentialGroup()
                         .addComponent(lbl_cadastroMaquinas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(166, 166, 166))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(pn_maquinasLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_maquinasLayout.createSequentialGroup()
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pn_maquinasLayout.createSequentialGroup()
+                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_idmaquina)
                                     .addComponent(lbl_nome)
                                     .addComponent(txt_idmaquina, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_numeroserie)
                                     .addComponent(txt_numeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(txt_nome)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_maquinasLayout.createSequentialGroup()
+                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pn_maquinasLayout.createSequentialGroup()
                                                 .addComponent(lbl_fabricante)
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(pn_maquinasLayout.createSequentialGroup()
                                                 .addComponent(txt_fabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(pn_maquinasLayout.createSequentialGroup()
                                             .addComponent(lbl_modelo)
                                             .addGap(143, 143, 143)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(pn_maquinasLayout.createSequentialGroup()
                                         .addComponent(txt_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(38, 38, 38)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl_localizacao)
                                     .addComponent(lbl_dimensoes)
                                     .addComponent(txt_dimensoes, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pn_maquinasLayout.createSequentialGroup()
                                 .addGap(44, 44, 44)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pn_maquinasLayout.createSequentialGroup()
                                         .addComponent(lbl_linkmanual)
                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_maquinasLayout.createSequentialGroup()
+                                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(txt_linkmanual, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(pn_maquinasLayout.createSequentialGroup()
+                                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                             .addComponent(jCheckBox_status, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                             .addComponent(lbl_dataemissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_maquinasLayout.createSequentialGroup()
                                                             .addGap(39, 39, 39)
                                                             .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                     .addComponent(txt_dataemissao, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lbl_foto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_maquinasLayout.createSequentialGroup()
                                                         .addComponent(btn_salvarimg)
                                                         .addGap(46, 46, 46)
                                                         .addComponent(btn_exluirimg, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(15, 15, 15)))))
                                         .addGap(54, 54, 54))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_maquinasLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lbl_imgmaquina)
                                 .addGap(99, 99, 99))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_maquinasLayout.createSequentialGroup()
                         .addComponent(lbl_descricao)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_maquinasLayout.createSequentialGroup()
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pn_maquinasLayout.createSequentialGroup()
                                 .addGap(90, 90, 90)
                                 .addComponent(btn_voltar)
                                 .addGap(130, 130, 130)
@@ -375,66 +378,66 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                                 .addGap(78, 78, 78)))
                         .addGap(54, 54, 54))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        pn_maquinasLayout.setVerticalGroup(
+            pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_maquinasLayout.createSequentialGroup()
+                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_maquinasLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(lbl_cadastroMaquinas))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_maquinasLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(txt_imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_imgmaquina, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_idmaquina)
                         .addComponent(lbl_numeroserie)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_maquinasLayout.createSequentialGroup()
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jCheckBox_status)
                                 .addComponent(txt_numeroSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txt_idmaquina, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_nome)
                             .addComponent(lbl_dataemissao))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_nome, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                             .addComponent(txt_dataemissao))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pn_maquinasLayout.createSequentialGroup()
+                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_modelo)
                                     .addComponent(lbl_localizacao))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txt_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_fabricante)
                             .addComponent(lbl_dimensoes)
                             .addComponent(lbl_linkmanual))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_fabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_dimensoes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_linkmanual, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_maquinasLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_salvarimg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_exluirimg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(32, 32, 32)
@@ -442,7 +445,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_maquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,11 +466,11 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_maquinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pn_maquinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -491,13 +494,13 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_salvarimgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarimgActionPerformed
-        // TODO add your handling code here: 
+        // Salvar imagem no txt_imagem para depois enviar pro banco 
         jFileChooser1.setVisible(true);
         int result = this.jFileChooser1.showOpenDialog(this.jFileChooser1);
         if(result == JFileChooser.APPROVE_OPTION){
             String filePath = this.jFileChooser1.getSelectedFile().getAbsolutePath();
             ImageIcon icon = new ImageIcon(filePath);
-            this.jLabel2.setIcon(icon);
+            this.lbl_foto.setIcon(icon);
             this.txt_imagem.setText(filePath);
         }
     }//GEN-LAST:event_btn_salvarimgActionPerformed
@@ -556,13 +559,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_dataemissaoAncestorAdded
 
     private void jCheckBox_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_statusActionPerformed
-        // TODO add your handling code here:
-        /*String checkbox = "";
-        if(cbx_localizacao.isEnabled()) {
-            checkbox+="Ativo";
-        } else {
-            checkbox+="Desativado";
-        }*/
+
     }//GEN-LAST:event_jCheckBox_statusActionPerformed
 
     /**
@@ -610,8 +607,6 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbx_localizacao;
     private javax.swing.JCheckBox jCheckBox_status;
     private javax.swing.JFileChooser jFileChooser1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_cadastroMaquinas;
@@ -619,6 +614,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_descricao;
     private javax.swing.JLabel lbl_dimensoes;
     private javax.swing.JLabel lbl_fabricante;
+    private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lbl_idmaquina;
     private javax.swing.JLabel lbl_imgmaquina;
     private javax.swing.JLabel lbl_linkmanual;
@@ -626,6 +622,7 @@ public class tela_cadastroMaquinas extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_modelo;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JLabel lbl_numeroserie;
+    private javax.swing.JPanel pn_maquinas;
     private javax.swing.JTextField txt_dataemissao;
     private javax.swing.JTextField txt_dimensoes;
     private javax.swing.JTextField txt_fabricante;

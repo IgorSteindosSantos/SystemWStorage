@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
  * @author Podol
  */
 public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
-    //public static String id;
     
     //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
@@ -33,6 +32,7 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
     }
     
     public void  tb_maquina (String sql){
+        // Classe para popular tabela com os dados do banco
         try {
             conexao = DriverManager.getConnection(url,usuario,senha);            
             statement = (PreparedStatement)conexao.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pn_listaMaquinas = new javax.swing.JPanel();
         lbl_maquinas = new javax.swing.JLabel();
         btn_novaMaquina = new javax.swing.JButton();
         txt_pesquisar = new javax.swing.JTextField();
@@ -89,7 +89,7 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pn_listaMaquinas.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_maquinas.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_maquinas.setText("Máquinas");
@@ -143,11 +143,11 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
 
         lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pn_listaMaquinasLayout = new javax.swing.GroupLayout(pn_listaMaquinas);
+        pn_listaMaquinas.setLayout(pn_listaMaquinasLayout);
+        pn_listaMaquinasLayout.setHorizontalGroup(
+            pn_listaMaquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_listaMaquinasLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -155,35 +155,35 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_home)
                 .addGap(62, 62, 62))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(pn_listaMaquinasLayout.createSequentialGroup()
+                .addGroup(pn_listaMaquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_listaMaquinasLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pn_listaMaquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pn_listaMaquinasLayout.createSequentialGroup()
                                 .addComponent(lbl_maquinas)
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_novaMaquina, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 1120, Short.MAX_VALUE)
                             .addComponent(jSeparator3)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pn_listaMaquinasLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pn_listaMaquinasLayout.setVerticalGroup(
+            pn_listaMaquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pn_listaMaquinasLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pn_listaMaquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_maquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_novaMaquina, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pn_listaMaquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pn_listaMaquinasLayout.createSequentialGroup()
+                        .addGroup(pn_listaMaquinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
@@ -198,11 +198,11 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_listaMaquinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pn_listaMaquinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -232,12 +232,7 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void tb_maquinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_maquinasMouseClicked
-        //int linha = tb_maquinas.getSelectedRow();
-        
-        //id = tb_maquinas.getValueAt(linha, 0).toString();
-        //tela_lista_cadastroMaquinas.this.dispose();
-       // tela_cadastroMaquinas objeto2 = new tela_cadastroMaquinas();
-        //objeto2.setVisible(true);
+
     }//GEN-LAST:event_tb_maquinasMouseClicked
 
     
@@ -279,13 +274,13 @@ public class tela_lista_cadastroMaquinas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_novaMaquina;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_maquinas;
     private javax.swing.JLabel lbl_pesquisar;
+    private javax.swing.JPanel pn_listaMaquinas;
     private javax.swing.JTable tb_maquinas;
     private javax.swing.JTextField txt_pesquisar;
     // End of variables declaration//GEN-END:variables

@@ -24,6 +24,7 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
     String senha = "247022";
     Connection conexao = null;
     PreparedStatement statement = null;
+    ResultSet resultado = null;
     
     /**
      * Creates new form tela_estoqueMqn
@@ -35,9 +36,9 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
     public void  tb_maquina (String sql){
     try {
         conexao = DriverManager.getConnection(url,usuario,senha);            
-        PreparedStatement banco = (PreparedStatement)conexao.prepareStatement(sql);
-        banco.execute(); // criar o vetor
-        ResultSet resultado = banco.executeQuery(sql);
+        statement = (PreparedStatement)conexao.prepareStatement(sql);
+        statement.execute(); // criar o vetor
+        resultado = statement.executeQuery(sql);
         DefaultTableModel model = (DefaultTableModel) tb_estoqueMaquinas.getModel();
         model.setNumRows(0);
                     
@@ -53,7 +54,7 @@ public class tela_estoqueMqn extends javax.swing.JFrame {
                 resultado.getString("status")
                 });
             }
-            banco.close();
+            statement.close();
             conexao.close();
         } catch (SQLException ex) {
             Logger.getLogger(tela_localizacao.class.getName()).log(Level.SEVERE, null, ex);
