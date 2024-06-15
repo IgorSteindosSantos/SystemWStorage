@@ -179,7 +179,7 @@ public class tela_menu extends javax.swing.JFrame {
         );
 
         lbl_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo_menu.png"))); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagens\\logo_menu.png")); // NOI18N
 
         javax.swing.GroupLayout pn_centralMenuLayout = new javax.swing.GroupLayout(pn_centralMenu);
         pn_centralMenu.setLayout(pn_centralMenuLayout);

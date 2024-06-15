@@ -26,7 +26,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
     PreparedStatement statement = null;
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     
     public tela_solicitacaoManutencao() {
         initComponents();
@@ -137,6 +137,9 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         lbl_nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_nome.setText("Nome Produto");
 
+        txt_nomeProduto.setEditable(false);
+        txt_nomeProduto.setEnabled(false);
+
         cbx_manutencao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbx_manutencao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar" }));
 
@@ -194,7 +197,6 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         });
 
         lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_foto.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_camera.png")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btn_pesquisar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -574,6 +576,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         // Popular o comboBox manutencao
         this.CamboBoxManutencao("SELECT * FROM manutencoes ORDER BY id_manutencao;");
         txt_nomeProduto.setEditable(false);
+        txt_imagem.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_salvarImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarImagemActionPerformed

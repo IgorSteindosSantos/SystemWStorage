@@ -22,7 +22,7 @@ public class tela_login extends javax.swing.JFrame {
     //Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senhas = "247022";
+    String senhas = "";
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
@@ -73,7 +73,7 @@ public class tela_login extends javax.swing.JFrame {
         pn_centralBranco.setToolTipText("");
 
         lbl_logo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo_wstorage.png"))); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagens\\logo_login.png")); // NOI18N
 
         lbl_usuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbl_usuario.setText("Usuário");
@@ -141,7 +141,7 @@ public class tela_login extends javax.swing.JFrame {
                 .addGroup(pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_centralBrancoLayout.createSequentialGroup()
                         .addComponent(lbl_logo)
-                        .addContainerGap(54, Short.MAX_VALUE))
+                        .addContainerGap(39, Short.MAX_VALUE))
                     .addGroup(pn_centralBrancoLayout.createSequentialGroup()
                         .addGroup(pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbl_senha)
@@ -177,7 +177,7 @@ public class tela_login extends javax.swing.JFrame {
             .addGroup(pn_fundoAzulLayout.createSequentialGroup()
                 .addGap(265, 265, 265)
                 .addComponent(pn_centralBranco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         pn_fundoAzulLayout.setVerticalGroup(
             pn_fundoAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

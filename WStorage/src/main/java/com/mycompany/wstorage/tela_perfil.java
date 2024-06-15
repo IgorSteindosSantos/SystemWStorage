@@ -4,23 +4,12 @@
  */
 package com.mycompany.wstorage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
 /**
  *
  * @author Igor Stein
  */
 public class tela_perfil extends javax.swing.JFrame {
 
-    Connection conexao = null;
-    ResultSet resultado = null;
-    PreparedStatement statement = null;
-    String url = "jdbc:mysql://localhost/wstorage_db";
-    String usuario = "root";
-    String senha = "247022";
     
     public tela_perfil() {
         initComponents();

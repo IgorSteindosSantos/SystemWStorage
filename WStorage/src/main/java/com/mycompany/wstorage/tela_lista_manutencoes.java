@@ -24,7 +24,7 @@ public class tela_lista_manutencoes extends javax.swing.JFrame {
     // Estabelecendo conexão com o banco
     String url = "jdbc:mysql://localhost/wstorage_db";
     String usuario = "root";
-    String senha = "247022";
+    String senha = "";
     Connection conexao = null;
     PreparedStatement statement = null;
     ResultSet resultado = null;
