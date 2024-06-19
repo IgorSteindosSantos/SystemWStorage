@@ -155,6 +155,7 @@ public class tela_cadastroFuncionario extends javax.swing.JFrame {
         chx_status.setText("Status Ativo");
 
         lbl_imagem_funcionario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_imagem_funcionario.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_camera.png")); // NOI18N
         lbl_imagem_funcionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btn_salvar_imagem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N

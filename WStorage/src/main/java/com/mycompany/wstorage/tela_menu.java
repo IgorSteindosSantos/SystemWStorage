@@ -74,6 +74,7 @@ public class tela_menu extends javax.swing.JFrame {
         lbl_menuRapido.setText("Menu Rápido");
 
         btn_os.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_os.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_os.png")); // NOI18N
         btn_os.setText("Ordem de Serviço");
         btn_os.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +83,7 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_manutencoes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_manutencoes.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_manutencao.png")); // NOI18N
         btn_manutencoes.setText("Manutenções");
         btn_manutencoes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_manutencoes.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +93,7 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_estoque.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_estoque.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_estoque.png")); // NOI18N
         btn_estoque.setText("Estoque");
         btn_estoque.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_estoque.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +103,7 @@ public class tela_menu extends javax.swing.JFrame {
         });
 
         btn_sair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_sair.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_sair.png")); // NOI18N
         btn_sair.setText("Sair");
         btn_sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +142,7 @@ public class tela_menu extends javax.swing.JFrame {
                 .addComponent(btn_manutencoes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addComponent(btn_estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
                 .addComponent(btn_sair)
                 .addGap(17, 17, 17))
         );
@@ -179,7 +183,7 @@ public class tela_menu extends javax.swing.JFrame {
         );
 
         lbl_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagens\\logo_menu.png")); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\imagens\\logo_menu.png")); // NOI18N
 
         javax.swing.GroupLayout pn_centralMenuLayout = new javax.swing.GroupLayout(pn_centralMenu);
         pn_centralMenu.setLayout(pn_centralMenuLayout);

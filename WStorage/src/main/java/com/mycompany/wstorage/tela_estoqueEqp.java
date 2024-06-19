@@ -70,14 +70,14 @@ public class tela_estoqueEqp extends javax.swing.JFrame {
         tb_estoqueEquipamentos.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tb_estoqueEquipamentos);
 
-        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
+        lbl_home.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
             }
         });
 
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
+        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout pn_estoqueEquipamentosLayout = new javax.swing.GroupLayout(pn_estoqueEquipamentos);
         pn_estoqueEquipamentos.setLayout(pn_estoqueEquipamentosLayout);

@@ -206,14 +206,14 @@ public class tela_manutencao extends javax.swing.JFrame {
         );
 
         lbl_home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
+        lbl_home.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
             }
         });
 
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
+        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout pn_manutencaoLayout = new javax.swing.GroupLayout(pn_manutencao);
         pn_manutencao.setLayout(pn_manutencaoLayout);

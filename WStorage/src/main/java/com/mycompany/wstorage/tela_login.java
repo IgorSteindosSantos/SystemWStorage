@@ -73,7 +73,7 @@ public class tela_login extends javax.swing.JFrame {
         pn_centralBranco.setToolTipText("");
 
         lbl_logo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbl_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagens\\logo_login.png")); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\imagens\\logo_login.png")); // NOI18N
 
         lbl_usuario.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbl_usuario.setText("Usuário");
@@ -141,14 +141,14 @@ public class tela_login extends javax.swing.JFrame {
                 .addGroup(pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_centralBrancoLayout.createSequentialGroup()
                         .addComponent(lbl_logo)
-                        .addContainerGap(39, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pn_centralBrancoLayout.createSequentialGroup()
                         .addGroup(pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbl_senha)
                             .addComponent(lbl_usuario)
                             .addComponent(txt_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(txt_senha))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 51, Short.MAX_VALUE))))
         );
         pn_centralBrancoLayout.setVerticalGroup(
             pn_centralBrancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

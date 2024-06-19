@@ -204,6 +204,7 @@ public class tela_cadastroEquipamentos extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txta_descricao);
 
         lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_foto.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_camera.png")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         cbx_localizacao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -235,24 +236,20 @@ public class tela_cadastroEquipamentos extends javax.swing.JFrame {
                                 .addGap(64, 64, 64))
                             .addGroup(pn_cadastroEquipamentoLayout.createSequentialGroup()
                                 .addGroup(pn_cadastroEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_localizacao)
+                                    .addComponent(lbl_nome)
+                                    .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(pn_cadastroEquipamentoLayout.createSequentialGroup()
-                                        .addGroup(pn_cadastroEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lbl_localizacao)
-                                            .addComponent(lbl_nome)
-                                            .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cbx_localizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(pn_cadastroEquipamentoLayout.createSequentialGroup()
-                                                .addGroup(pn_cadastroEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txt_qtdMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lbl_descricao))
-                                                .addGap(39, 39, 39)
-                                                .addGroup(pn_cadastroEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txt_qtdSeguranca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(lbl_qtdSeguranca))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(pn_cadastroEquipamentoLayout.createSequentialGroup()
-                                        .addComponent(lbl_qtdMinima)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(pn_cadastroEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_qtdMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbl_descricao))
+                                        .addGap(39, 39, 39)
+                                        .addGroup(pn_cadastroEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_qtdSeguranca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbl_qtdSeguranca)))
+                                    .addComponent(lbl_qtdMinima))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(pn_cadastroEquipamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pn_cadastroEquipamentoLayout.createSequentialGroup()
                                         .addComponent(btn_salvarImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -102,14 +102,14 @@ public class tela_lista_cadastroOS extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tb_os);
         tb_os.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        lbl_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_home.png")); // NOI18N
+        lbl_home.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_home.png")); // NOI18N
         lbl_home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbl_homeMouseClicked(evt);
             }
         });
 
-        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Igor Stein\\Desktop\\SystemWStorage\\SystemWStorage\\WStorage\\src\\main\\java\\imagem\\icon_pesquisar.png")); // NOI18N
+        lbl_pesquisar.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_pesquisar.png")); // NOI18N
 
         javax.swing.GroupLayout pn_ordemServicoLayout = new javax.swing.GroupLayout(pn_ordemServico);
         pn_ordemServico.setLayout(pn_ordemServicoLayout);

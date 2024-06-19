@@ -179,11 +179,21 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="lbl_home">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\Users\MDEOLINDO\Desktop\PROG_APP_GIT\SystemWStorage\WStorage\src\main\java\Icons\icon_home.png"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_homeMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_pesquisar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\Users\MDEOLINDO\Desktop\PROG_APP_GIT\SystemWStorage\WStorage\src\main\java\Icons\icon_pesquisar.png"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

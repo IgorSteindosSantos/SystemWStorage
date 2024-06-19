@@ -788,7 +788,7 @@ public class tela_cadastroOS extends javax.swing.JFrame {
         }
         statement.close();
         // Especificar o caminho e nome do arquivo
-        String filePath = "C:\\Users\\Igor Stein\\Desktop\\OrdemdeServicosOS_" + ordemServicoId + ".txt";
+        String filePath = "D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT" + ordemServicoId + ".txt";
         // Escrever o conteúdo no arquivo
         FileWriter fileWriter = new FileWriter(filePath);
         fileWriter.write(sb.toString());

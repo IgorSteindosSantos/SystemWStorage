@@ -248,7 +248,7 @@
                       <Component id="btn_manutencoes" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                       <Component id="btn_estoque" min="-2" pref="60" max="-2" attributes="0"/>
-                      <EmptySpace pref="230" max="32767" attributes="0"/>
+                      <EmptySpace pref="215" max="32767" attributes="0"/>
                       <Component id="btn_sair" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
@@ -273,6 +273,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\Users\MDEOLINDO\Desktop\PROG_APP_GIT\SystemWStorage\WStorage\src\main\java\Icons\icon_os.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ordem de Servi&#xe7;o"/>
               </Properties>
               <Events>
@@ -283,6 +286,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\Users\MDEOLINDO\Desktop\PROG_APP_GIT\SystemWStorage\WStorage\src\main\java\Icons\icon_manutencao.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Manuten&#xe7;&#xf5;es"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -296,6 +302,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\Users\MDEOLINDO\Desktop\PROG_APP_GIT\SystemWStorage\WStorage\src\main\java\Icons\icon_estoque.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Estoque"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
@@ -307,6 +316,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\Users\MDEOLINDO\Desktop\PROG_APP_GIT\SystemWStorage\WStorage\src\main\java\Icons\icon_sair.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
@@ -368,7 +380,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Igor Stein\Desktop\SystemWStorage\SystemWStorage\WStorage\src\main\java\imagens\logo_menu.png"/>
+              <Image iconType="2" name="D:\Users\MDEOLINDO\Desktop\PROG_APP_GIT\SystemWStorage\WStorage\src\main\java\imagens\logo_menu.png"/>
             </Property>
           </Properties>
         </Component>

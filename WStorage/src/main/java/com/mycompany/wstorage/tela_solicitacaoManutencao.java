@@ -197,6 +197,7 @@ public class tela_solicitacaoManutencao extends javax.swing.JFrame {
         });
 
         lbl_foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_foto.setIcon(new javax.swing.ImageIcon("D:\\Users\\MDEOLINDO\\Desktop\\PROG_APP_GIT\\SystemWStorage\\WStorage\\src\\main\\java\\Icons\\icon_camera.png")); // NOI18N
         lbl_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btn_pesquisar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
